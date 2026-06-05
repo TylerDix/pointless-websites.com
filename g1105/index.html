@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The G1105 Glow-Up — a warm desert-modern reset</title>
+<meta name="description" content="A renter-friendly plan to turn a cool, cluttered one-bedroom at Camden Tempe (unit G1105) into a warm, plant-filled, desert-modern home. Palette, budget, zone-by-zone moves, and an interactive checklist.">
+<meta property="og:title" content="The G1105 Glow-Up">
+<meta property="og:description" content="From depressing to desert-modern: a renter-friendly glow-up plan for a one-bedroom in Tempe, AZ.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pointless-websites.com/g1105/">
+<meta name="theme-color" content="#f4efe6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4efe6;        /* warm paper */
+  --panel:#fbf8f1;     /* lifted panel */
+  --ink:#2b2622;       /* near-black warm */
+  --ink-dim:#7c7164;   /* muted */
+  --rule:#e2d8c6;      /* hairline */
+  --terra:#b5532e;     /* terracotta / rust accent */
+  --walnut:#5b4636;    /* hero wood */
+  --sage:#8a9a7b;      /* desert green */
+  --brass:#b08d57;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"EB Garamond",Georgia,"Times New Roman",serif;
+  background:var(--bg); color:var(--ink); line-height:1.62;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+.sans{font-family:"Archivo",system-ui,sans-serif;}
+
+/* ---- shared furniture ---- */
+.wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+.eyebrow{
+  font-family:"Archivo",sans-serif; font-weight:600; color:var(--terra);
+  letter-spacing:.24em; text-transform:uppercase; font-size:.72rem;
+}
+.rule{display:flex;align-items:center;justify-content:center;gap:16px;
+  width:min(220px,60%);margin:0 auto;color:var(--brass);opacity:.8}
+.rule::before,.rule::after{content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,var(--rule))}
+.rule span{font-size:.8rem;letter-spacing:.2em}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  position:relative;min-height:96svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:80px 28px;overflow:hidden;
+}
+.masthead-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(135deg,#e9dcc6 0%,#e7cdb4 38%,#d9b89c 100%);
+}
+/* if a hero render is dropped in, it covers the gradient */
+.masthead-bg img{width:100%;height:100%;object-fit:cover;
+  filter:brightness(.78) saturate(1.02)}
+.masthead-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 46%, transparent 0%, rgba(244,239,230,.35) 70%, rgba(244,239,230,.8) 100%),
+    linear-gradient(180deg, rgba(244,239,230,.4) 0%, transparent 34%, transparent 64%, rgba(244,239,230,.92) 100%);
+}
+.masthead-inner{position:relative;z-index:1;max-width:780px}
+.masthead .eyebrow{margin-bottom:24px;display:inline-block}
+.masthead h1{
+  font-weight:500;font-size:clamp(3rem,12vw,6.6rem);
+  letter-spacing:.01em;line-height:.94;margin-bottom:14px;
+}
+.masthead .sub{
+  display:block;font-style:italic;color:var(--walnut);
+  font-size:clamp(1.1rem,3.4vw,1.5rem);margin-bottom:8px;
+}
+.hook{margin:30px auto 0;max-width:48ch;color:var(--ink);
+  font-size:clamp(1.1rem,2.4vw,1.3rem);line-height:1.5}
+.hook em{color:var(--terra);font-style:italic}
+.scroll-hint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:1;
+  font-family:"Archivo",sans-serif;color:var(--walnut);font-size:.66rem;
+  letter-spacing:.32em;text-transform:uppercase;opacity:.7}
+
+/* ===== SECTIONS ===== */
+section{padding:88px 0}
+section.tight{padding:56px 0}
+.label{margin-bottom:14px}
+h2{font-weight:500;font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.1;margin-bottom:22px}
+h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.18rem;letter-spacing:.01em;margin-bottom:6px}
+p{font-size:clamp(1.06rem,1.9vw,1.2rem);max-width:60ch}
+p + p{margin-top:1em}
+em.dim{color:var(--ink-dim);font-style:italic}
+
+/* diagnosis list */
+.culprits{list-style:none;margin-top:10px;counter-reset:c}
+.culprits li{position:relative;padding:18px 0 18px 56px;border-top:1px solid var(--rule)}
+.culprits li::before{
+  counter-increment:c;content:counter(c);
+  position:absolute;left:0;top:18px;width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Archivo",sans-serif;font-weight:700;font-size:1rem;color:#fff;
+  background:var(--terra);border-radius:50%;
+}
+.culprits b{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.04rem}
+.culprits p{margin-top:4px;color:var(--ink-dim);font-size:1.02rem}
+
+/* palette swatches */
+.palette{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:14px;margin-top:8px}
+.sw{border:1px solid var(--rule);background:var(--panel);border-radius:10px;overflow:hidden}
+.sw .chip{height:74px}
+.sw .meta{padding:9px 11px}
+.sw .nm{font-family:"Archivo",sans-serif;font-weight:600;font-size:.82rem}
+.sw .hx{font-family:"Archivo",sans-serif;font-size:.72rem;color:var(--ink-dim);letter-spacing:.04em}
+.given{font-size:.95rem;color:var(--ink-dim);font-style:italic;margin-top:16px}
+
+/* stat grid */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:6px}
+.stat{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:18px 18px}
+.stat .k{font-family:"Archivo",sans-serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
+.stat .v{font-size:1.5rem;font-weight:500;margin-top:4px}
+.stat .d{font-size:.92rem;color:var(--ink-dim);margin-top:2px}
+
+/* ===== ZONE CARDS ===== */
+.zone{border-top:1px solid var(--rule);padding:64px 0}
+.zone-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.zone-num{font-family:"Archivo",sans-serif;font-weight:700;color:var(--brass);font-size:.85rem;letter-spacing:.16em}
+.zone-dim{font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--ink-dim);letter-spacing:.04em;
+  border:1px solid var(--rule);border-radius:999px;padding:3px 11px}
+.render{position:relative;border:1px solid var(--rule);border-radius:14px;overflow:hidden;
+  background:linear-gradient(135deg,#efe6d6,#e7d8c2);aspect-ratio:16/10;margin:18px 0}
+.render img{width:100%;height:100%;object-fit:cover}
+.render .placeholder{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;gap:8px;padding:24px;color:var(--walnut)}
+.render .placeholder .pic{font-size:1.8rem;opacity:.5}
+.render .placeholder .t{font-family:"Archivo",sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
+.render .placeholder .f{font-family:"Archivo",sans-serif;font-size:.74rem;color:var(--ink-dim)}
+.render.filled .placeholder{display:none}
+.moves{list-style:none;margin:6px 0 0}
+.moves li{position:relative;padding:7px 0 7px 26px;color:var(--ink);font-size:1.05rem}
+.moves li::before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;
+  background:var(--sage);border-radius:50%}
+.hero-piece{margin-top:16px;padding:14px 16px;background:var(--panel);
+  border-left:3px solid var(--terra);border-radius:0 10px 10px 0}
+.hero-piece .k{font-family:"Archivo",sans-serif;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
+.hero-piece .v{margin-top:2px}
+.owned{display:inline-block;font-family:"Archivo",sans-serif;font-weight:600;font-size:.66rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--sage);
+  border:1px solid var(--sage);border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+
+/* prompt block */
+.prompt{margin-top:16px;background:#2b2622;color:#ece3d3;border-radius:12px;overflow:hidden}
+.prompt-bar{display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08)}
+.prompt-bar .tag{font-family:"Archivo",sans-serif;font-weight:600;font-size:.7rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.copy{font-family:"Archivo",sans-serif;font-weight:600;font-size:.72rem;cursor:pointer;
+  background:var(--terra);color:#fff;border:0;border-radius:7px;padding:6px 12px;letter-spacing:.04em}
+.copy:active{transform:translateY(1px)}
+.copy.done{background:var(--sage)}
+.prompt .body{padding:14px 16px;font-family:"Archivo",sans-serif;font-weight:500;
+  font-size:.86rem;line-height:1.55;color:#e3d9c8;white-space:pre-wrap}
+.prompt .settings{padding:0 16px 14px;font-family:"Archivo",sans-serif;font-size:.74rem;color:#9a8d79}
+
+/* ===== BUDGET ===== */
+.budget{width:100%;border-collapse:collapse;margin-top:8px;font-size:1.02rem}
+.budget th,.budget td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--rule)}
+.budget th{font-family:"Archivo",sans-serif;font-weight:600;font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim)}
+.budget td.amt{text-align:right;font-family:"Archivo",sans-serif;font-size:.92rem;white-space:nowrap}
+.budget tr.total td{font-family:"Archivo",sans-serif;font-weight:700;border-top:2px solid var(--ink);border-bottom:0;padding-top:14px}
+.budget .free{color:var(--sage);font-style:italic}
+
+/* ===== SHOPPING LIST ===== */
+.shop-group{margin-top:30px}
+.shop-group > h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:.82rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--terra);
+  padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:4px}
+.shop-row{display:grid;grid-template-columns:1fr auto;gap:4px 16px;
+  align-items:baseline;padding:13px 4px;border-bottom:1px solid var(--rule)}
+.shop-row .pick{min-width:0}
+.shop-row .item{font-weight:600}
+.shop-row .desc{display:block;font-size:.92rem;color:var(--ink-dim);margin-top:2px}
+.shop-row .desc a{text-decoration:none;border-bottom:1px solid var(--brass);color:var(--walnut)}
+.shop-row .desc a:hover{border-bottom-color:var(--terra);color:var(--terra)}
+.shop-row .amt{font-family:"Archivo",sans-serif;font-size:.92rem;white-space:nowrap;text-align:right}
+.shop-row .amt .free{color:var(--sage);font-style:italic}
+.pill{display:inline-block;font-family:"Archivo",sans-serif;font-weight:600;
+  font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 7px;border-radius:999px;vertical-align:middle;margin-left:6px}
+.pill.costco{background:#e6f0fb;color:#2a5b9e}
+.pill.amazon{background:#fde8d6;color:#9a5a16}
+.pill.stock{background:#e7f0e4;color:#5a7048}
+.shop-total{display:grid;grid-template-columns:1fr auto;gap:16px;
+  padding:16px 4px 0;font-family:"Archivo",sans-serif;font-weight:700;
+  border-top:2px solid var(--ink);margin-top:4px}
+.shop-note{font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--ink-dim);margin-top:14px;line-height:1.5}
+@media (max-width:560px){
+  .shop-row{grid-template-columns:1fr;gap:2px}
+  .shop-row .amt{text-align:left;margin-top:4px;color:var(--walnut)}
+}
+
+/* ===== CHECKLIST ===== */
+.phase{margin-top:26px}
+.phase-h{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.phase-h .n{font-family:"Archivo",sans-serif;font-weight:700;color:var(--terra);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+.phase-h .c{font-family:"Archivo",sans-serif;font-size:.74rem;color:var(--ink-dim)}
+.check{list-style:none}
+.check li{margin:2px 0}
+.check label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;
+  padding:9px 12px;border-radius:10px;transition:background .15s}
+.check label:hover{background:var(--panel)}
+.check input{appearance:none;-webkit-appearance:none;flex:none;margin-top:3px;
+  width:20px;height:20px;border:1.6px solid var(--brass);border-radius:6px;cursor:pointer;position:relative;background:#fff}
+.check input:checked{background:var(--sage);border-color:var(--sage)}
+.check input:checked::after{content:"✓";position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center;color:#fff;font-size:.82rem;font-weight:700}
+.check input:checked + span{color:var(--ink-dim);text-decoration:line-through;text-decoration-color:var(--rule)}
+.check span{font-size:1.05rem;line-height:1.4}
+.progress{margin-top:18px;height:8px;background:var(--rule);border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sage),var(--brass));transition:width .3s}
+.progress-label{font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--ink-dim);margin-top:8px}
+
+/* ===== EXIT ===== */
+.exit{text-align:center;padding:20px 28px 90px;max-width:560px;margin:0 auto}
+.exit p{margin:0 auto 24px;color:var(--ink-dim);font-style:italic}
+.leave{display:inline-block;text-decoration:none;font-family:"Archivo",sans-serif;font-weight:600;
+  border:1px solid var(--rule);border-radius:10px;padding:14px 34px;font-size:.92rem;
+  letter-spacing:.08em;text-transform:uppercase;transition:border-color .2s,background .2s}
+.leave:hover{border-color:var(--terra);background:rgba(181,83,46,.06)}
+.leave .arrow{color:var(--terra);margin-right:.5em}
+footer{text-align:center;padding:30px 28px 54px;color:var(--ink-dim);font-size:.84rem;font-style:italic}
+footer a{border-bottom:1px solid var(--rule);text-decoration:none}
+
+@media (prefers-reduced-motion:no-preference){
+  .masthead-inner{animation:rise 1.3s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+@media (max-width:560px){
+  section{padding:64px 0}
+  .zone{padding:48px 0}
+  .culprits li{padding-left:48px}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-bg" aria-hidden="true">
+    <img src="images/hero.jpg" alt="" onerror="this.remove()">
+  </div>
+  <div class="masthead-inner">
+    <span class="eyebrow">Camden Tempe · Tempe, AZ · Unit G1105</span>
+    <h1>The G1105<br>Glow-Up</h1>
+    <span class="sub">a warm desert-modern reset</span>
+    <p class="hook">One gray love seat, one sad ottoman, a lot of cold light, and acres of bare wall. We keep the good bones, warm the whole thing up, and let the desert in — <em>no drilling, no painting, dog-approved.</em></p>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">the plan ↓</div>
+</header>
+
+<section class="tight"><div class="wrap">
+  <p class="eyebrow label">The brief</p>
+  <h2>From depressing to alive — on a renter's terms.</h2>
+  <p>A one-bedroom at Camden Tempe with the cool <b>Contemporary</b> finish: gray shaker cabinets, <b>dark grey wood-look floors</b>, off-white walls. Good light when you let it in, a great open layout, and a genuinely nice platform bed already in the bedroom. It just reads cold, cluttered, and unfinished.</p>
+  <p>Budget is <b>$1.5k–$3.5k</b>. Everything here is <b>portable, no-drill, and no-paint</b> — it travels with you and leaves zero wall damage. And it has to survive a golden retriever.</p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow label">The diagnosis</p>
+  <h2>Four culprits, in order of impact.</h2>
+  <ol class="culprits">
+    <li><b>The light is cool, dim, and top-down.</b><p>One yellow ceiling source at a time, no glow at eye level. This alone makes a room feel sad — and it's the cheapest thing to fix.</p></li>
+    <li><b>Clutter on every flat surface.</b><p>Island, ottoman tray, desk, side tables, entry floor. Free to fix, and it changes the whole feeling instantly.</p></li>
+    <li><b>Nothing else is keeping pace with the rug.</b><p>The existing southwest stripe rug — terracotta, cream, teal, charcoal — is actually the right palette. Everything around it just hasn't caught up yet.</p></li>
+    <li><b>Cold gray + bare walls, no softness.</b><p>Nothing warm, woven, or living to balance all that hard cool surface.</p></li>
+  </ol>
+  <p style="margin-top:24px"><em class="dim">Good news: the top fixes are light, textiles, and plants — none of which need a drill or a paintbrush.</em></p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow label">The direction</p>
+  <h2>Warm desert-modern.</h2>
+  <p>Against dark gray floors and cool gray cabinets, we layer in warm walnut, cream cloud sectional, oatmeal linen, terracotta, sage, and brass. That single move — <b>warm wood and earth tones against cool gray</b> — is the whole trick. It's mid-century, Southwest, boho, and warm-minimalist all agreeing with each other, and it leans into Arizona instead of fighting it. <b>Everything is picked to also work on light/medium floors</b> in case the next place isn't grey.</p>
+  <div class="palette" style="margin-top:24px">
+    <div class="sw"><div class="chip" style="background:#5b4636"></div><div class="meta"><div class="nm">Walnut</div><div class="hx">#5B4636</div></div></div>
+    <div class="sw"><div class="chip" style="background:#a8623d"></div><div class="meta"><div class="nm">Cognac</div><div class="hx">#A8623D</div></div></div>
+    <div class="sw"><div class="chip" style="background:#b5532e"></div><div class="meta"><div class="nm">Terracotta</div><div class="hx">#B5532E</div></div></div>
+    <div class="sw"><div class="chip" style="background:#efe7d8"></div><div class="meta"><div class="nm">Oatmeal</div><div class="hx">#EFE7D8</div></div></div>
+    <div class="sw"><div class="chip" style="background:#8a9a7b"></div><div class="meta"><div class="nm">Sage</div><div class="hx">#8A9A7B</div></div></div>
+    <div class="sw"><div class="chip" style="background:#b08d57"></div><div class="meta"><div class="nm">Brass</div><div class="hx">#B08D57</div></div></div>
+    <div class="sw"><div class="chip" style="background:#2b2926"></div><div class="meta"><div class="nm">Black metal</div><div class="hx">#2B2926</div></div></div>
+  </div>
+  <p class="given">The givens we design around: <b>dark gray wood-look floor</b> · gray shaker cabinets · off-white walls · existing southwest stripe rug · espresso platform bed · 36" round walnut coffee table.</p>
+</div></section>
+
+<section class="tight"><div class="wrap">
+  <p class="eyebrow label">The footprint</p>
+  <h2>Real numbers, from the floor plan.</h2>
+  <div class="stats">
+    <div class="stat"><div class="k">Living</div><div class="v">13'6" × 10'4"</div><div class="d">fits an ~113" L-shape sectional with chaise</div></div>
+    <div class="stat"><div class="k">Office nook</div><div class="v">6'3" × 9'3"</div><div class="d">dedicated office; dining stays at the island</div></div>
+    <div class="stat"><div class="k">Bedroom</div><div class="v">12'5" × 13'0"</div><div class="d">queen + dresser + curtains + art</div></div>
+    <div class="stat"><div class="k">Plus</div><div class="v">Patio + Foyer</div><div class="d">ground-floor patio w/ storage closet</div></div>
+  </div>
+</div></section>
+
+<section class="tight"><div class="wrap">
+  <p class="eyebrow label">Zone by zone</p>
+  <h2>Five rooms, five moves.</h2>
+  <p>Each zone below has the plan, the one piece that anchors it, and a ready-to-paste <b>Adobe Firefly</b> prompt. Generate the render, drop the file into <span class="sans" style="font-size:.9em">/images/</span> with the name shown, and it appears right here as your visual target.</p>
+
+  <!-- ZONE 1: LIVING -->
+  <div class="zone">
+    <div class="zone-head"><span class="zone-num">ZONE 01</span><h3 style="margin:0">The Living Room</h3><span class="zone-dim">13'6" × 10'4"</span></div>
+    <div class="render" id="r-living">
+      <img src="images/living.jpg" alt="Render: warm desert-modern living room" onerror="this.remove();document.getElementById('r-living').classList.remove('filled')">
+      <div class="placeholder"><div class="pic">▦</div><div class="t">Render slot</div><div class="f">images/living.jpg</div></div>
+    </div>
+    <ul class="moves">
+      <li>Grey sofa + ottoman <b>out</b>. In: a <b>cream/light-taupe modular cloud sectional with reversible chaise</b> on the long wall.</li>
+      <li><b>Keep the southwest stripe rug</b> as the palette anchor — the colors are already right.</li>
+      <li>Your <b>36" round walnut coffee table</b> (in the box) goes here, in front of the sectional.</li>
+      <li>Layer light: <b>brass arc floor lamp + two warm 2700K table lamps</b>. Kill the top-down-only glow.</li>
+      <li>Hang the desert canvases above the sectional. Add a tall potted plant in the corner.</li>
+    </ul>
+    <div class="hero-piece"><div class="k">Anchor piece <span class="owned">Costco Dayna, Light Gray</span></div><div class="v">Aiden &amp; Ivy Dayna 4-piece Modular Sectional — 75.5×112.9" reversible chaise, feather-blend cushions, $1,499.99. Available, white-glove delivery.</div></div>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="tag">Firefly · images/living.jpg</span><button class="copy">Copy prompt</button></div>
+      <div class="body">Photorealistic interior photograph of a small modern one-bedroom apartment living room, warm desert-modern style. Dark grey wood-look plank flooring and soft off-white walls. A cream-to-light-taupe modular cloud sectional with deep loose reversible cushions and a chaise on the left, against the long wall — soft, modern, cloud-style with track arms. A 36-inch round walnut coffee table with a warm brown finish in front of the sectional. Under everything, the existing southwest-stripe area rug with horizontal stripes of terracotta rust, cream, teal blue, and charcoal grey. Framed desert and saguaro cactus photography on the wall, terracotta and sage throw pillows, a tall potted bird of paradise plant in a terracotta pot, small cacti, a tall vase of dried pampas grass. A slim brass arc floor lamp behind the sectional. Warm golden-hour Arizona sunlight through floor-to-ceiling oatmeal linen curtains, calm and inviting, editorial magazine quality, 35mm, natural light, shallow depth of field.</div>
+      <div class="settings">Content type: Photo · Aspect: Widescreen (16:9) · Style: warm, natural light, photographic</div>
+    </div>
+  </div>
+
+  <!-- ZONE 2: OFFICE -->
+  <div class="zone">
+    <div class="zone-head"><span class="zone-num">ZONE 02</span><h3 style="margin:0">The Office Nook</h3><span class="zone-dim">6'3" × 9'3"</span></div>
+    <div class="render" id="r-office">
+      <img src="images/office.jpg" alt="Render: walnut office nook" onerror="this.remove();document.getElementById('r-office').classList.remove('filled')">
+      <div class="placeholder"><div class="pic">▦</div><div class="t">Render slot</div><div class="f">images/office.jpg</div></div>
+    </div>
+    <ul class="moves">
+      <li>The nook becomes a dedicated <b>office</b>. Dining stays at the kitchen island bar stools.</li>
+      <li>Move your <b>existing dark desk</b> from the living area into the nook against the long wall.</li>
+      <li>Define the zone with a <b>small rug + one tall plant</b> so it reads "intentional," not "leftover corner."</li>
+      <li>A <b>warm brass task lamp</b> + a leaning piece of desert art turn the window wall from blank to composed.</li>
+      <li>Hide the cables — cable channel + a woven basket under the desk for the power strip.</li>
+    </ul>
+    <div class="hero-piece"><div class="k">Anchor piece <span class="owned">You own it</span></div><div class="v">Your existing desk + mesh task chair, repositioned under the three pendant lights. No new desk needed.</div></div>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="tag">Firefly · images/office.jpg</span><button class="copy">Copy prompt</button></div>
+      <div class="body">Photorealistic interior photograph of a compact home-office nook in a modern apartment, warm desert-modern style, dimensions approximately 6 feet wide by 9 feet deep. A dark espresso rectangular wooden desk in the nook against the far wall, paired with a comfortable black mesh task chair. Dark grey wood-look plank flooring (distinctly dark gray) and soft off-white walls. Three modern industrial pendant lights hanging from the ceiling above the desk area. A tall window to the right with floor-to-ceiling oatmeal linen curtains hung high and wide. A small cream rug defines the zone, one tall potted parlor palm in a woven basket beside the desk, a warm brass adjustable task lamp on the desk, two framed minimalist desert saguaro cactus prints leaning on the wall, a tidy laptop and external monitor on the desk, a small stack of books and a ceramic vase, cables hidden, intentional. Bright warm natural daylight from the side window, editorial magazine quality, 35mm, shallow depth of field.</div>
+      <div class="settings">Content type: Photo · Aspect: Widescreen (16:9) · Style: warm, natural light, photographic</div>
+    </div>
+  </div>
+
+  <!-- ZONE 3: ENTRY -->
+  <div class="zone">
+    <div class="zone-head"><span class="zone-num">ZONE 03</span><h3 style="margin:0">The Entry / Foyer</h3><span class="zone-dim">first impression</span></div>
+    <div class="render" id="r-entry">
+      <img src="images/entry.jpg" alt="Render: warm entry foyer" onerror="this.remove();document.getElementById('r-entry').classList.remove('filled')">
+      <div class="placeholder"><div class="pic">▦</div><div class="t">Render slot</div><div class="f">images/entry.jpg</div></div>
+    </div>
+    <ul class="moves">
+      <li>That big blank wall + shoe-and-trash-bag pile is the <b>first thing anyone sees</b>. Give it a job.</li>
+      <li>A <b>slim console</b> (walnut or black metal) with <b>closed shoe storage</b> underneath.</li>
+      <li>A <b>round leaning mirror</b> above it — light bounce + "this is a real entryway."</li>
+      <li>A small tray for keys, one plant, and a spot the trash bags and moving box never come back to.</li>
+      <li>Your <b>pampas grass</b> already lives here — keep it, just give it a proper surface.</li>
+    </ul>
+    <div class="hero-piece"><div class="k">Anchor piece</div><div class="v">Entry console with concealed shoe storage + round leaning mirror.</div></div>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="tag">Firefly · images/entry.jpg</span><button class="copy">Copy prompt</button></div>
+      <div class="body">Photorealistic interior photograph of a small modern apartment entryway, warm desert-modern style. A slim walnut console table with closed cabinet shoe storage against an off-white wall, a round brass-framed mirror leaning above it, a tall vase of pampas grass, a small terracotta tray for keys, one potted trailing plant, a woven runner on dark grey wood-look flooring. Warm inviting lighting, soft daylight from around the corner, uncluttered and welcoming, editorial magazine quality, 35mm, shallow depth of field.</div>
+      <div class="settings">Content type: Photo · Aspect: Portrait or Square · Style: warm, natural light, photographic</div>
+    </div>
+  </div>
+
+  <!-- ZONE 4: BEDROOM -->
+  <div class="zone">
+    <div class="zone-head"><span class="zone-num">ZONE 04</span><h3 style="margin:0">The Bedroom</h3><span class="zone-dim">12'5" × 13'0"</span></div>
+    <div class="render" id="r-bedroom">
+      <img src="images/bedroom.jpg" alt="Render: warm desert-modern bedroom" onerror="this.remove();document.getElementById('r-bedroom').classList.remove('filled')">
+      <div class="placeholder"><div class="pic">▦</div><div class="t">Render slot</div><div class="f">images/bedroom.jpg</div></div>
+    </div>
+    <ul class="moves">
+      <li>You already own the hero: the <b>dark espresso slatted platform bed + matching nightstand</b>. We just dress around it.</li>
+      <li><b>New bedding</b> — oatmeal cream linen duvet with a warm terracotta throw + textured pillows. Biggest single upgrade.</li>
+      <li><b>Linen curtains over the roller shades</b> (tension/no-drill rod) to soften and warm the window walls.</li>
+      <li>One <b>large desert saguaro piece leaning</b> above the headboard — no holes, big impact.</li>
+      <li>Add a <b>matching second nightstand lamp</b> (there's only one now). Plus a tall snake plant in the corner.</li>
+    </ul>
+    <div class="hero-piece"><div class="k">Anchor piece <span class="owned">You own it</span></div><div class="v">Espresso platform bed — already perfect for the look. Dress it, don't replace it.</div></div>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="tag">Firefly · images/bedroom.jpg</span><button class="copy">Copy prompt</button></div>
+      <div class="body">Photorealistic interior photograph of a calm modern bedroom in warm desert-modern style. A low dark espresso wood platform bed with a headboard, dressed in layered cream and oatmeal bedding with a terracotta throw blanket and textured pillows. Dark grey wood-look floor, off-white walls, a soft greige area rug under the bed. Floor-to-ceiling oatmeal linen curtains framing the window, a large piece of minimalist desert art leaning above the headboard, matching warm-toned table lamps on wood nightstands, a potted plant in the corner, brass accents. Soft warm morning light, serene and inviting, editorial magazine quality, 35mm, shallow depth of field.</div>
+      <div class="settings">Content type: Photo · Aspect: Widescreen (16:9) · Style: warm, natural light, photographic</div>
+    </div>
+  </div>
+
+  <!-- ZONE 5: PATIO -->
+  <div class="zone">
+    <div class="zone-head"><span class="zone-num">ZONE 05</span><h3 style="margin:0">The Patio</h3><span class="zone-dim">bonus room</span></div>
+    <div class="render" id="r-patio">
+      <img src="images/patio.jpg" alt="Render: desert-modern patio" onerror="this.remove();document.getElementById('r-patio').classList.remove('filled')">
+      <div class="placeholder"><div class="pic">▦</div><div class="t">Render slot</div><div class="f">images/patio.jpg</div></div>
+    </div>
+    <ul class="moves">
+      <li>Ground-floor patio = the easiest bonus "room" you'll ever get. In AZ it's usable most of the year.</li>
+      <li>An <b>indoor/outdoor rug</b> + <b>two lounge chairs</b> + a small side table makes a real morning-coffee spot.</li>
+      <li><b>Warm string lights</b> overhead for instant evening mood (no drill — use the railing / a tension setup).</li>
+      <li>A cluster of <b>potted cacti and succulents</b> in terracotta — desert plants that thrive on neglect.</li>
+      <li>The patio storage closet finally absorbs the stuff cluttering the entry.</li>
+    </ul>
+    <div class="hero-piece"><div class="k">Anchor piece</div><div class="v">Two-chair lounge nook + warm string lights + terracotta cacti.</div></div>
+    <div class="prompt">
+      <div class="prompt-bar"><span class="tag">Firefly · images/patio.jpg</span><button class="copy">Copy prompt</button></div>
+      <div class="body">Photorealistic photograph of a small ground-floor apartment patio in Tempe Arizona, warm desert-modern style. Two comfortable lounge chairs with cream and terracotta cushions, a small round side table, an indoor-outdoor rug in warm earth tones, warm string lights overhead, a cluster of potted cacti and agave and succulents in terracotta pots, a woven basket planter. Golden-hour desert light, warm and inviting, cozy outdoor living, editorial magazine quality, 35mm, shallow depth of field.</div>
+      <div class="settings">Content type: Photo · Aspect: Widescreen (16:9) · Style: warm, golden-hour, photographic</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow label">The money</p>
+  <h2>Where the budget goes.</h2>
+  <p>A core build that lands mid-range and leaves room to splurge on the sofa or stretch onto the patio. Things you already own are <span class="free">free</span>.</p>
+  <table class="budget">
+    <thead><tr><th>Item</th><th style="text-align:right">Estimate</th></tr></thead>
+    <tbody>
+      <tr><td><b>Sectional</b> — Costco Dayna 4pc, Light Gray <em class="dim">(replaces grey sofa)</em></td><td class="amt">$1,500</td></tr>
+      <tr><td>Lighting — brass arc floor lamp + 2 warm table lamps + smart bulbs</td><td class="amt">$220–320</td></tr>
+      <tr><td>Curtains + tension rods (living + bedroom)</td><td class="amt">$150–250</td></tr>
+      <tr><td>Entry console with shoe storage + round brass mirror</td><td class="amt">$220–380</td></tr>
+      <tr><td>Plants + terracotta planters</td><td class="amt">$180–350</td></tr>
+      <tr><td>Pillows + throws (sectional + bedroom)</td><td class="amt">$140–260</td></tr>
+      <tr><td>Bedroom bedding + second nightstand lamp</td><td class="amt">$220–380</td></tr>
+      <tr><td>Office — organization + brass task lamp (chair already owned)</td><td class="amt">$80–180</td></tr>
+      <tr><td>Patio — rug, 2 wicker chairs, side table, string lights, planters</td><td class="amt">$300–550</td></tr>
+      <tr><td>36" round walnut coffee table · platform bed + nightstand · southwest rug · desk + mesh chair · desert canvases · pampas grass · sheepskin dog bed</td><td class="amt free">owned</td></tr>
+      <tr class="total"><td>Core build <em class="dim">— exact picks in the cart below</em></td><td class="amt">≈ $2,550</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow label">The cart</p>
+  <h2>The actual shopping list.</h2>
+  <p>Not categories — <b>specific products, in stock, deliverable to Tempe.</b> One pick per line, with a budget swap where it matters. Prices checked June 2026; the sectional is the only big number, everything else is small.</p>
+
+  <div class="shop-group">
+    <h3>Living room</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Modular sectional</span><span class="pill costco">Costco</span><span class="pill stock">in stock</span><span class="desc"><a href="https://www.costco.com/p/-/dayna-4-piece-fabric-modular-sectional/4000310896" target="_blank" rel="noopener">Aiden &amp; Ivy Dayna 4-piece, Light Gray</a> — reversible chaise, feather-blend cushions, white-glove delivery. <em>The anchor.</em></span></div><div class="amt">$1,499.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Brass arc floor lamp</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0869LKSQ5" target="_blank" rel="noopener">Brightech Olivia, gold</a> — arcs over the sectional. <em>Budget swap: gold arc w/ drum shade, $69.99.</em></span></div><div class="amt">$179.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Table lamps (pair)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0DMT396FZ" target="_blank" rel="noopener">TOBUSA 23.5" ceramic, set of 2</a> — eye-level warm light.</span></div><div class="amt">$57.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Throw pillow covers</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0CVVWDV3Z" target="_blank" rel="noopener">MIULEE boho, set of 4</a> — rust + textured, ties to the rug.</span></div><div class="amt">$26.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Coffee table + rug</span><span class="desc">36" round walnut coffee table (boxed) + existing southwest stripe rug.</span></div><div class="amt"><span class="free">owned</span></div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Bedroom</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Linen duvet cover (queen)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0D47NX9TP" target="_blank" rel="noopener">Bedsure linen-cotton, oatmeal</a>. <em>Budget swap: washed-cotton oatmeal, $59.99.</em></span></div><div class="amt">$104.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Oatmeal linen curtains</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0FVXFRDRF" target="_blank" rel="noopener">Topfinel 84", 2 panels</a>, 4.8★. Same set works in the living room.</span></div><div class="amt">$58.49</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">2nd nightstand lamp</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=ceramic+table+lamp+cream+linen+shade" target="_blank" rel="noopener">Single ceramic lamp</a> to make the pair — you only have one now.</span></div><div class="amt">~$30</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Terracotta knit throw</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=terracotta+knit+throw+blanket" target="_blank" rel="noopener">Chunky throw</a> for the foot of the bed.</span></div><div class="amt">~$25</div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Entry</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Shoe-storage console</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0CV7FR8QT" target="_blank" rel="noopener">VASAGLE LIRY cabinet</a> — closed shoe storage, flat top for keys + pampas.</span></div><div class="amt">$89.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Round brass mirror, 30"</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B09TR2NMPH" target="_blank" rel="noopener">HARRITPURE gold round</a>, 4.8★ — bounces the corner light.</span></div><div class="amt">$56.99</div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Office nook</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Brass task lamp</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=brass+desk+task+lamp+adjustable" target="_blank" rel="noopener">Adjustable brass desk lamp</a> for the desk.</span></div><div class="amt">~$36</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Desk + chair</span><span class="desc">Existing desk + mesh chair, moved into the nook under the pendants.</span></div><div class="amt"><span class="free">owned</span></div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Patio</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Wicker bistro set (3-pc)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0CYSVCM2R" target="_blank" rel="noopener">HAPPYGRILL 2 chairs + table</a>, 4.7★ — right scale for a small patio. <em>(Costco patio sets exist but run 4–5× the price and too big.)</em></span></div><div class="amt">$129.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Indoor/outdoor rug</span><span class="pill costco">Costco</span><span class="pill stock">in stock</span><span class="desc"><a href="https://www.costco.com/CatalogSearch?keyword=Nourison+Veranda+indoor+outdoor+rug" target="_blank" rel="noopener">Nourison Veranda, Sienna, 5'3" round</a> — terracotta tone.</span></div><div class="amt">$59.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">String lights, 48ft LED</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0FJ6VT285" target="_blank" rel="noopener">S14 shatterproof</a> — instant evening mood, no drill.</span></div><div class="amt">$31.44</div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Whole home</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Warm 2700K smart bulbs (4-pk)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=govee+smart+light+bulbs+warm+white" target="_blank" rel="noopener">Govee / Wyze color bulbs</a> — kills the cold top-down glow.</span></div><div class="amt">~$22</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">No-drill tension rods (×2)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=no+drill+tension+curtain+rod" target="_blank" rel="noopener">Tension curtain rods</a> — zero wall damage.</span></div><div class="amt">~$28</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Terracotta planters + plants</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=terracotta+planter+set+indoor+drainage" target="_blank" rel="noopener">Planter set</a> + a bird of paradise / snake plant locally (Home Depot).</span></div><div class="amt">~$60</div></div>
+  </div>
+
+  <div class="shop-total"><div>Core build, shipped</div><div>≈ $2,470</div></div>
+  <p class="shop-note">Plus ~$80–150 of live plants picked up locally. That's the whole reset for around <b>$2,550</b> — and the Dayna sectional is 60% of it. Sell the old grey sofa and you claw back $150–300 of that. Everything ships to 85281; the sectional and the Costco rug come from Costco, the rest is Prime.</p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow label">The checklist</p>
+  <h2>Do it in phases — biggest mood-per-dollar first.</h2>
+  <p>Ticks save automatically in this browser, so you can come back to it on your phone.</p>
+
+  <div class="phase">
+    <div class="phase-h"><span class="n">Phase 0 — this weekend</span><span class="c">free</span></div>
+    <ul class="check" data-phase="0">
+      <li><label><input type="checkbox"><span>Clear every flat surface: island, ottoman, desk, side tables</span></label></li>
+      <li><label><input type="checkbox"><span>Swap every bulb to warm 2700K (grab a few smart bulbs for the lamps)</span></label></li>
+      <li><label><input type="checkbox"><span>Stash the entry trash bags + moving box in the patio storage closet</span></label></li>
+      <li><label><input type="checkbox"><span>Open the curtains — see how much light the room actually has</span></label></li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="n">Phase 1 — light & soft</span><span class="c">~$600</span></div>
+    <ul class="check" data-phase="1">
+      <li><label><input type="checkbox"><span>Brass arc floor lamp + two warm table lamps</span></label></li>
+      <li><label><input type="checkbox"><span>Oatmeal linen curtains + no-drill rods (living + bedroom)</span></label></li>
+      <li><label><input type="checkbox"><span>Keep the existing southwest stripe rug — vacuum, no replacement</span></label></li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="n">Phase 2 — the anchor</span><span class="c">~$1,500</span></div>
+    <ul class="check" data-phase="2">
+      <li><label><input type="checkbox"><span>Sell the existing grey sofa + ottoman</span></label></li>
+      <li><label><input type="checkbox"><span>Order Costco Dayna 4pc Light Gray sectional ($1,499.99, white-glove delivery)</span></label></li>
+      <li><label><input type="checkbox"><span>Unbox the 36" round walnut coffee table — place in front of sectional</span></label></li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="n">Phase 3 — warmth & life</span><span class="c">~$650</span></div>
+    <ul class="check" data-phase="3">
+      <li><label><input type="checkbox"><span>Large leaning mirror (living) + round mirror (entry)</span></label></li>
+      <li><label><input type="checkbox"><span>Leaning art + picture ledges (Command strips) — keep the desert canvas</span></label></li>
+      <li><label><input type="checkbox"><span>Statement plant + 2–3 smaller ones in terracotta / baskets</span></label></li>
+      <li><label><input type="checkbox"><span>Terracotta + sage pillows and a chunky throw</span></label></li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="phase-h"><span class="n">Phase 4 — office, bedroom & patio</span><span class="c">~$700</span></div>
+    <ul class="check" data-phase="4">
+      <li><label><input type="checkbox"><span>Move existing desk + mesh chair into the dining nook under the 3 pendants</span></label></li>
+      <li><label><input type="checkbox"><span>New bedroom bedding (cream linen duvet + terracotta throw) + leaning art over the headboard</span></label></li>
+      <li><label><input type="checkbox"><span>Entry console with shoe storage + round brass mirror</span></label></li>
+      <li><label><input type="checkbox"><span>Patio: indoor/outdoor rug, two wicker chairs, string lights, cacti in terracotta pots</span></label></li>
+    </ul>
+  </div>
+
+  <div class="progress"><i id="bar"></i></div>
+  <div class="progress-label" id="bar-label">0 of 0 done</div>
+</div></section>
+
+<div class="rule"><span>✦</span></div>
+
+<div class="exit">
+  <p>The bones were always good. Now go let the desert in.</p>
+  <a class="leave" href="/"><span class="arrow">←</span>Back to the pointless websites</a>
+</div>
+
+<footer>
+  One of the <a href="/">pointless websites</a>.<br>
+  A glow-up plan for one dark-grey apartment in Tempe, Arizona.
+</footer>
+
+<script>
+// --- copy-prompt buttons ---
+document.querySelectorAll(".prompt").forEach(function(p){
+  var btn=p.querySelector(".copy");
+  var text=p.querySelector(".body").textContent.trim();
+  btn.addEventListener("click",function(){
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent="Copied ✓"; btn.classList.add("done");
+      setTimeout(function(){btn.textContent="Copy prompt"; btn.classList.remove("done");},1600);
+    });
+  });
+});
+
+// --- render slots: mark filled when the image actually loads ---
+document.querySelectorAll(".render img").forEach(function(img){
+  function fill(){ img.closest(".render").classList.add("filled"); }
+  if(img.complete && img.naturalWidth>0) fill();
+  img.addEventListener("load",fill);
+});
+
+// --- persistent checklist ---
+var KEY="g1105-checklist-v1";
+var saved=JSON.parse(localStorage.getItem(KEY)||"{}");
+var boxes=Array.prototype.slice.call(document.querySelectorAll(".check input"));
+boxes.forEach(function(b,i){
+  b.dataset.k="c"+i;
+  if(saved[b.dataset.k]) b.checked=true;
+  b.addEventListener("change",function(){
+    saved[b.dataset.k]=b.checked; localStorage.setItem(KEY,JSON.stringify(saved)); render();
+  });
+});
+function render(){
+  var done=boxes.filter(function(b){return b.checked}).length;
+  var pct=boxes.length?Math.round(done/boxes.length*100):0;
+  document.getElementById("bar").style.width=pct+"%";
+  document.getElementById("bar-label").textContent=done+" of "+boxes.length+" done · "+pct+"%";
+}
+render();
+</script>
+</body>
+</html>

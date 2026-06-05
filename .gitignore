@@ -4,3 +4,8 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# g1105 — local working files (apartment photos, private research)
+g1105/ref/
+g1105/notes/
+.DS_Store
