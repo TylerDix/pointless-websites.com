@@ -41,9 +41,28 @@
             font-size: clamp(1rem, 3.4vw, 1.25rem);
             color: #6b6b6b;
         }
+        ul.sites {
+            list-style: none;
+            margin: 56px 0 0;
+            padding: 0;
+            font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+        }
+        ul.sites li { margin: 14px 0; }
+        ul.sites a {
+            color: #1a1a1a;
+            text-decoration: none;
+            border-bottom: 1px solid #d8d8d8;
+            padding-bottom: 2px;
+            transition: border-color 0.15s ease;
+        }
+        ul.sites a:hover { border-bottom-color: #1a1a1a; }
+        ul.sites em { color: #6b6b6b; font-size: 0.9em; margin-left: 6px; }
         @media (prefers-color-scheme: dark) {
             body { color: #e8e8e8; background: #111111; }
             .tagline { color: #a8a8aa; }
+            ul.sites a { color: #e8e8e8; border-bottom-color: #333; }
+            ul.sites a:hover { border-bottom-color: #e8e8e8; }
+            ul.sites em { color: #a8a8aa; }
         }
     </style>
 </head>
@@ -51,6 +70,9 @@
     <main>
         <h1>Pointless Websites</h1>
         <p class="tagline">a small collection of useless little websites</p>
+        <ul class="sites">
+            <li><a href="/no-exit/">No Exit</a><em>— Sartre</em></li>
+        </ul>
     </main>
 </body>
 </html>
