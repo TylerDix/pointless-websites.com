@@ -1,9 +1,10 @@
 # G1105 Glow-Up — Handoff
 
-Pick this up on the Mac (where Claude Code can actually drive Chrome and use the
-Firefly session) and finish the job: **generate the 5 renders, drop them in
-`images/`, preview, and deploy.** Everything else is already built and on the
-branch `claude/apartment-decor-ideas-UZyLl`.
+**Status (2026-06-05):** Renders generated locally via Firefly. Page text corrected
+to reflect the actual scope. Ready for preview + deploy.
+
+Original handoff below is preserved for context but several assumptions changed
+after seeing real photos of the unit (see "Corrections" section at the end).
 
 ---
 
@@ -165,10 +166,47 @@ git push -u origin claude/apartment-decor-ideas-UZyLl
 
 ## Still needed from Tyler
 
-- [ ] **Photo of the round walnut table** (the "this —" message got cut off). Confirm:
-      is it the **dining/office** table (assumed) or a **coffee table**? Changes Zone 02.
-- [ ] **Patio photo** + rough size — to tailor Zone 05 furniture.
-- [ ] **Tape-measure confirm** of the living-room sofa wall (~13'6" assumed) before buying the sofa.
+- [ ] **Tape-measure confirm** of the living-room sofa wall (~13'6" assumed) before ordering the Dayna.
+- [ ] **Existing rug dimensions** (we're keeping it; need to verify it fits under the new sectional).
+- [ ] **Dining-nook close-up photo** for fine-tuning the office render.
+
+---
+
+## Corrections after seeing photos (2026-06-05)
+
+Six photos arrived showing the actual unit, plus a box label. Several HANDOFF
+assumptions were wrong:
+
+| HANDOFF said | Reality |
+|---|---|
+| Cool grey wood-look floor | **Dark grey** wood-look — Firefly prompts updated to "dark grey wood-look plank" |
+| 82" cognac leather sofa, not a sectional | Tyler wants a **reversible modular sectional** (Costco Sereen was the wish; out of stock) |
+| Round walnut table = desk + dining | It's a **36" round COFFEE table** (box label confirmed). Goes in front of sectional |
+| Replace the existing rug | **Keep the existing southwest stripe rug** — colors are bang-on for the palette |
+| Dining nook = dual-use office+dining | **Office only.** Dining happens at the kitchen island bar stools |
+| Existing sofa = cognac wish | Existing sofa is **dark grey fabric** — selling it |
+
+### Sectional decision
+
+**Costco Dayna 4-piece Modular Sectional, Light Gray — $1,499.99.** Item 1812589.
+- Aiden & Ivy brand (same as the Sereen Tyler wanted, same reversible feather-blend cushions)
+- 75.5" × 112.9" × 33.8" — fits the 13'6" × 10'4" living room with room to walk
+- Available at 85001, Costco Direct, white-glove delivery (setup + packaging removal included), 1–2 weeks
+- Saves ~$1,100 vs the Sereen / Mira ($2,599.99 each)
+- Costco Mira 6pc (also $2,599.99, Dark Gray) was in-stock but 128"×128" is borderline depth-wise and the dark grey reads heavy on the existing dark floor
+
+### Renders
+
+All 5 zone renders + hero generated. Saved as `images/{hero,living,office,entry,bedroom,patio}.jpg`
+plus 3 alternates per zone (`*-alt-2.jpg`, `-alt-3`, `-alt-4`) so Tyler can swap if he prefers a different variant.
+
+The Firefly prompts in `index.html` have been corrected to match the new direction
+(dark grey floor, cloud sectional, keep rug, walnut = coffee table).
+
+### Local-only files (gitignored)
+
+- `g1105/ref/` — IMG_0772 (walnut-coffee-table box label), 0773–0778 (apartment interior photos)
+- `g1105/notes/research.md` — Costco/AFW sectional research, sources, dimensions
 
 ## File map
 
