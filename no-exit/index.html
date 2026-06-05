@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>No Exit</title>
-<meta name="description" content="You have no eyelids. The room will not let you look away. An experiment after Sartre's Huis Clos.">
-<meta property="og:title" content="No Exit">
-<meta property="og:description" content="Hell is other people. You have no eyelids.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No Exit — Jean-Paul Sartre, explained</title>
+<meta name="description" content="A short, plain introduction to Jean-Paul Sartre's play No Exit (Huis Clos). Three strangers, one locked room, no way out — and why 'hell is other people.'">
+<meta property="og:title" content="No Exit — explained">
+<meta property="og:description" content="Three strangers. One locked room. No torturer, no fire — just each other, forever. A plain guide to Sartre's Huis Clos.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pointless-websites.com/no-exit/">
 <meta name="theme-color" content="#0a0807">
@@ -15,537 +15,281 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0a0807; --bg-soft:#141110; --ink:#ede5d6; --ink-dim:#8a7f6e;
-  --rule:#2a221d; --accent:#8b1a1a; --accent-bright:#b62828;
+  --bg:#0a0807; --panel:#100c0a; --ink:#ece3d3; --ink-dim:#9a8d79;
+  --rule:#2c241e; --accent:#a8312f; --accent-soft:#7c2422;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
+html{scroll-behavior:smooth}
 body{
   font-family:"EB Garamond",Georgia,"Times New Roman",serif;
-  background:var(--bg); color:var(--ink);
-  overflow:hidden; position:fixed; inset:0;
-  -webkit-font-smoothing:antialiased;
-  -webkit-tap-highlight-color:transparent;
+  background:var(--bg); color:var(--ink); line-height:1.6;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
-img{display:block}
+img{display:block; max-width:100%}
+a{color:inherit}
 
-/* ===== STAGE ===== */
-#stage{position:fixed; inset:0; opacity:0; transition:opacity 1.6s ease}
-#stage.lit{opacity:1}
-
-.bg{
-  position:absolute; inset:0;
-  background:#000 url("images/room-bulb.jpg") center center / cover no-repeat;
-  filter:brightness(.40) contrast(1.05) saturate(.9);
+/* a thin printed-bill frame around the whole programme */
+.frame{
+  position:fixed; inset:14px; border:1px solid var(--rule);
+  pointer-events:none; z-index:5;
 }
-.flare{
-  background-image:url("images/room-warm.jpg");
-  opacity:0; filter:brightness(.62) contrast(1.05) saturate(.95);
-  transition:opacity .5s ease;
-}
-.flare.on{opacity:.5}
+.frame::after{ content:""; position:absolute; inset:4px; border:1px solid rgba(168,49,47,.18); }
 
-/* the one light that never goes out */
-.bulb{
-  position:absolute; top:-6%; left:50%; width:60vmax; height:60vmax;
-  transform:translate(-50%,-30%);
-  background:radial-gradient(circle at center, rgba(255,228,170,.30) 0%, rgba(255,210,140,.10) 22%, transparent 55%);
-  mix-blend-mode:screen; pointer-events:none;
+/* ornamental divider */
+.rule{
+  display:flex; align-items:center; justify-content:center; gap:18px;
+  margin:0 auto; width:min(220px,60%); color:var(--accent); opacity:.85;
 }
-#stage.dim-bulb .bulb{opacity:.25; transition:opacity 1.2s ease}
-#stage.dim-bulb .bg{filter:brightness(.18) contrast(1.05) saturate(.8); transition:filter 1.2s ease}
+.rule::before,.rule::after{ content:""; height:1px; flex:1; background:linear-gradient(90deg,transparent,var(--rule)); }
+.rule span{ font-size:.8rem; letter-spacing:.2em; }
+.rule.left::before{ background:linear-gradient(90deg,transparent,var(--rule)); }
 
-/* ===== THE WATCHERS ===== */
+/* small-caps label */
+.label{
+  font-style:italic; color:var(--accent); letter-spacing:.24em;
+  text-transform:uppercase; font-size:.74rem; margin-bottom:18px;
+}
+
+/* ===== MASTHEAD ===== */
+.masthead{
+  position:relative; min-height:100svh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center;
+  padding:80px 28px; overflow:hidden;
+}
+.masthead-bg{
+  position:absolute; inset:0; z-index:0;
+  background:#000 url("images/room-warm.jpg") center / cover no-repeat;
+  filter:brightness(.34) contrast(1.05) saturate(.85);
+}
+.masthead-bg::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 42%, transparent 0%, rgba(10,8,7,.55) 62%, rgba(10,8,7,.94) 100%),
+    linear-gradient(180deg, rgba(10,8,7,.55) 0%, transparent 38%, transparent 60%, rgba(10,8,7,.92) 100%);
+}
+.masthead-inner{ position:relative; z-index:1; max-width:760px; }
+.eyebrow{
+  font-style:italic; color:var(--ink-dim); letter-spacing:.26em;
+  text-transform:uppercase; font-size:.76rem; margin-bottom:26px;
+}
+.masthead h1{
+  font-weight:500; font-size:clamp(3.4rem,13vw,7.5rem);
+  letter-spacing:.02em; line-height:.92; margin-bottom:14px;
+}
+.masthead .french{
+  display:block; font-style:italic; color:var(--ink-dim);
+  font-size:clamp(1.1rem,3.6vw,1.5rem); letter-spacing:.05em; margin-bottom:6px;
+}
+.byline{ font-style:italic; color:var(--ink); font-size:clamp(1rem,2.6vw,1.25rem); }
+.hook{
+  margin:34px auto 0; max-width:46ch; color:var(--ink);
+  font-size:clamp(1.12rem,2.4vw,1.34rem); line-height:1.5;
+}
+.scroll-hint{
+  position:absolute; left:50%; bottom:34px; transform:translateX(-50%); z-index:1;
+  color:var(--ink-dim); font-size:.7rem; letter-spacing:.32em; text-transform:uppercase;
+  opacity:.7;
+}
+
+/* ===== READING SECTIONS ===== */
+section{ max-width:720px; margin:0 auto; padding:96px 28px; text-align:center; }
+h2{
+  font-weight:500; font-size:clamp(1.9rem,5vw,2.9rem); line-height:1.08;
+  letter-spacing:.005em; margin-bottom:26px;
+}
+section p{
+  font-size:clamp(1.08rem,1.9vw,1.24rem); color:var(--ink);
+  max-width:58ch; margin-left:auto; margin-right:auto;
+}
+section p + p{ margin-top:1.1em; }
+section p em{ color:var(--ink-dim); font-style:italic; }
+.lede{ color:var(--ink-dim); font-style:italic; }
+
+/* a framed photographic plate */
+.plate{
+  max-width:880px; margin:0 auto; padding:0 28px;
+}
+.plate figure{ position:relative; border:1px solid var(--rule); background:#000; }
+.plate img{
+  width:100%; height:auto; display:block;
+  filter:brightness(.62) contrast(1.04) saturate(.85);
+}
+.plate figcaption{
+  padding:16px 22px; text-align:center; color:var(--ink-dim);
+  font-style:italic; font-size:clamp(.98rem,1.8vw,1.12rem);
+  border-top:1px solid var(--rule);
+}
+
+/* ===== THE CAST ===== */
+.cast{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:30px;
+  max-width:1040px; margin:34px auto 0; padding:0 28px; text-align:left;
+}
+.who{ display:flex; flex-direction:column; }
 .portrait{
-  position:absolute; bottom:0; width:auto; height:74vh; max-height:760px;
-  pointer-events:none; opacity:0; transition:opacity 2.2s ease 0.4s, filter .6s ease;
-  will-change:transform;
+  position:relative; aspect-ratio:3/4; border:1px solid var(--rule);
+  background:#0d0a08; overflow:hidden;
 }
-#stage.lit .portrait{opacity:.56}
-.portrait img{height:100%; width:auto; filter:grayscale(.12) contrast(1.05) brightness(.92);
-  -webkit-mask-image:radial-gradient(ellipse 62% 70% at 50% 38%, #000 42%, transparent 82%);
-          mask-image:radial-gradient(ellipse 62% 70% at 50% 38%, #000 42%, transparent 82%);
+.portrait img{
+  width:100%; height:100%; object-fit:cover; object-position:center top;
+  filter:brightness(.82) contrast(1.05) saturate(.9);
 }
-.portrait.garcin{left:-4%}
-.portrait.ines{right:-4%}
-.portrait.lock{opacity:.82; filter:brightness(1.12)}
+/* Estelle: no portrait survives — a tarnished, empty frame */
+.portrait.empty{
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(120,90,70,.16), transparent 70%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,.012) 0 2px, transparent 2px 7px),
+    #0d0a08;
+}
+.portrait.empty span{
+  color:var(--ink-dim); font-style:italic; font-size:.96rem;
+  line-height:1.5; padding:0 22px; max-width:24ch;
+}
+.who .name{ margin-top:18px; font-size:1.5rem; font-weight:500; letter-spacing:.01em; }
+.who .role{
+  margin-top:5px; font-style:italic; color:var(--accent); font-size:.78rem;
+  letter-spacing:.18em; text-transform:uppercase;
+}
+.who .desc{ margin-top:12px; color:var(--ink-dim); font-size:1rem; line-height:1.55; }
 
-/* dark scrim so dialogue reads against the faces */
-.scrim{
-  position:absolute; left:0; right:0; bottom:0; height:48%; z-index:2; pointer-events:none;
-  background:linear-gradient(to top, rgba(10,8,7,.94) 0%, rgba(10,8,7,.72) 38%, transparent 100%);
-}
-
-/* ===== DIALOGUE ===== */
-.dialogue{
-  position:absolute; left:50%; bottom:18%; transform:translateX(-50%);
-  width:min(64ch,86vw); text-align:center; z-index:4; min-height:5.5em;
-  display:flex; flex-direction:column; justify-content:flex-end;
-  text-shadow:0 2px 16px rgba(0,0,0,.95), 0 0 40px rgba(0,0,0,.7);
-}
-.who{
-  display:block; color:var(--accent-bright);
-  font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
-  margin-bottom:.7em; min-height:1em; opacity:.9;
-}
+/* ===== THE LINE ===== */
 .line{
-  font-size:clamp(1.18rem,2.7vw,1.55rem); line-height:1.45; color:var(--ink);
+  text-align:center; padding:120px 28px; max-width:none;
 }
-.line.narrate{font-style:italic; color:var(--ink-dim)}
-.line.estelle{font-style:italic}
-.caret{display:inline-block; width:.5ch; color:var(--accent-bright); animation:blink 1.1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-
-/* ===== HUD ===== */
-.hud{position:fixed; z-index:6; color:var(--ink-dim); opacity:.5;
-  font-size:.72rem; letter-spacing:.18em; text-transform:uppercase}
-.timer{top:18px; left:20px}
-.ledger{top:18px; right:20px; text-align:right}
-.hud b{font-weight:500; color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:.1em}
-
-/* ===== HOTSPOTS ===== */
-.hotspot{
-  position:absolute; z-index:3; background:transparent; cursor:pointer;
-  border:1px solid transparent; border-radius:2px; transition:border-color .4s ease, background .4s ease;
-  font:inherit; color:transparent;
+.line .fr{
+  font-style:italic; font-weight:500; color:var(--accent);
+  font-size:clamp(1.9rem,6vw,3.4rem); line-height:1.12; letter-spacing:.01em;
 }
-.hotspot:hover,.hotspot:focus-visible{border-color:rgba(139,26,26,.4); background:rgba(139,26,26,.04); outline:none}
-.door{left:5%; top:26%; width:14%; height:46%}
-.mantel{right:6%; top:30%; width:16%; height:34%}
-
-.bell{
-  position:fixed; left:20px; bottom:46px; z-index:6;
-  background:none; border:none; cursor:pointer; font:inherit;
-  color:var(--ink-dim); opacity:.32; font-style:italic; font-size:.85rem;
-  letter-spacing:.04em; transition:opacity .4s ease;
+.line .en{
+  margin-top:18px; font-style:italic; color:var(--ink);
+  font-size:clamp(1.2rem,3vw,1.7rem);
 }
-.bell:hover,.bell:focus-visible{opacity:.7; outline:none}
-.bell.dead{opacity:.15}
+.line cite{
+  display:block; margin-top:30px; font-style:normal; color:var(--ink-dim);
+  font-size:.74rem; letter-spacing:.28em; text-transform:uppercase;
+}
 
-/* ===== THE BETRAYING EXIT ===== */
+/* ===== THE EXIT ===== */
+.exit{
+  text-align:center; padding:30px 28px 110px; max-width:560px; margin:0 auto;
+}
+.exit p{ color:var(--ink-dim); font-style:italic; font-size:1.08rem; margin-bottom:26px; }
 .leave{
-  position:fixed; left:50%; top:54%; transform:translate(-50%,-50%);
-  z-index:7; background:none; cursor:pointer;
-  border:1px solid var(--accent); color:var(--ink);
-  font:inherit; font-size:1.1rem; letter-spacing:.3em; text-transform:uppercase;
-  padding:16px 42px; opacity:0; transition:opacity 1s ease .4s, background .3s ease, border-color .3s ease;
+  display:inline-block; text-decoration:none; color:var(--ink);
+  border:1px solid var(--rule); padding:15px 38px;
+  font-size:1.05rem; letter-spacing:.16em; text-transform:uppercase;
+  transition:border-color .25s ease, color .25s ease, background .25s ease;
 }
-.leave.show{opacity:1}
-.leave:hover,.leave:focus-visible{background:rgba(182,40,40,.12); border-color:var(--accent-bright); outline:none}
-#stage.door-open .door{border-color:rgba(182,40,40,.7); background:rgba(182,40,40,.06)}
-
-/* ===== THE ONLY TRUE EXIT ===== */
-.truexit{
-  position:fixed; left:50%; bottom:9%; transform:translateX(-50%); z-index:6;
-  color:var(--ink-dim); opacity:0; font-size:.95rem; cursor:pointer; transition:opacity 2s ease;
-  letter-spacing:.03em;
+.leave:hover,.leave:focus-visible{
+  border-color:var(--accent); color:#fff; background:rgba(168,49,47,.08); outline:none;
 }
-.truexit.show{opacity:.4}
-.truexit:hover{opacity:.7}
+.leave .arrow{ color:var(--accent); margin-right:.5em; }
 
-footer{position:fixed; left:50%; bottom:14px; transform:translateX(-50%); z-index:6}
-footer a{color:var(--ink-dim); opacity:.25; font-size:.7rem; letter-spacing:.2em;
-  text-transform:uppercase; text-decoration:none; transition:opacity .3s ease}
-footer a:hover,footer a:focus-visible{opacity:.6; outline:none}
-
-/* ===== BOOT + LEAVE OVERLAY ===== */
-#boot,#leaveOverlay{position:fixed; inset:0; z-index:50; background:#000;
-  display:flex; align-items:center; justify-content:center; overflow:hidden}
-#leaveOverlay{z-index:60}
-#boot.gone,#leaveOverlay.gone{opacity:0; pointer-events:none; transition:opacity 1.2s ease}
-#boot video,#leaveOverlay video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-  filter:brightness(.5) contrast(1.05) saturate(.85)}
-#boot .caption{position:relative; z-index:1; text-align:center; padding:0 24px;
-  font-size:clamp(1.2rem,3vw,1.7rem); color:var(--ink); font-style:italic; min-height:2em}
-
-.sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
-  clip:rect(0,0,0,0); white-space:nowrap; border:0}
-
-@keyframes breathe{from{transform:translate(-50%,-30%) scale(1)} to{transform:translate(-50%,-30%) scale(1.12)}}
-@media (prefers-reduced-motion: no-preference){
-  .bulb{animation:breathe 18s ease-in-out infinite alternate}
+footer{
+  text-align:center; padding:36px 28px 56px; color:var(--ink-dim);
+  font-size:.82rem; font-style:italic; line-height:1.7;
 }
+footer a{ color:var(--ink-dim); text-decoration:none; border-bottom:1px solid var(--rule); }
+footer a:hover{ color:var(--ink); }
+
+/* gentle on-load lift for the masthead, respectful of motion prefs */
+@media (prefers-reduced-motion:no-preference){
+  .masthead-inner{ animation:rise 1.4s ease both; }
+  @keyframes rise{ from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none} }
+}
+
 @media (max-width:760px){
-  .portrait{height:46vh}
-  .dialogue{bottom:16%; width:88vw}
-  .door{left:3%; width:20%} .mantel{right:3%; width:22%}
-  /* stack the HUD so the two readouts never collide on narrow screens */
-  .hud{font-size:.6rem; letter-spacing:.12em}
-  .timer{top:16px; left:16px}
-  .ledger{top:34px; left:16px; right:auto; text-align:left}
-}
-@media (max-width:760px) and (max-height:680px){
-  .portrait{opacity:.4 !important; height:38vh}
+  .frame{ inset:9px; }
+  section{ padding:74px 24px; }
+  .cast{ grid-template-columns:1fr; gap:42px; max-width:360px; }
+  .line{ padding:90px 24px; }
 }
 </style>
 </head>
 <body>
 
-<div id="stage" aria-hidden="true">
-  <div class="bg"></div>
-  <div class="bg flare" id="flare"></div>
-  <div class="bulb"></div>
-  <div class="scrim"></div>
-  <figure class="portrait garcin" id="pGarcin"><img src="images/garcin.jpg" alt=""></figure>
-  <figure class="portrait ines" id="pInes"><img src="images/ines.jpg" alt=""></figure>
+<div class="frame" aria-hidden="true"></div>
 
-  <button class="hotspot door" id="door" aria-label="Try the door"></button>
-  <button class="hotspot mantel" id="mantel" aria-label="Look for a mirror in the bronze"></button>
-  <button class="bell" id="bell">ring for the valet</button>
-
-  <div class="hud timer">You have been here&nbsp; <b id="timer">00:00:00</b></div>
-  <div class="hud ledger">Attempts to leave&nbsp; <b id="ledger">0</b></div>
-
-  <div class="dialogue">
-    <span class="who" id="who"></span>
-    <span class="line" id="line"></span>
+<header class="masthead">
+  <div class="masthead-bg" aria-hidden="true"></div>
+  <div class="masthead-inner">
+    <p class="eyebrow">A one-act play · Paris, 1944</p>
+    <h1>No&nbsp;Exit<span class="french">Huis&nbsp;Clos</span></h1>
+    <p class="byline">by Jean-Paul Sartre</p>
+    <p class="hook">Three strangers are locked in a room together — forever. There is no torturer. There is no fire. There is no way out. <em>That is the whole of hell.</em></p>
   </div>
+  <div class="scroll-hint" aria-hidden="true">read on ↓</div>
+</header>
 
-  <button class="leave" id="leave" hidden>Leave</button>
-  <div class="truexit" id="truexit" hidden>(close the tab)</div>
-  <footer><a href="/">Leave for good</a></footer>
+<section>
+  <p class="label">The room</p>
+  <h2>A drawing room. The door locks behind you.</h2>
+  <p>Three sofas — one red, one blue, one green. A bronze ornament on the mantel. The lights never switch off. There are no windows and <em>no mirrors</em>. A polite valet shows each guest in, one at a time, and the door clicks shut.</p>
+  <p class="lede">They expected racks and red-hot pincers. Instead they get this room, and each other.</p>
+</section>
+
+<div class="plate">
+  <figure>
+    <img src="images/room-bulb.jpg" alt="A dim Second Empire drawing room with three velvet sofas, a locked wooden door, and a bronze mantelpiece.">
+    <figcaption>“So this is hell. I’d never have believed it… You remember the brimstone, the fire? Old wives’ tales.”</figcaption>
+  </figure>
 </div>
 
-<div id="boot">
-  <video id="bootVideo" src="video/room.mp4" muted playsinline preload="auto" poster="images/room-poster.jpg"></video>
-  <p class="caption" id="bootCaption"></p>
+<section>
+  <p class="label">The three damned</p>
+  <h2>Nobody is here to hurt them. They will do that themselves.</h2>
+  <p>Each of the three did something in life they refuse, at first, to admit. They have been put together because each one is exactly what the other two cannot stand. <em>There is no fourth person.</em></p>
+</section>
+
+<div class="cast">
+  <article class="who">
+    <div class="portrait"><img src="images/garcin.jpg" alt="Portrait of Joseph Garcin"></div>
+    <div class="name">Joseph Garcin</div>
+    <div class="role">Journalist</div>
+    <p class="desc">Shot by a firing squad for deserting a war. He needs the others to tell him he was brave, not a coward — and they won’t.</p>
+  </article>
+
+  <article class="who">
+    <div class="portrait"><img src="images/ines.jpg" alt="Portrait of Inès Serrano"></div>
+    <div class="name">Inès Serrano</div>
+    <div class="role">Postal clerk</div>
+    <p class="desc">Clear-eyed and cruel. She is the first to understand the room: that the three of them are one another’s torturers, and that is the entire design.</p>
+  </article>
+
+  <article class="who">
+    <div class="portrait"><img src="images/estelle.jpg" alt="Portrait of Estelle Rigault"
+      onerror="this.style.display='none';this.parentNode.classList.add('empty');this.parentNode.insertAdjacentHTML('beforeend','&lt;span&gt;Portrait pending — for now, an empty frame. Fitting: there are no mirrors in this room.&lt;/span&gt;');"></div>
+    <div class="name">Estelle Rigault</div>
+    <div class="role">Society wife</div>
+    <p class="desc">Used to being admired. With no mirror and no kind eyes on her, she begins to feel she is disappearing.</p>
+  </article>
 </div>
 
-<div id="leaveOverlay" class="gone" hidden>
-  <video id="leaveVideo" src="video/room.mp4" muted playsinline preload="auto"></video>
+<section>
+  <p class="label">The idea</p>
+  <h2>Hell isn’t a place. It’s being seen.</h2>
+  <p>Sartre’s hell has no devils and no flames. It is just other people — watching, judging, never sleeping, never looking away. Once you are dead your life is finished, and you can no longer change how anyone sees you. Garcin is a coward because Inès has decided he is, and there is no court of appeal.</p>
+  <p>That is the famous, frightening point of the play: <em>you become whatever you are in someone else’s eyes.</em></p>
+</section>
+
+<div class="rule"><span>✦</span></div>
+
+<div class="line">
+  <p class="fr">L’enfer, c’est les autres.</p>
+  <p class="en">Hell is other people.</p>
+  <cite>— Garcin</cite>
 </div>
 
-<div class="sr" id="sr" role="status" aria-live="polite"></div>
+<div class="exit">
+  <p>In the play, the door finally swings open — and not one of them walks through it. You can.</p>
+  <a class="leave" href="/"><span class="arrow">←</span>Leave the room</a>
+</div>
 
-<script>
-(function(){
-  "use strict";
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+<footer>
+  One of the <a href="/">pointless websites</a>.<br>
+  <em>Huis Clos</em> premiered at the Théâtre du Vieux-Colombier, Paris, May 1944.
+</footer>
 
-  var el = function(id){ return document.getElementById(id); };
-  var lineEl=el("line"), whoEl=el("who"), srEl=el("sr"),
-      stage=el("stage"), flare=el("flare"),
-      timerEl=el("timer"), ledgerEl=el("ledger"),
-      pGarcin=el("pGarcin"), pInes=el("pInes"),
-      leaveBtn=el("leave"), trueExit=el("truexit");
-
-  /* ---------- line pools ---------- */
-  var G="GARCIN", I="INÈS", E="ESTELLE", V="THE VALET", N="";
-  function L(who,text,cls){ return {who:who,text:text,cls:cls||""}; }
-
-  var POOLS = {
-    NORMAL:[
-      L(G,"Where are the instruments? The racks, the red-hot pincers?"),
-      L(I,"There aren't any. That isn't how it's done here."),
-      L(G,"Then what is the torture?"),
-      L(I,"Look around. Three sofas. One bell that doesn't ring. A door that doesn't open. And us. That's the whole of it."),
-      L(E,"Is someone there? I can't — I can't see myself. Is my face still mine? You. You're looking at me. Don't stop.","estelle"),
-      L(I,"She'll ask you that for the rest of forever. There are no mirrors here. She can only know she exists if someone keeps watching."),
-      L(G,"Then watch me instead. Tell me I'm not a coward. You're new — you haven't decided about me yet."),
-      L(I,"Everyone decides. That's the trouble."),
-      L(E,"Don't look at her. Look at me. While you watch me, I'm here. You're my mirror now — the only one I'll ever get.","estelle"),
-      L(G,"We could sit in silence. Forever. Pretend the others aren't there."),
-      L(I,"You can't. None of us has eyelids. Did you notice? We can't close our eyes. We can't sleep. We can't look away. Neither can you, now.")
-    ],
-    STILLNESS:[
-      L(I,"Sit if you like. We'll watch you sit."),
-      L(E,"You've gone so still. Are you hiding? You can't hide. There's nowhere in this room the light doesn't reach.","estelle"),
-      L(I,"You think if you don't move, we'll forget you. We won't. We have nothing else to do."),
-      L(I,"You keep so quiet. You're very concerned with how you look to us. Good. That's all you are now — how you look to us.")
-    ],
-    ACCUSED:[
-      L(I,"You left. We felt the room get colder."),
-      L(E,"You came back. They always come back. Where would you go?","estelle"),
-      L(I,"There's nowhere you can go that we can't feel. Come back, and we'll begin again.")
-    ],
-    AVERTED:[
-      L(G,"No — look at me. Don't turn away. Tell me I'm not a coward."),
-      L(I,"Already? We have all the time there is."),
-      L(E,"Don't go. Without your eyes on me I'm nothing. Please.","estelle")
-    ],
-    HUNTING:[
-      L(I,"Going somewhere? There's nowhere. You've seen the whole room. This is all of it. Forever."),
-      L(I,"There is more room below, and it is the same room.")
-    ]
-  };
-  var idx={NORMAL:0,STILLNESS:0,ACCUSED:0,AVERTED:0,HUNTING:0};
-  var PRIORITY={ACCUSED:4,AVERTED:3,HUNTING:2,STILLNESS:1};
-  var COOLDOWN=14000, IDLE=8000;
-
-  /* ---------- persisted state ---------- */
-  function get(k){ try{ return parseInt(localStorage.getItem(k),10)||0; }catch(e){ return 0; } }
-  function set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
-  var total=get("noexit_seconds"), attempts=get("noexit_attempts");
-  var session=0, sessionAttempts=0;
-  var idleCount=0, tabAways=0, huntCount=0;
-
-  function pad(n){ return (n<10?"0":"")+n; }
-  function fmt(s){ var h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60;
-    return pad(h)+":"+pad(m)+":"+pad(x); }
-  function renderHud(){ timerEl.textContent=fmt(total); ledgerEl.textContent=attempts; }
-  renderHud();
-
-  setInterval(function(){
-    total++; session++; renderHud();
-    if(total%5===0) set("noexit_seconds",total);
-  },1000);
-  function persist(){ set("noexit_seconds",total); set("noexit_attempts",attempts); }
-  window.addEventListener("pagehide",persist);
-  document.addEventListener("visibilitychange",function(){ if(document.hidden) persist(); });
-
-  var bumpLast={};
-  function bumpAttempts(kind){
-    var now=Date.now();
-    if(bumpLast[kind] && now-bumpLast[kind]<1500) return;
-    bumpLast[kind]=now;
-    attempts++; sessionAttempts++; set("noexit_attempts",attempts); renderHud();
-  }
-
-  /* ---------- typewriter + scheduler ---------- */
-  var pending=null, pendingPri=-1, lastCallout=0;
-  var oneoff=[]; var doorDone=false, doorActive=false, running=false;
-
-  function requestPool(name){
-    if(doorActive) return;
-    if(Date.now()-lastCallout < COOLDOWN) return;
-    var p=PRIORITY[name]||0;
-    if(p>pendingPri){ pending=name; pendingPri=p; }
-  }
-
-  function setWho(w,cls){
-    whoEl.textContent=w||"";
-    lineEl.className="line"+(cls?(" "+cls):"");
-  }
-
-  function typeLine(obj, done){
-    running=true;
-    setWho(obj.who,obj.cls);
-    srEl.textContent=(obj.who? obj.who+": ":"")+obj.text;
-    var txt=obj.text;
-    if(reduce){
-      lineEl.style.opacity=0;
-      lineEl.textContent=txt;
-      requestAnimationFrame(function(){ lineEl.style.transition="opacity 1s ease"; lineEl.style.opacity=1; });
-      setTimeout(function(){ running=false; done(); }, 4200+txt.length*22);
-      return;
-    }
-    lineEl.style.transition=""; lineEl.style.opacity=1;
-    lineEl.innerHTML="";
-    var span=document.createElement("span"); lineEl.appendChild(span);
-    var caret=document.createElement("span"); caret.className="caret"; caret.textContent="▌";
-    lineEl.appendChild(caret);
-    var i=0, slow=(obj.cls==="estelle"||obj.cls==="narrate");
-    var speed=slow?52:30;
-    (function tick(){
-      if(i<=txt.length){
-        span.textContent=txt.slice(0,i);
-        i++;
-        setTimeout(tick, txt.charAt(i-2)===","||txt.charAt(i-2)==="—" ? speed+120 :
-                         txt.charAt(i-2)==="." ? speed+260 : speed);
-      } else {
-        caret.remove();
-        var dwell=1600+txt.length*16;
-        setTimeout(function(){
-          lineEl.style.transition="opacity .35s ease"; lineEl.style.opacity=0;
-          setTimeout(function(){ running=false; done(); }, 360);
-        }, dwell);
-      }
-    })();
-  }
-
-  function doorReady(){ return !doorDone && (session>75 || sessionAttempts>=5); }
-
-  function nextLine(){
-    if(doorActive) return;
-    // explicit user responses jump the queue, ignore cooldown
-    if(oneoff.length){ typeLine(oneoff.shift(), nextLine); return; }
-    if(doorReady()){ enterDoor(); return; }
-    var pool;
-    if(pending){
-      pool=pending; lastCallout=Date.now();
-      if(pool==="ACCUSED") idx.NORMAL=Math.max(0,idx.NORMAL-1); // leaving costs progress
-      pending=null; pendingPri=-1;
-    } else { pool="NORMAL"; }
-    var arr=POOLS[pool];
-    var line=arr[idx[pool]%arr.length]; idx[pool]++;
-    typeLine(line, nextLine);
-  }
-
-  /* ---------- the betraying exit ---------- */
-  function enterDoor(){
-    doorActive=true;
-    stage.classList.add("dim-bulb","door-open");
-    pGarcin.classList.remove("lock"); pInes.classList.remove("lock");
-    typeQueueThen([L(N,"The door is open. You may go.","narrate")], function(){
-      leaveBtn.hidden=false; requestAnimationFrame(function(){ leaveBtn.classList.add("show"); });
-      var ignored=setTimeout(function(){ if(doorActive) stayed("You didn't move. None of us ever do."); }, 30000);
-      leaveBtn.onclick=function(){
-        clearTimeout(ignored);
-        leaveBtn.classList.remove("show");
-        setTimeout(function(){ leaveBtn.hidden=true; }, 400);
-        bumpAttempts("door-leave");
-        falseFreedom(function(){ stayed("Well? Why don't you go?"); });
-      };
-    });
-  }
-  function falseFreedom(after){
-    var ov=el("leaveOverlay"), vid=el("leaveVideo");
-    ov.hidden=false; requestAnimationFrame(function(){ ov.classList.remove("gone"); });
-    var go=function(){ try{ vid.currentTime=0; vid.play(); }catch(e){} };
-    if(reduce){ go=function(){}; }
-    go();
-    setTimeout(function(){
-      ov.classList.add("gone");
-      setTimeout(function(){ try{ vid.pause(); }catch(e){} ov.hidden=true; after(); }, 1200);
-    }, reduce?2600:4200);
-  }
-  function stayed(firstLine){
-    stage.classList.remove("dim-bulb","door-open");
-    pInes.classList.add("lock"); pGarcin.classList.add("lock");
-    var seq=[ L(I,firstLine), L(N,"You stayed. You always stay.","narrate"),
-              L(N,"L'enfer, c'est les autres.","narrate"),
-              L(N,"Hell is other people.","narrate") ];
-    typeQueueThen(seq, function(){
-      doorActive=false; doorDone=true;
-      trueExit.hidden=false; requestAnimationFrame(function(){ trueExit.classList.add("show"); });
-      setTimeout(function(){ pInes.classList.remove("lock"); pGarcin.classList.remove("lock"); }, 4000);
-      nextLine(); // the room goes on. forever.
-    });
-  }
-  function typeQueueThen(arr, done){
-    var k=0;
-    (function step(){ if(k<arr.length){ typeLine(arr[k++], step); } else { done(); } })();
-  }
-
-  /* ---------- the anti-mirror ---------- */
-  el("mantel").addEventListener("click", function(){
-    flareNow();
-    var frag;
-    if(huntCount>=2) frag=L(N,"They see how badly you want the door. So did we, at first.","narrate");
-    else if(tabAways>=2) frag=L(N,"They have counted the times you tried to leave them. They will count the rest.","narrate");
-    else if(idleCount>=2) frag=L(N,"They watch you sit perfectly still, hoping to be forgotten. You will not be.","narrate");
-    else frag=L(N,"You reach for the bronze, hunting your own face in it. There is only their looking, thrown back at you.","narrate");
-    oneoff.push(frag);
-    oneoff.push(L(I,"There's no glass here. No reflection. You don't get to see yourself. You only get to be seen."));
-  });
-
-  /* ---------- the door (before it opens) ---------- */
-  el("door").addEventListener("click", function(){
-    bumpAttempts("door"); huntCount++;
-    if(doorActive) return;
-    if(!doorReady()){
-      oneoff.push(L(I,"It's locked. It's always locked — until it isn't. And that will be worse."));
-    }
-  });
-
-  /* ---------- the bell ---------- */
-  var bellUsed=false, bellEl=el("bell");
-  bellEl.addEventListener("click", function(){
-    bumpAttempts("bell");
-    if(!bellUsed){
-      bellUsed=true;
-      oneoff.push(L(V,"You rang? … No. There has been no mistake. You are in the right room."));
-    } else {
-      bellEl.classList.add("dead");
-      setTimeout(function(){ bellEl.classList.remove("dead"); }, 200);
-    }
-  });
-
-  /* ---------- flare ---------- */
-  var flareT=null;
-  function flareNow(){
-    if(reduce) return;
-    flare.classList.add("on");
-    clearTimeout(flareT);
-    flareT=setTimeout(function(){ flare.classList.remove("on"); }, 520);
-  }
-
-  /* ---------- attention sensors ---------- */
-  var idleTimer=null;
-  function resetIdle(){
-    clearTimeout(idleTimer);
-    idleTimer=setTimeout(function(){
-      idleCount++; requestPool("STILLNESS");
-    }, IDLE);
-  }
-  var wasHidden=false;
-  document.addEventListener("visibilitychange", function(){
-    if(document.hidden){ wasHidden=true; tabAways++; bumpAttempts("tabaway"); }
-    else if(wasHidden){ wasHidden=false; requestPool("ACCUSED"); flareNow(); }
-  });
-  window.addEventListener("blur", function(){ requestPool("AVERTED"); });
-  document.addEventListener("mouseleave", function(e){
-    if(e.clientY<=0||e.clientX<=0||e.clientX>=window.innerWidth||e.clientY>=window.innerHeight){
-      requestPool("AVERTED"); bumpAttempts("pointerleave"); flareNow();
-    }
-  });
-  window.addEventListener("wheel", function(){ huntCount++; requestPool("HUNTING"); bumpAttempts("hunt"); }, {passive:true});
-
-  var lastTouchY=null;
-  window.addEventListener("touchstart", function(e){ lastTouchY=e.touches[0].clientY; resetIdle(); }, {passive:true});
-  window.addEventListener("touchmove", function(e){
-    resetIdle();
-    if(lastTouchY!==null && Math.abs(e.touches[0].clientY-lastTouchY)>90){
-      huntCount++; requestPool("HUNTING"); bumpAttempts("hunt"); lastTouchY=e.touches[0].clientY;
-    }
-  }, {passive:true});
-
-  /* ---------- gaze parallax ---------- */
-  var tx=0,ty=0,cx=0,cy=0;
-  function aim(px,py){ tx=(px/window.innerWidth-0.5); ty=(py/window.innerHeight-0.5); resetIdle(); }
-  window.addEventListener("pointermove", function(e){ aim(e.clientX,e.clientY); });
-  window.addEventListener("keydown", function(e){
-    resetIdle();
-    if(e.key==="Escape"){ /* let the browser/footer handle leaving */ }
-  });
-  if(!reduce){
-    (function raf(){
-      cx+=(tx-cx)*0.08; cy+=(ty-cy)*0.08;
-      var gx=(cx*9).toFixed(2), gy=(cy*6).toFixed(2);
-      pGarcin.style.transform="translate("+gx+"px,"+gy+"px)";
-      pInes.style.transform="translate("+gx+"px,"+gy+"px)";
-      requestAnimationFrame(raf);
-    })();
-  }
-
-  /* ---------- boot ---------- */
-  function bootCaptionType(text, done){
-    var cap=el("bootCaption");
-    if(reduce){ cap.textContent=text; setTimeout(done,2400); return; }
-    var i=0; (function t(){ if(i<=text.length){ cap.textContent=text.slice(0,i++); setTimeout(t,46); } else setTimeout(done,1400); })();
-  }
-  function start(){
-    stage.classList.add("lit");
-    // first breath of the room, then the dialogue begins
-    oneoff.push(L(N,"The light is on. It will not go out.","narrate"));
-    resetIdle();
-    setTimeout(nextLine, reduce?400:900);
-  }
-  function dismissBoot(){
-    var boot=el("boot");
-    boot.classList.add("gone");
-    setTimeout(function(){ boot.style.display="none"; }, 1300);
-    start();
-  }
-  (function boot(){
-    var bv=el("bootVideo");
-    bootCaptionType("The Valet shows you in.", function(){});
-    if(reduce){ setTimeout(dismissBoot, 2600); return; }
-    var dismissed=false;
-    var fin=function(){ if(dismissed)return; dismissed=true; dismissBoot(); };
-    bv.addEventListener("ended", fin);
-    var p=bv.play && bv.play();
-    if(p && p.catch){ p.catch(function(){ /* autoplay blocked: fall back to timer */ }); }
-    setTimeout(fin, 6000); // hard cap regardless of autoplay
-  })();
-
-  /* ---------- the only true exit ---------- */
-  trueExit.addEventListener("click", function(){
-    oneoff.push(L(N,"Yes. That is the only door.","narrate"));
-  });
-
-})();
-</script>
 </body>
 </html>
