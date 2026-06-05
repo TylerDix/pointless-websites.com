@@ -174,6 +174,35 @@ em.dim{color:var(--ink-dim);font-style:italic}
 .budget tr.total td{font-family:"Archivo",sans-serif;font-weight:700;border-top:2px solid var(--ink);border-bottom:0;padding-top:14px}
 .budget .free{color:var(--sage);font-style:italic}
 
+/* ===== SHOPPING LIST ===== */
+.shop-group{margin-top:30px}
+.shop-group > h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:.82rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--terra);
+  padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:4px}
+.shop-row{display:grid;grid-template-columns:1fr auto;gap:4px 16px;
+  align-items:baseline;padding:13px 4px;border-bottom:1px solid var(--rule)}
+.shop-row .pick{min-width:0}
+.shop-row .item{font-weight:600}
+.shop-row .desc{display:block;font-size:.92rem;color:var(--ink-dim);margin-top:2px}
+.shop-row .desc a{text-decoration:none;border-bottom:1px solid var(--brass);color:var(--walnut)}
+.shop-row .desc a:hover{border-bottom-color:var(--terra);color:var(--terra)}
+.shop-row .amt{font-family:"Archivo",sans-serif;font-size:.92rem;white-space:nowrap;text-align:right}
+.shop-row .amt .free{color:var(--sage);font-style:italic}
+.pill{display:inline-block;font-family:"Archivo",sans-serif;font-weight:600;
+  font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 7px;border-radius:999px;vertical-align:middle;margin-left:6px}
+.pill.costco{background:#e6f0fb;color:#2a5b9e}
+.pill.amazon{background:#fde8d6;color:#9a5a16}
+.pill.stock{background:#e7f0e4;color:#5a7048}
+.shop-total{display:grid;grid-template-columns:1fr auto;gap:16px;
+  padding:16px 4px 0;font-family:"Archivo",sans-serif;font-weight:700;
+  border-top:2px solid var(--ink);margin-top:4px}
+.shop-note{font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--ink-dim);margin-top:14px;line-height:1.5}
+@media (max-width:560px){
+  .shop-row{grid-template-columns:1fr;gap:2px}
+  .shop-row .amt{text-align:left;margin-top:4px;color:var(--walnut)}
+}
+
 /* ===== CHECKLIST ===== */
 .phase{margin-top:26px}
 .phase-h{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
@@ -411,9 +440,61 @@ footer a{border-bottom:1px solid var(--rule);text-decoration:none}
       <tr><td>Office — organization + brass task lamp (chair already owned)</td><td class="amt">$80–180</td></tr>
       <tr><td>Patio — rug, 2 wicker chairs, side table, string lights, planters</td><td class="amt">$300–550</td></tr>
       <tr><td>36" round walnut coffee table · platform bed + nightstand · southwest rug · desk + mesh chair · desert canvases · pampas grass · sheepskin dog bed</td><td class="amt free">owned</td></tr>
-      <tr class="total"><td>Core build</td><td class="amt">≈ $3,000–4,200</td></tr>
+      <tr class="total"><td>Core build <em class="dim">— exact picks in the cart below</em></td><td class="amt">≈ $2,550</td></tr>
     </tbody>
   </table>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow label">The cart</p>
+  <h2>The actual shopping list.</h2>
+  <p>Not categories — <b>specific products, in stock, deliverable to Tempe.</b> One pick per line, with a budget swap where it matters. Prices checked June 2026; the sectional is the only big number, everything else is small.</p>
+
+  <div class="shop-group">
+    <h3>Living room</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Modular sectional</span><span class="pill costco">Costco</span><span class="pill stock">in stock</span><span class="desc"><a href="https://www.costco.com/p/-/dayna-4-piece-fabric-modular-sectional/4000310896" target="_blank" rel="noopener">Aiden &amp; Ivy Dayna 4-piece, Light Gray</a> — reversible chaise, feather-blend cushions, white-glove delivery. <em>The anchor.</em></span></div><div class="amt">$1,499.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Brass arc floor lamp</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0869LKSQ5" target="_blank" rel="noopener">Brightech Olivia, gold</a> — arcs over the sectional. <em>Budget swap: gold arc w/ drum shade, $69.99.</em></span></div><div class="amt">$179.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Table lamps (pair)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0DMT396FZ" target="_blank" rel="noopener">TOBUSA 23.5" ceramic, set of 2</a> — eye-level warm light.</span></div><div class="amt">$57.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Throw pillow covers</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0CVVWDV3Z" target="_blank" rel="noopener">MIULEE boho, set of 4</a> — rust + textured, ties to the rug.</span></div><div class="amt">$26.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Coffee table + rug</span><span class="desc">36" round walnut coffee table (boxed) + existing southwest stripe rug.</span></div><div class="amt"><span class="free">owned</span></div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Bedroom</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Linen duvet cover (queen)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0D47NX9TP" target="_blank" rel="noopener">Bedsure linen-cotton, oatmeal</a>. <em>Budget swap: washed-cotton oatmeal, $59.99.</em></span></div><div class="amt">$104.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Oatmeal linen curtains</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0FVXFRDRF" target="_blank" rel="noopener">Topfinel 84", 2 panels</a>, 4.8★. Same set works in the living room.</span></div><div class="amt">$58.49</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">2nd nightstand lamp</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=ceramic+table+lamp+cream+linen+shade" target="_blank" rel="noopener">Single ceramic lamp</a> to make the pair — you only have one now.</span></div><div class="amt">~$30</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Terracotta knit throw</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=terracotta+knit+throw+blanket" target="_blank" rel="noopener">Chunky throw</a> for the foot of the bed.</span></div><div class="amt">~$25</div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Entry</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Shoe-storage console</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0CV7FR8QT" target="_blank" rel="noopener">VASAGLE LIRY cabinet</a> — closed shoe storage, flat top for keys + pampas.</span></div><div class="amt">$89.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Round brass mirror, 30"</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B09TR2NMPH" target="_blank" rel="noopener">HARRITPURE gold round</a>, 4.8★ — bounces the corner light.</span></div><div class="amt">$56.99</div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Office nook</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Brass task lamp</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=brass+desk+task+lamp+adjustable" target="_blank" rel="noopener">Adjustable brass desk lamp</a> for the desk.</span></div><div class="amt">~$36</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Desk + chair</span><span class="desc">Existing desk + mesh chair, moved into the nook under the pendants.</span></div><div class="amt"><span class="free">owned</span></div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Patio</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Wicker bistro set (3-pc)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0CYSVCM2R" target="_blank" rel="noopener">HAPPYGRILL 2 chairs + table</a>, 4.7★ — right scale for a small patio. <em>(Costco patio sets exist but run 4–5× the price and too big.)</em></span></div><div class="amt">$129.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Indoor/outdoor rug</span><span class="pill costco">Costco</span><span class="pill stock">in stock</span><span class="desc"><a href="https://www.costco.com/CatalogSearch?keyword=Nourison+Veranda+indoor+outdoor+rug" target="_blank" rel="noopener">Nourison Veranda, Sienna, 5'3" round</a> — terracotta tone.</span></div><div class="amt">$59.99</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">String lights, 48ft LED</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/dp/B0FJ6VT285" target="_blank" rel="noopener">S14 shatterproof</a> — instant evening mood, no drill.</span></div><div class="amt">$31.44</div></div>
+  </div>
+
+  <div class="shop-group">
+    <h3>Whole home</h3>
+    <div class="shop-row"><div class="pick"><span class="item">Warm 2700K smart bulbs (4-pk)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=govee+smart+light+bulbs+warm+white" target="_blank" rel="noopener">Govee / Wyze color bulbs</a> — kills the cold top-down glow.</span></div><div class="amt">~$22</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">No-drill tension rods (×2)</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=no+drill+tension+curtain+rod" target="_blank" rel="noopener">Tension curtain rods</a> — zero wall damage.</span></div><div class="amt">~$28</div></div>
+    <div class="shop-row"><div class="pick"><span class="item">Terracotta planters + plants</span><span class="pill amazon">Amazon</span><span class="desc"><a href="https://www.amazon.com/s?k=terracotta+planter+set+indoor+drainage" target="_blank" rel="noopener">Planter set</a> + a bird of paradise / snake plant locally (Home Depot).</span></div><div class="amt">~$60</div></div>
+  </div>
+
+  <div class="shop-total"><div>Core build, shipped</div><div>≈ $2,470</div></div>
+  <p class="shop-note">Plus ~$80–150 of live plants picked up locally. That's the whole reset for around <b>$2,550</b> — and the Dayna sectional is 60% of it. Sell the old grey sofa and you claw back $150–300 of that. Everything ships to 85281; the sectional and the Costco rug come from Costco, the rest is Prime.</p>
 </div></section>
 
 <section><div class="wrap">
