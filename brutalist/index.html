@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Béton Brut — Raw Concrete Architecture</title>
+<meta name="description" content="A love letter to brutalist architecture. Raw concrete, honest materials, unapologetic mass.">
+<meta property="og:title" content="Béton Brut">
+<meta property="og:description" content="The architecture of raw honesty. A love letter to brutalism.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pointless-websites.com/brutalist/">
+<meta name="theme-color" content="#0e0d0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0d0c;
+  --surface: #181714;
+  --ink: #e8e3d8;
+  --ink-muted: #8b8678;
+  --rule: #2e2b27;
+  --concrete: #9b9b8e;
+  --warm: #c4a882;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Barlow", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 32px 72px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000 url("https://images.pexels.com/photos/30797258/pexels-photo-30797258.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1200&dpr=1") center / cover no-repeat;
+  filter: brightness(0.42) contrast(1.12) saturate(0.55);
+}
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(14,13,12,0.05) 0%,
+    rgba(14,13,12,0.15) 45%,
+    rgba(14,13,12,0.88) 100%
+  );
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  width: 100%;
+}
+.hero-eyebrow {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--concrete);
+  margin-bottom: 18px;
+}
+.hero-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 900;
+  font-size: clamp(5.5rem, 20vw, 15rem);
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.hero-sub {
+  margin-top: 26px;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  color: var(--concrete);
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 0.68rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  opacity: 0.7;
+}
+
+/* ===== INTRO ===== */
+.intro {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 96px 32px;
+  text-align: center;
+}
+.section-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--warm);
+  margin-bottom: 22px;
+}
+.intro h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  line-height: 1.06;
+  margin-bottom: 30px;
+  letter-spacing: 0.01em;
+}
+.intro p {
+  font-size: clamp(1.06rem, 1.9vw, 1.18rem);
+  color: var(--ink-muted);
+  line-height: 1.74;
+  max-width: 58ch;
+  margin: 0 auto;
+}
+.intro p + p { margin-top: 1.1em; }
+.intro em { color: var(--ink); font-style: italic; }
+
+/* ===== BUILDINGS GRID ===== */
+.buildings-header {
+  text-align: center;
+  padding: 0 32px 52px;
+  border-top: 1px solid var(--rule);
+  padding-top: 80px;
+}
+.buildings-header h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+  margin-top: 14px;
+  letter-spacing: 0.01em;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+.building {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+.building.tall { aspect-ratio: 3 / 4; }
+.building.wide {
+  grid-column: span 2;
+  aspect-ratio: 16 / 9;
+}
+.building img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) contrast(1.1) saturate(0.6);
+  transition: filter 0.5s ease, transform 0.7s ease;
+}
+.building:hover img {
+  filter: brightness(0.9) contrast(1.06) saturate(0.8);
+  transform: scale(1.03);
+}
+.building-info {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px 26px;
+  background: linear-gradient(180deg, transparent 45%, rgba(14,13,12,0.88) 100%);
+}
+.building-name {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2.4vw, 1.55rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.building-meta {
+  margin-top: 5px;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--concrete);
+}
+
+/* ===== PHILOSOPHY ===== */
+.philosophy {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 96px 32px;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+}
+.philosophy h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  margin: 16px 0 28px;
+  line-height: 1.07;
+}
+.philosophy p {
+  font-size: clamp(1.06rem, 1.9vw, 1.18rem);
+  color: var(--ink-muted);
+  line-height: 1.74;
+  max-width: 58ch;
+  margin: 0 auto;
+}
+.philosophy p + p { margin-top: 1.1em; }
+.philosophy em { color: var(--ink); font-style: italic; }
+
+/* ===== QUOTE ===== */
+.quote-section {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 80px 32px 90px;
+  text-align: center;
+}
+.quote-section blockquote {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  max-width: 860px;
+  margin: 0 auto;
+}
+.quote-section cite {
+  display: block;
+  margin-top: 30px;
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* ===== EXIT ===== */
+.exit {
+  text-align: center;
+  padding: 80px 32px 96px;
+}
+.exit p {
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 1.06rem;
+  margin-bottom: 30px;
+}
+.leave {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 14px 38px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.leave:hover, .leave:focus-visible {
+  border-color: var(--concrete);
+  background: rgba(155, 155, 142, 0.08);
+  outline: none;
+}
+.leave .arrow { color: var(--warm); margin-right: 0.5em; }
+
+footer {
+  text-align: center;
+  padding: 26px 32px 48px;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.7;
+  border-top: 1px solid var(--rule);
+}
+footer a {
+  color: var(--ink-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+footer a:hover { color: var(--ink); }
+
+/* ===== MOTION ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-inner { animation: rise 1.3s ease both; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 860px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .building.wide { grid-column: span 2; }
+  .building.tall { aspect-ratio: 4 / 5; }
+}
+@media (max-width: 540px) {
+  .grid { grid-template-columns: 1fr; gap: 2px; }
+  .building.wide,
+  .building.tall { grid-column: span 1; aspect-ratio: 4 / 3; }
+  .hero { padding: 0 24px 60px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Le Corbusier · 1953 · béton brut</p>
+    <h1 class="hero-title">Béton<br>Brut</h1>
+    <p class="hero-sub">raw concrete — an architecture that tells no lies</p>
+  </div>
+  <p class="scroll-hint" aria-hidden="true">read on ↓</p>
+</header>
+
+<section class="intro">
+  <p class="section-label">The movement</p>
+  <h2>It began as a material.<br>It became a philosophy.</h2>
+  <p>In 1953, Le Corbusier used the phrase <em>béton brut</em> — raw concrete — to describe his Unité d'Habitation in Marseille. He meant it literally: the formwork was stripped away, and whatever the concrete looked like, you left it alone. No plaster, no paint, no apology.</p>
+  <p>His followers heard something larger. By the 1960s, an entire generation of architects — in London, Boston, Belgrade, Montreal, Tokyo — was building out of raw concrete and building boldly. The critics called it brutalism. The architects called it <em>honest</em>.</p>
+</section>
+
+<div class="buildings-header">
+  <p class="section-label">The buildings</p>
+  <h2>Concrete, and unashamed</h2>
+</div>
+
+<div class="grid">
+
+  <article class="building wide">
+    <img
+      src="https://images.pexels.com/photos/30797258/pexels-photo-30797258.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1"
+      alt="Barbican Centre, London — brutalist concrete towers"
+      loading="lazy">
+    <div class="building-info">
+      <div class="building-name">Barbican Centre</div>
+      <div class="building-meta">London · 1969–1982 · Chamberlin, Powell &amp; Bon</div>
+    </div>
+  </article>
+
+  <article class="building tall">
+    <img
+      src="https://images.pexels.com/photos/22039139/pexels-photo-22039139.jpeg?auto=compress&cs=tinysrgb&w=800&h=1060&dpr=1"
+      alt="Simon Fraser University, Burnaby, Canada — brutalist campus"
+      loading="lazy">
+    <div class="building-info">
+      <div class="building-name">Simon Fraser University</div>
+      <div class="building-meta">Burnaby, Canada · 1965 · Arthur Erickson</div>
+    </div>
+  </article>
+
+  <article class="building tall">
+    <img
+      src="https://images.pexels.com/photos/17501617/pexels-photo-17501617.jpeg?auto=compress&cs=tinysrgb&w=800&h=1060&dpr=1"
+      alt="Brutalist housing tower, Eastern Europe"
+      loading="lazy">
+    <div class="building-info">
+      <div class="building-name">Residential Tower</div>
+      <div class="building-meta">Eastern Europe · c. 1968</div>
+    </div>
+  </article>
+
+  <article class="building tall">
+    <img
+      src="https://images.pexels.com/photos/19665311/pexels-photo-19665311.jpeg?auto=compress&cs=tinysrgb&w=800&h=1060&dpr=1"
+      alt="Brutalist concrete monument against sky"
+      loading="lazy">
+    <div class="building-info">
+      <div class="building-name">Monument</div>
+      <div class="building-meta">Yugoslavia · c. 1970</div>
+    </div>
+  </article>
+
+  <article class="building tall">
+    <img
+      src="https://images.pexels.com/photos/35058936/pexels-photo-35058936.jpeg?auto=compress&cs=tinysrgb&w=800&h=1060&dpr=1"
+      alt="Brutalist concrete building exterior"
+      loading="lazy">
+    <div class="building-info">
+      <div class="building-name">Civic Block</div>
+      <div class="building-meta">Germany · c. 1972</div>
+    </div>
+  </article>
+
+  <article class="building wide">
+    <img
+      src="https://images.pexels.com/photos/17330512/pexels-photo-17330512.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1"
+      alt="Barbican Centre, London — lakeside view"
+      loading="lazy">
+    <div class="building-info">
+      <div class="building-name">Barbican — The Lakeside</div>
+      <div class="building-meta">London · Listed Grade II · 1982</div>
+    </div>
+  </article>
+
+</div>
+
+<section class="philosophy">
+  <p class="section-label">The idea</p>
+  <h2>Honesty was the whole point.</h2>
+  <p>Brutalism was not interested in beauty in the traditional sense. It was interested in <em>truth</em>. If the building was made of concrete, you saw the concrete — its texture, its pour lines, its imperfections. If structure held the floors, you saw the structure. There was no decorative shell, no cladding, no comfortable lie.</p>
+  <p>Its critics called it inhuman. Its defenders called it the most human architecture ever built: one that refused to pretend to be something it wasn't. What you see is what it is. The building stands there, in the weather, and does not apologize.</p>
+</section>
+
+<div class="quote-section">
+  <blockquote>
+    "We were concerned with the ethical use of materials — not a style of materials, but an attitude toward them."
+  </blockquote>
+  <cite>— Alison &amp; Peter Smithson, 1956</cite>
+</div>
+
+<div class="exit">
+  <p>It is still out there, in the rain, unashamed.</p>
+  <a class="leave" href="/"><span class="arrow">←</span>Back to pointless websites</a>
+</div>
+
+<footer>
+  One of the <a href="/">pointless websites</a>.<br>
+  Brutalism flourished 1953–1979. Many of its buildings have since been demolished.
+  Photos via <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a>.
+</footer>
+
+</body>
+</html>
