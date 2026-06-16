@@ -194,6 +194,7 @@ footer .note {
   font-size: 0.78rem;
   font-style: italic;
   color: var(--muted);
+  line-height: 1.6;
 }
 footer .note a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); }
 footer .note a:hover { color: var(--ink); }
@@ -231,9 +232,7 @@ footer .note a:hover { color: var(--ink); }
   object-fit: contain;
   display: block;
 }
-#lb-text {
-  text-align: center;
-}
+#lb-text { text-align: center; }
 #lb-name {
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 700;
@@ -312,39 +311,142 @@ footer .note a:hover { color: var(--ink); }
 </header>
 
 <nav class="filter" aria-label="Filter photos">
-  <button class="active" data-filter="all">All (12)</button>
+  <button class="active" data-filter="all">All</button>
+  <button data-filter="ussr">Russia / USSR</button>
   <button data-filter="uk">London</button>
   <button data-filter="canada">Canada</button>
-  <button data-filter="unknown">Unknown location</button>
+  <button data-filter="unknown">Unknown</button>
 </nav>
 
 <div class="grid" id="grid">
+
+  <!-- Russia / USSR -->
+
+  <div class="photo-item" data-tags="ussr russia" tabindex="0"
+    data-name="Chuvash State Opera and Ballet Theater"
+    data-meta="Cheboksary, Russia · 1985 · R. Begunts &amp; V. Teneta"
+    data-wiki="https://en.wikipedia.org/wiki/Chuvash_State_Opera_and_Ballet_Theater"
+    data-wiki-label="Wikipedia ↗">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Chuvash_State_Opera_and_Ballet_Theater.jpg/800px-Chuvash_State_Opera_and_Ballet_Theater.jpg"
+      alt="Chuvash State Opera and Ballet Theater, Cheboksary, Russia — massive brutalist concrete building" loading="eager">
+    <div class="photo-cap">
+      <div class="cap-name">Chuvash State Opera &amp; Ballet Theater</div>
+      <div class="cap-meta">Cheboksary, Russia · 1985 · <a href="https://en.wikipedia.org/wiki/Chuvash_State_Opera_and_Ballet_Theater" target="_blank" rel="noopener">Wikipedia ↗</a></div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="ussr russia" tabindex="0"
+    data-name="Soviet Apartment Building"
+    data-meta="Russia · post-1953">
+    <img src="https://images.pexels.com/photos/6089361/pexels-photo-6089361.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Soviet apartment building, Russia" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Soviet Apartment Building</div>
+      <div class="cap-meta">Russia · post-1953</div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="ussr russia" tabindex="0"
+    data-name="Residential Blocks"
+    data-meta="Vladivostok, Russia">
+    <img src="https://images.pexels.com/photos/9073232/pexels-photo-9073232.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Residential blocks in post-Soviet style, Vladivostok" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Residential Blocks</div>
+      <div class="cap-meta">Vladivostok, Russia</div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="ussr" tabindex="0"
+    data-name="Soviet Era Apartments"
+    data-meta="Minsk, Belarus">
+    <img src="https://images.pexels.com/photos/35284255/pexels-photo-35284255.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Soviet era apartment buildings in Minsk, Belarus" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Soviet Era Apartments</div>
+      <div class="cap-meta">Minsk, Belarus</div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="ussr russia" tabindex="0"
+    data-name="Apartments in Winter"
+    data-meta="Russia · unknown city">
+    <img src="https://images.pexels.com/photos/8480470/pexels-photo-8480470.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Post-Soviet architecture apartment buildings in winter, Russia" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Apartments in Winter</div>
+      <div class="cap-meta">Russia · unknown city</div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="ussr russia" tabindex="0"
+    data-name="Soviet Blocks, Aerial"
+    data-meta="Unknown city, former USSR">
+    <img src="https://images.pexels.com/photos/31361100/pexels-photo-31361100.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Aerial view of Soviet era apartment buildings, former USSR" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Soviet Blocks, Aerial</div>
+      <div class="cap-meta">Unknown city, former USSR</div>
+    </div>
+  </div>
+
+  <!-- UK -->
 
   <div class="photo-item" data-tags="uk" tabindex="0"
     data-name="Barbican Centre"
     data-meta="London · 1969–1982 · Chamberlin, Powell &amp; Bon"
     data-wiki="https://en.wikipedia.org/wiki/Barbican_Centre"
-    data-wiki-label="Wikipedia: Barbican Centre ↗">
+    data-wiki-label="Wikipedia ↗">
     <img src="https://images.pexels.com/photos/30797258/pexels-photo-30797258.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
-      alt="Barbican Centre, London — brutalist concrete towers" loading="eager">
+      alt="Barbican Centre, London — brutalist concrete towers" loading="lazy">
     <div class="photo-cap">
       <div class="cap-name">Barbican Centre</div>
       <div class="cap-meta">London · 1969–1982 · <a href="https://en.wikipedia.org/wiki/Barbican_Centre" target="_blank" rel="noopener">Wikipedia ↗</a></div>
     </div>
   </div>
 
+  <div class="photo-item" data-tags="uk" tabindex="0"
+    data-name="Barbican — The Lakeside"
+    data-meta="London · 1982 · Grade II Listed"
+    data-wiki="https://en.wikipedia.org/wiki/Barbican_Centre"
+    data-wiki-label="Wikipedia ↗">
+    <img src="https://images.pexels.com/photos/17330512/pexels-photo-17330512.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Barbican Centre, London — lakeside view" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Barbican — The Lakeside</div>
+      <div class="cap-meta">London · 1982 · <a href="https://en.wikipedia.org/wiki/Barbican_Centre" target="_blank" rel="noopener">Wikipedia ↗</a></div>
+    </div>
+  </div>
+
+  <!-- Canada -->
+
   <div class="photo-item" data-tags="canada" tabindex="0"
     data-name="Simon Fraser University"
     data-meta="Burnaby, Canada · 1965 · Arthur Erickson"
     data-wiki="https://en.wikipedia.org/wiki/Simon_Fraser_University"
-    data-wiki-label="Wikipedia: SFU ↗">
+    data-wiki-label="Wikipedia ↗">
     <img src="https://images.pexels.com/photos/22039139/pexels-photo-22039139.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
-      alt="Simon Fraser University, Burnaby — pond and concrete campus" loading="eager">
+      alt="Simon Fraser University, Burnaby — pond and concrete campus" loading="lazy">
     <div class="photo-cap">
       <div class="cap-name">Simon Fraser University</div>
       <div class="cap-meta">Burnaby, Canada · 1965 · <a href="https://en.wikipedia.org/wiki/Simon_Fraser_University" target="_blank" rel="noopener">Wikipedia ↗</a></div>
     </div>
   </div>
+
+  <div class="photo-item" data-tags="canada" tabindex="0"
+    data-name="Simon Fraser University"
+    data-meta="Burnaby, Canada · Arthur Erickson, 1965"
+    data-wiki="https://en.wikipedia.org/wiki/Arthur_Erickson"
+    data-wiki-label="Arthur Erickson ↗">
+    <img src="https://images.pexels.com/photos/22039141/pexels-photo-22039141.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Simon Fraser University, Burnaby — another building" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Simon Fraser University</div>
+      <div class="cap-meta">Burnaby, Canada · <a href="https://en.wikipedia.org/wiki/Arthur_Erickson" target="_blank" rel="noopener">Arthur Erickson ↗</a></div>
+    </div>
+  </div>
+
+  <!-- Unknown -->
 
   <div class="photo-item" data-tags="unknown" tabindex="0"
     data-name="Unknown Block"
@@ -365,32 +467,6 @@ footer .note a:hover { color: var(--ink); }
     <div class="photo-cap">
       <div class="cap-name">Concrete Monument</div>
       <div class="cap-meta">Probably Yugoslavia · probably 1970s</div>
-    </div>
-  </div>
-
-  <div class="photo-item" data-tags="uk" tabindex="0"
-    data-name="Barbican — The Lakeside"
-    data-meta="London · 1982 · Grade II Listed"
-    data-wiki="https://en.wikipedia.org/wiki/Barbican_Centre"
-    data-wiki-label="Wikipedia: Barbican Centre ↗">
-    <img src="https://images.pexels.com/photos/17330512/pexels-photo-17330512.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
-      alt="Barbican Centre, London — lakeside view" loading="lazy">
-    <div class="photo-cap">
-      <div class="cap-name">Barbican — The Lakeside</div>
-      <div class="cap-meta">London · 1982 · <a href="https://en.wikipedia.org/wiki/Barbican_Centre" target="_blank" rel="noopener">Wikipedia ↗</a></div>
-    </div>
-  </div>
-
-  <div class="photo-item" data-tags="canada" tabindex="0"
-    data-name="Simon Fraser University"
-    data-meta="Burnaby, Canada · Arthur Erickson, 1965"
-    data-wiki="https://en.wikipedia.org/wiki/Arthur_Erickson"
-    data-wiki-label="Wikipedia: Arthur Erickson ↗">
-    <img src="https://images.pexels.com/photos/22039141/pexels-photo-22039141.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
-      alt="Simon Fraser University, Burnaby — another building" loading="lazy">
-    <div class="photo-cap">
-      <div class="cap-name">Simon Fraser University</div>
-      <div class="cap-meta">Burnaby, Canada · <a href="https://en.wikipedia.org/wiki/Arthur_Erickson" target="_blank" rel="noopener">Arthur Erickson ↗</a></div>
     </div>
   </div>
 
@@ -465,19 +541,23 @@ footer .note a:hover { color: var(--ink); }
 <section class="blurb">
   <h2>What was it?</h2>
   <p>Le Corbusier described his Unité d'Habitation in Marseille in 1953 as <em>béton brut</em> — raw concrete. He meant it literally: strip the formwork, leave whatever the concrete looks like, don't plaster it or paint it or apologize for it.</p>
-  <p>Architects in London, Boston, Belgrade, Montreal, and Tokyo ran with it. By the 1960s they were building housing estates, universities, civic centres, and memorials entirely out of exposed concrete. The critics named the style after Le Corbusier's phrase and used it as a pejorative. They weren't entirely wrong.</p>
+  <p>Architects in London, Boston, Belgrade, Montreal, and Tokyo ran with it. By the 1960s they were building housing estates, universities, civic centres, and memorials entirely out of exposed concrete. The Soviet Union built vast quantities of it, mostly housing. Some of it is extraordinary. Some of it is grim. Most of it is both.</p>
   <p>Most of it got built between 1953 and the late 1970s. Then it became unpopular. Then a lot of it got demolished. Then people started trying to save what was left.</p>
   <div class="wiki-links">
     <a href="https://en.wikipedia.org/wiki/Brutalist_architecture" target="_blank" rel="noopener">Wikipedia: Brutalism ↗</a>
-    <a href="https://en.wikipedia.org/wiki/B%C3%A9ton_brut" target="_blank" rel="noopener">Wikipedia: Béton brut ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Chuvash_State_Opera_and_Ballet_Theater" target="_blank" rel="noopener">Wikipedia: Chuvash Opera ↗</a>
     <a href="https://en.wikipedia.org/wiki/Barbican_Centre" target="_blank" rel="noopener">Wikipedia: Barbican Centre ↗</a>
     <a href="https://en.wikipedia.org/wiki/Simon_Fraser_University" target="_blank" rel="noopener">Wikipedia: Simon Fraser University ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Khrushchevka" target="_blank" rel="noopener">Wikipedia: Khrushchevka ↗</a>
     <a href="https://en.wikipedia.org/wiki/List_of_brutalist_buildings" target="_blank" rel="noopener">Wikipedia: List of brutalist buildings ↗</a>
   </div>
 </section>
 
 <footer>
-  <span class="note">One of the <a href="/">pointless websites</a>. Photos via <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a>.</span>
+  <span class="note">
+    One of the <a href="/">pointless websites</a>. Photos via <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a>.
+    Chuvash Opera photo by Artem Petrov CHV, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via Wikimedia Commons.
+  </span>
   <a class="back-link" href="/">← Home</a>
 </footer>
 
@@ -505,6 +585,17 @@ footer .note a:hover { color: var(--ink); }
   let visible    = allItems.slice();
   let cur        = 0;
 
+  function lbSrc(src) {
+    /* Pexels: bump to 1600px wide; Wikimedia: bump to 1600px thumbnail */
+    if (src.includes('pexels.com')) {
+      return src.replace(/w=\d+&h=\d+/, 'w=1600&h=1200');
+    }
+    if (src.includes('wikimedia.org')) {
+      return src.replace(/\/\d+px-/, '/1600px-');
+    }
+    return src;
+  }
+
   function openAt(i) {
     cur = i;
     const item  = visible[i];
@@ -514,7 +605,7 @@ footer .note a:hover { color: var(--ink); }
     const wiki  = item.dataset.wiki  || '';
     const wikiL = item.dataset.wikiLabel || '';
 
-    lbImg.src = img.src.replace(/w=\d+&h=\d+/, 'w=1600&h=1200');
+    lbImg.src = lbSrc(img.src);
     lbImg.alt = img.alt;
     lbName.textContent = name;
     lbCount.textContent = (i + 1) + ' / ' + visible.length;
@@ -571,7 +662,7 @@ footer .note a:hover { color: var(--ink); }
       btn.classList.add('active');
       const f = btn.dataset.filter;
       allItems.forEach(item => {
-        const show = f === 'all' || item.dataset.tags.includes(f);
+        const show = f === 'all' || item.dataset.tags.split(' ').includes(f);
         item.classList.toggle('hidden', !show);
       });
       visible = allItems.filter(item => !item.classList.contains('hidden'));
