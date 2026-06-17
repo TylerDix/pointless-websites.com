@@ -133,7 +133,7 @@ a { color: inherit; }
 /* ===== HERO ITEM ===== */
 .photo-item.hero {
   grid-column: 1 / -1;
-  aspect-ratio: 21/9;
+  aspect-ratio: 16/9;
 }
 .photo-item.hero .photo-cap {
   transform: translateY(0);
@@ -148,7 +148,7 @@ a { color: inherit; }
   margin-top: 7px;
 }
 .photo-item.hero img {
-  object-position: center 35%;
+  object-position: center 62%;
 }
 
 /* ===== PHOTO ITEMS ===== */
@@ -347,7 +347,7 @@ footer .note a:hover { color: var(--ink); }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 860px) {
   .grid { grid-template-columns: repeat(3, 1fr); }
-  .photo-item.hero { aspect-ratio: 16/7; }
+  .photo-item.hero { aspect-ratio: 16/9; }
 }
 @media (max-width: 560px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
@@ -381,6 +381,7 @@ footer .note a:hover { color: var(--ink); }
   <button data-filter="canada">Canada</button>
   <button data-filter="asia">Asia</button>
   <button data-filter="europe">Europe</button>
+  <button data-filter="usa">USA</button>
   <button data-filter="unknown">Unknown</button>
 </nav>
 
@@ -403,13 +404,15 @@ footer .note a:hover { color: var(--ink); }
   <!-- Russia / USSR -->
 
   <div class="photo-item" data-tags="ussr russia" tabindex="0"
-    data-name="Soviet Apartment Building"
-    data-meta="Russia · post-1953">
-    <img src="https://images.pexels.com/photos/6089361/pexels-photo-6089361.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
-      alt="Soviet apartment building, Russia" loading="lazy" style="object-position: center bottom">
+    data-name="Soviet High-Rise Blocks"
+    data-meta="Former USSR · the floor count goes up but the ceiling height doesn't"
+    data-wiki="https://en.wikipedia.org/wiki/Khrushchevka"
+    data-wiki-label="Wikipedia ↗">
+    <img src="https://images.pexels.com/photos/11160441/pexels-photo-11160441.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Soviet high-rise housing blocks towering above street level, former USSR" loading="lazy">
     <div class="photo-cap">
-      <div class="cap-name">Soviet Apartment Building</div>
-      <div class="cap-meta">Russia · post-1953</div>
+      <div class="cap-name">Soviet High-Rise Blocks</div>
+      <div class="cap-meta">Former USSR · <a href="https://en.wikipedia.org/wiki/Khrushchevka" target="_blank" rel="noopener">Wikipedia ↗</a></div>
     </div>
   </div>
 
@@ -565,6 +568,73 @@ footer .note a:hover { color: var(--ink); }
     </div>
   </div>
 
+  <!-- USA -->
+
+  <div class="photo-item" data-tags="usa" tabindex="0"
+    data-name="Boston City Hall"
+    data-meta="Boston, MA · 1968 · Kallmann McKinnell &amp; Wood · voted most hated building in America. Also a city hall."
+    data-wiki="https://en.wikipedia.org/wiki/Boston_City_Hall"
+    data-wiki-label="Wikipedia ↗">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Boston_City_Hall.JPG/800px-Boston_City_Hall.JPG"
+      alt="Boston City Hall — stepped concrete brutalist mass, Government Center" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Boston City Hall</div>
+      <div class="cap-meta">Boston · 1968 · voted most hated building in America. Also a city hall. · <a href="https://en.wikipedia.org/wiki/Boston_City_Hall" target="_blank" rel="noopener">Wikipedia ↗</a></div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="usa" tabindex="0"
+    data-name="J. Edgar Hoover Building"
+    data-meta="Washington DC · 1975 · C.F. Murphy · FBI headquarters · the man it's named after ran the country's surveillance apparatus from inside"
+    data-wiki="https://en.wikipedia.org/wiki/J._Edgar_Hoover_Building"
+    data-wiki-label="Wikipedia ↗">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/J-Edgar-Hoover-FBI-Building-Washington-DC-2014-A.jpg/800px-J-Edgar-Hoover-FBI-Building-Washington-DC-2014-A.jpg"
+      alt="J. Edgar Hoover Building, FBI headquarters, Washington DC — concrete honeycomb facade" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">J. Edgar Hoover Building</div>
+      <div class="cap-meta">Washington DC · 1975 · FBI headquarters · <a href="https://en.wikipedia.org/wiki/J._Edgar_Hoover_Building" target="_blank" rel="noopener">Wikipedia ↗</a></div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="usa" tabindex="0"
+    data-name="Geisel Library"
+    data-meta="UC San Diego · 1970 · William Pereira · it looks the way it does on purpose"
+    data-wiki="https://en.wikipedia.org/wiki/Geisel_Library"
+    data-wiki-label="Wikipedia ↗">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Geisel_Library,_UCSD.jpg/800px-Geisel_Library,_UCSD.jpg"
+      alt="Geisel Library at UC San Diego — brutalist concrete structure rising from its base" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Geisel Library</div>
+      <div class="cap-meta">UC San Diego · 1970 · William Pereira · <a href="https://en.wikipedia.org/wiki/Geisel_Library" target="_blank" rel="noopener">Wikipedia ↗</a></div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="usa" tabindex="0"
+    data-name="Yale Art &amp; Architecture Building"
+    data-meta="New Haven, CT · 1963 · Paul Rudolph · bush-hammered concrete · arsonists tried to fix it in 1969"
+    data-wiki="https://en.wikipedia.org/wiki/Rudolph_Hall"
+    data-wiki-label="Wikipedia ↗">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Yale_Art_and_Architecture_Building,_October_20,_2008.jpg/800px-Yale_Art_and_Architecture_Building,_October_20,_2008.jpg"
+      alt="Yale Art and Architecture Building, New Haven — Paul Rudolph's corduroy concrete" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Yale Art &amp; Architecture Building</div>
+      <div class="cap-meta">New Haven, CT · 1963 · Paul Rudolph · <a href="https://en.wikipedia.org/wiki/Rudolph_Hall" target="_blank" rel="noopener">Wikipedia ↗</a></div>
+    </div>
+  </div>
+
+  <div class="photo-item" data-tags="usa" tabindex="0"
+    data-name="HUD Headquarters"
+    data-meta="Washington DC · 1968 · Marcel Breuer · Department of Housing and Urban Development · built for people it never quite accommodated"
+    data-wiki="https://en.wikipedia.org/wiki/Robert_C._Weaver_Federal_Building"
+    data-wiki-label="Wikipedia ↗">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Marcel-Breuer-Robert-C-Weaver-Federal-Building-Department-of-Housing-and-Urban-Development-Headquarters-Washington-DC-04-2014.jpg/800px-Marcel-Breuer-Robert-C-Weaver-Federal-Building-Department-of-Housing-and-Urban-Development-Headquarters-Washington-DC-04-2014.jpg"
+      alt="Robert C. Weaver Federal Building, HUD headquarters, Washington DC — Marcel Breuer brutalist" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">HUD Headquarters</div>
+      <div class="cap-meta">Washington DC · 1968 · Marcel Breuer · <a href="https://en.wikipedia.org/wiki/Robert_C._Weaver_Federal_Building" target="_blank" rel="noopener">Wikipedia ↗</a></div>
+    </div>
+  </div>
+
   <!-- Unknown -->
 
   <div class="photo-item" data-tags="unknown" tabindex="0"
@@ -693,8 +763,8 @@ footer .note a:hover { color: var(--ink); }
 <section class="blurb">
   <h2>What was it?</h2>
   <p>Le Corbusier described his Unité d'Habitation in Marseille in 1953 as <em>béton brut</em> — raw concrete. He meant it literally: strip the formwork, leave whatever the concrete looks like, don't plaster it or paint it or apologize for it.</p>
-  <p>Architects in London, Boston, Belgrade, Montreal, Chandigarh, and Tokyo ran with it. By the 1960s they were building housing estates, universities, civic centres, and memorials entirely out of exposed concrete. Le Corbusier planned entire cities in India with it. The Soviet Union built vast quantities of it, mostly housing. Post-colonial governments across Asia and Africa used it to signal modernity. Some of it is extraordinary. Some of it is grim. Most of it is both.</p>
-  <p>Most of it got built between 1953 and the late 1970s. Then it became unpopular. Then a lot of it got demolished. Then people started trying to save what was left.</p>
+  <p>Architects in London, Boston, New Haven, Belgrade, Montreal, Chandigarh, and Tokyo ran with it. By the 1960s they were building housing estates, universities, civic centres, and memorials entirely out of exposed concrete. Le Corbusier planned entire cities in India with it. The Soviet Union built vast quantities of it, mostly housing. Post-colonial governments across Asia and Africa used it to signal modernity. In America, Paul Rudolph and Marcel Breuer gave it to government agencies and universities. Some of it is extraordinary. Some of it is grim. Most of it is both.</p>
+  <p>Most of it got built between 1953 and the late 1970s. Then it became unpopular. Then a lot of it got demolished. Then people started trying to save what was left. Boston City Hall was just designated a historic landmark in 2024. The FBI is moving out of the Hoover Building and nobody agrees what to do with it.</p>
   <div class="wiki-links">
     <a href="https://en.wikipedia.org/wiki/Brutalist_architecture" target="_blank" rel="noopener">Wikipedia: Brutalism ↗</a>
     <a href="https://en.wikipedia.org/wiki/Chuvash_State_Opera_and_Ballet_Theater" target="_blank" rel="noopener">Wikipedia: Chuvash Opera ↗</a>
@@ -703,13 +773,17 @@ footer .note a:hover { color: var(--ink); }
     <a href="https://en.wikipedia.org/wiki/Simon_Fraser_University" target="_blank" rel="noopener">Wikipedia: Simon Fraser University ↗</a>
     <a href="https://en.wikipedia.org/wiki/Chandigarh_Capitol_Complex" target="_blank" rel="noopener">Wikipedia: Chandigarh Capitol Complex ↗</a>
     <a href="https://en.wikipedia.org/wiki/Khrushchevka" target="_blank" rel="noopener">Wikipedia: Khrushchevka ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Boston_City_Hall" target="_blank" rel="noopener">Wikipedia: Boston City Hall ↗</a>
+    <a href="https://en.wikipedia.org/wiki/J._Edgar_Hoover_Building" target="_blank" rel="noopener">Wikipedia: Hoover Building ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Rudolph_Hall" target="_blank" rel="noopener">Wikipedia: Rudolph Hall ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Geisel_Library" target="_blank" rel="noopener">Wikipedia: Geisel Library ↗</a>
     <a href="https://en.wikipedia.org/wiki/List_of_brutalist_buildings" target="_blank" rel="noopener">Wikipedia: List of brutalist buildings ↗</a>
   </div>
 </section>
 
 <footer>
   <span class="note">
-    One of the <a href="/">pointless websites</a>. Photos via <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a>.
+    One of the <a href="/">pointless websites</a>. Photos via <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a> and <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>.
     Chuvash Opera photo: photographer unknown, used with permission of the original poster.
   </span>
   <a class="back-link" href="/">← Home</a>
