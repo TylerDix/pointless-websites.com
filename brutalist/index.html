@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Béton Brut</title>
-<meta name="description" content="Photos of brutalist buildings. Some have Wikipedia pages. Some we have no idea where they are.">
+<meta name="description" content="Photos of brutalist buildings around the world. Some have Wikipedia pages. Some we have no idea where they are.">
 <meta property="og:title" content="Béton Brut">
 <meta property="og:description" content="Photos of brutalist buildings. Raw concrete. No polish.">
 <meta property="og:type" content="website">
@@ -45,14 +45,48 @@ a { color: inherit; }
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
-.masthead p {
+.say-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.say-btn {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+.say-btn:hover, .say-btn.playing { color: var(--ink); border-color: var(--dim); }
+.phonetic {
+  font-size: 1rem;
+  color: var(--muted);
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+.phonetic-note {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.masthead-sub {
   margin-top: 20px;
   font-size: clamp(0.9rem, 1.7vw, 1.06rem);
   color: var(--muted);
   max-width: 64ch;
   line-height: 1.6;
 }
-.masthead p em { color: var(--ink); font-style: normal; }
+.masthead-sub em { color: var(--ink); font-style: normal; }
 
 /* ===== FILTER ===== */
 .filter {
@@ -95,6 +129,29 @@ a { color: inherit; }
   aspect-ratio: 1;
 }
 .photo-item.hidden { display: none; }
+
+/* ===== HERO ITEM ===== */
+.photo-item.hero {
+  grid-column: 1 / -1;
+  aspect-ratio: 21/9;
+}
+.photo-item.hero .photo-cap {
+  transform: translateY(0);
+  background: linear-gradient(0deg, rgba(17,17,17,0.94) 0%, rgba(17,17,17,0.5) 55%, transparent 100%);
+  padding: 50px 28px 26px;
+}
+.photo-item.hero .cap-name {
+  font-size: clamp(1.3rem, 3.5vw, 2.8rem);
+}
+.photo-item.hero .cap-meta {
+  font-size: 0.8rem;
+  margin-top: 7px;
+}
+.photo-item.hero img {
+  object-position: center 35%;
+}
+
+/* ===== PHOTO ITEMS ===== */
 .photo-item img {
   width: 100%;
   height: 100%;
@@ -115,8 +172,8 @@ a { color: inherit; }
   transform: translateY(100%);
   transition: transform 0.22s ease;
 }
-.photo-item:hover .photo-cap,
-.photo-item:focus .photo-cap { transform: translateY(0); }
+.photo-item:not(.hero):hover .photo-cap,
+.photo-item:not(.hero):focus .photo-cap { transform: translateY(0); }
 .photo-item:focus { outline: 2px solid var(--ink); outline-offset: -2px; }
 .cap-name {
   font-family: "Barlow Condensed", sans-serif;
@@ -138,7 +195,7 @@ a { color: inherit; }
 }
 .cap-meta a:hover { color: var(--ink); border-color: var(--muted); }
 
-/* ===== TEXT SECTION ===== */
+/* ===== BLURB ===== */
 .blurb {
   padding: 60px 28px;
   border-top: 1px solid var(--rule);
@@ -273,8 +330,7 @@ footer .note a:hover { color: var(--ink); }
 }
 .lb-nav-btn {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 50%; transform: translateY(-50%);
   background: rgba(255,255,255,0.06);
   border: 1px solid var(--rule);
   color: var(--ink);
@@ -291,9 +347,11 @@ footer .note a:hover { color: var(--ink); }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 860px) {
   .grid { grid-template-columns: repeat(3, 1fr); }
+  .photo-item.hero { aspect-ratio: 16/7; }
 }
 @media (max-width: 560px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-item.hero { aspect-ratio: 4/3; }
   .masthead { padding: 36px 20px 28px; }
   .blurb { padding: 48px 20px; }
   footer { padding: 20px 20px 40px; }
@@ -306,8 +364,14 @@ footer .note a:hover { color: var(--ink); }
 
 <header class="masthead">
   <h1>Béton<br>Brut</h1>
-  <p>Photos of <em>brutalist buildings</em>. Some have Wikipedia pages. Some we have no idea where they are.
-  Le Corbusier used the phrase in 1953. It means raw concrete. Click any photo to enlarge.</p>
+  <div class="say-row">
+    <button class="say-btn" id="say-btn" aria-label="Hear French pronunciation">▶ hear it</button>
+    <span class="phonetic">/ beh-TAWN broo /</span>
+    <span class="phonetic-note">French · raw concrete</span>
+  </div>
+  <p class="masthead-sub">Photos of <em>brutalist buildings</em> from around the world.
+  Some have Wikipedia pages. Some we have no idea where they are.
+  Click any photo to enlarge.</p>
 </header>
 
 <nav class="filter" aria-label="Filter photos">
@@ -316,25 +380,27 @@ footer .note a:hover { color: var(--ink); }
   <button data-filter="uk">London</button>
   <button data-filter="canada">Canada</button>
   <button data-filter="asia">Asia</button>
+  <button data-filter="europe">Europe</button>
   <button data-filter="unknown">Unknown</button>
 </nav>
 
 <div class="grid" id="grid">
 
-  <!-- Russia / USSR -->
-
-  <div class="photo-item" data-tags="ussr russia" tabindex="0"
+  <!-- HERO -->
+  <div class="photo-item hero" data-tags="ussr russia" tabindex="0"
     data-name="Chuvash State Opera and Ballet Theater"
     data-meta="Cheboksary, Russia · 1985 · R. Begunts &amp; V. Teneta"
     data-wiki="https://en.wikipedia.org/wiki/Chuvash_State_Opera_and_Ballet_Theater"
     data-wiki-label="Wikipedia ↗">
     <img src="images/chuvash-opera.jpg"
-      alt="Chuvash State Opera and Ballet Theater, Cheboksary, Russia — winter night, police car, lone figure" loading="eager">
+      alt="Chuvash State Opera and Ballet Theater — winter night, police car, lone figure dwarfed by concrete towers" loading="eager">
     <div class="photo-cap">
       <div class="cap-name">Chuvash State Opera &amp; Ballet Theater</div>
-      <div class="cap-meta">Cheboksary, Russia · 1985 · <a href="https://en.wikipedia.org/wiki/Chuvash_State_Opera_and_Ballet_Theater" target="_blank" rel="noopener">Wikipedia ↗</a></div>
+      <div class="cap-meta">Cheboksary, Russia · 1985 · R. Begunts &amp; V. Teneta · <a href="https://en.wikipedia.org/wiki/Chuvash_State_Opera_and_Ballet_Theater" target="_blank" rel="noopener">Wikipedia ↗</a></div>
     </div>
   </div>
+
+  <!-- Russia / USSR -->
 
   <div class="photo-item" data-tags="ussr russia" tabindex="0"
     data-name="Soviet Apartment Building"
@@ -391,7 +457,7 @@ footer .note a:hover { color: var(--ink); }
     </div>
   </div>
 
-  <!-- UK -->
+  <!-- London -->
 
   <div class="photo-item" data-tags="uk" tabindex="0"
     data-name="Barbican Centre"
@@ -483,6 +549,19 @@ footer .note a:hover { color: var(--ink); }
     <div class="photo-cap">
       <div class="cap-name">Rajuk Uttara Apartments</div>
       <div class="cap-meta">Dhaka, Bangladesh</div>
+    </div>
+  </div>
+
+  <!-- Europe -->
+
+  <div class="photo-item" data-tags="europe" tabindex="0"
+    data-name="Brutalist Building, Chur"
+    data-meta="Chur, Switzerland">
+    <img src="https://images.pexels.com/photos/34174544/pexels-photo-34174544.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1"
+      alt="Modern brutalist building in Chur, Switzerland — angular concrete against clear sky" loading="lazy">
+    <div class="photo-cap">
+      <div class="cap-name">Brutalist Building</div>
+      <div class="cap-meta">Chur, Switzerland</div>
     </div>
   </div>
 
@@ -620,8 +699,8 @@ footer .note a:hover { color: var(--ink); }
     <a href="https://en.wikipedia.org/wiki/Brutalist_architecture" target="_blank" rel="noopener">Wikipedia: Brutalism ↗</a>
     <a href="https://en.wikipedia.org/wiki/Chuvash_State_Opera_and_Ballet_Theater" target="_blank" rel="noopener">Wikipedia: Chuvash Opera ↗</a>
     <a href="https://en.wikipedia.org/wiki/Barbican_Centre" target="_blank" rel="noopener">Wikipedia: Barbican Centre ↗</a>
-    <a href="https://en.wikipedia.org/wiki/Simon_Fraser_University" target="_blank" rel="noopener">Wikipedia: Simon Fraser University ↗</a>
     <a href="https://en.wikipedia.org/wiki/Alexandra_Road_Estate" target="_blank" rel="noopener">Wikipedia: Alexandra Road Estate ↗</a>
+    <a href="https://en.wikipedia.org/wiki/Simon_Fraser_University" target="_blank" rel="noopener">Wikipedia: Simon Fraser University ↗</a>
     <a href="https://en.wikipedia.org/wiki/Chandigarh_Capitol_Complex" target="_blank" rel="noopener">Wikipedia: Chandigarh Capitol Complex ↗</a>
     <a href="https://en.wikipedia.org/wiki/Khrushchevka" target="_blank" rel="noopener">Wikipedia: Khrushchevka ↗</a>
     <a href="https://en.wikipedia.org/wiki/List_of_brutalist_buildings" target="_blank" rel="noopener">Wikipedia: List of brutalist buildings ↗</a>
@@ -631,7 +710,7 @@ footer .note a:hover { color: var(--ink); }
 <footer>
   <span class="note">
     One of the <a href="/">pointless websites</a>. Photos via <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a>.
-    Chuvash Opera photo by Artem Petrov CHV, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via Wikimedia Commons.
+    Chuvash Opera photo: photographer unknown, used with permission of the original poster.
   </span>
   <a class="back-link" href="/">← Home</a>
 </footer>
@@ -651,6 +730,25 @@ footer .note a:hover { color: var(--ink); }
 
 <script>
 (function () {
+  /* ── Pronunciation ── */
+  const sayBtn = document.getElementById('say-btn');
+  sayBtn.addEventListener('click', function () {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance('béton brut');
+    u.lang = 'fr-FR';
+    u.rate = 0.78;
+    u.pitch = 1;
+    sayBtn.textContent = '▶ playing…';
+    sayBtn.classList.add('playing');
+    u.onend = u.onerror = function () {
+      sayBtn.textContent = '▶ hear it';
+      sayBtn.classList.remove('playing');
+    };
+    window.speechSynthesis.speak(u);
+  });
+
+  /* ── Lightbox ── */
   const allItems = Array.from(document.querySelectorAll('.photo-item'));
   const lb       = document.getElementById('lightbox');
   const lbImg    = document.getElementById('lb-img');
@@ -661,14 +759,9 @@ footer .note a:hover { color: var(--ink); }
   let cur        = 0;
 
   function lbSrc(src) {
-    /* Pexels: bump to 1600px wide; Wikimedia: bump to 1600px thumbnail */
-    if (src.includes('pexels.com')) {
-      return src.replace(/w=\d+&h=\d+/, 'w=1600&h=1200');
-    }
-    if (src.includes('wikimedia.org')) {
-      return src.replace(/\/\d+px-/, '/1600px-');
-    }
-    return src;
+    if (src.includes('pexels.com'))    return src.replace(/w=\d+&h=\d+/, 'w=1600&h=1200');
+    if (src.includes('wikimedia.org')) return src.replace(/\/\d+px-/, '/1600px-');
+    return src; /* local file — already full size */
   }
 
   function openAt(i) {
@@ -685,11 +778,9 @@ footer .note a:hover { color: var(--ink); }
     lbName.textContent = name;
     lbCount.textContent = (i + 1) + ' / ' + visible.length;
 
-    if (wiki) {
-      lbMeta.innerHTML = meta + ' &nbsp;·&nbsp; <a href="' + wiki + '" target="_blank" rel="noopener">' + wikiL + '</a>';
-    } else {
-      lbMeta.textContent = meta;
-    }
+    lbMeta.innerHTML = wiki
+      ? meta + ' &nbsp;·&nbsp; <a href="' + wiki + '" target="_blank" rel="noopener">' + wikiL + '</a>'
+      : meta;
 
     lb.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
@@ -730,7 +821,7 @@ footer .note a:hover { color: var(--ink); }
     if (e.key === 'ArrowRight') next();
   });
 
-  /* filter tabs */
+  /* ── Filter tabs ── */
   document.querySelectorAll('.filter button').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter button').forEach(b => b.classList.remove('active'));
