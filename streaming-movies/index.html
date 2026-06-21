@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Now Streaming</title>
+<meta name="description" content="Top movies currently streaming. Approximately. As of whenever this was last updated.">
+<meta property="og:title" content="Now Streaming">
+<meta property="og:description" content="Movies worth losing a day to. Streaming availability not guaranteed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pointless-websites.com/streaming-movies/">
+<meta name="theme-color" content="#080c10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #080c10;
+  --card:     #0e1318;
+  --border:   #1c2028;
+  --ink:      #e8eaed;
+  --muted:    #7a8090;
+  --dim:      #3a404a;
+
+  --netflix:  #e50914;
+  --prime:    #00a8e0;
+  --max:      #2666fa;
+  --disney:   #0063e5;
+  --apple:    #c8c8c8;
+  --hulu:     #1ce783;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.masthead {
+  padding: 64px 32px 40px;
+  border-bottom: 1px solid var(--border);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.masthead h1 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  line-height: 0.88;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.masthead h1 em {
+  font-style: normal;
+  color: var(--muted);
+}
+.masthead-sub {
+  margin-top: 20px;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 62ch;
+}
+.masthead-sub strong { color: var(--ink); font-weight: 500; }
+.stat-row {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.stat {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.stat strong {
+  display: block;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+/* ── FILTER ── */
+.filter-bar {
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+.filter-inner {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.filter-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-family: "Oswald", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 14px 16px 12px;
+  cursor: pointer;
+  transition: color 0.14s, border-color 0.14s;
+  white-space: nowrap;
+}
+.filter-btn:hover { color: var(--ink); }
+.filter-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+.filter-btn[data-filter="netflix"].active  { color: var(--netflix); border-color: var(--netflix); }
+.filter-btn[data-filter="prime"].active    { color: var(--prime);   border-color: var(--prime); }
+.filter-btn[data-filter="max"].active      { color: var(--max);     border-color: var(--max); }
+.filter-btn[data-filter="disney"].active   { color: var(--disney);  border-color: var(--disney); }
+.filter-btn[data-filter="apple"].active    { color: var(--apple);   border-color: var(--apple); }
+.filter-btn[data-filter="hulu"].active     { color: var(--hulu);    border-color: var(--hulu); }
+
+/* ── FILM LIST ── */
+.film-list {
+  list-style: none;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+.film {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  transition: opacity 0.18s;
+}
+.film.hidden { display: none; }
+
+.film-rank {
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--border);
+  line-height: 1;
+  min-width: 60px;
+  text-align: right;
+  padding-top: 4px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.film-card {
+  flex: 1;
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--card);
+  min-width: 0;
+}
+
+.film-stripe {
+  width: 4px;
+  flex-shrink: 0;
+}
+.film-stripe.netflix { background: var(--netflix); }
+.film-stripe.prime   { background: var(--prime); }
+.film-stripe.max     { background: var(--max); }
+.film-stripe.disney  { background: var(--disney); }
+.film-stripe.apple   { background: var(--apple); }
+.film-stripe.hulu    { background: var(--hulu); }
+
+.film-content {
+  padding: 20px 22px;
+  flex: 1;
+  min-width: 0;
+}
+
+.film-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.platform-badge {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.platform-badge.netflix { color: var(--netflix); border: 1px solid rgba(229,9,20,0.3); }
+.platform-badge.prime   { color: var(--prime);   border: 1px solid rgba(0,168,224,0.3); }
+.platform-badge.max     { color: var(--max);     border: 1px solid rgba(38,102,250,0.3); }
+.platform-badge.disney  { color: var(--disney);  border: 1px solid rgba(0,99,229,0.3); }
+.platform-badge.apple   { color: var(--apple);   border: 1px solid rgba(200,200,200,0.3); }
+.platform-badge.hulu    { color: var(--hulu);    border: 1px solid rgba(28,231,131,0.3); }
+
+.film-score {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.film-score span {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  margin-left: 2px;
+}
+
+.film-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.film-meta {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.film-desc {
+  font-size: clamp(0.88rem, 1.5vw, 0.96rem);
+  color: #9aa0aa;
+  line-height: 1.65;
+  max-width: 72ch;
+  margin-bottom: 14px;
+}
+
+.film-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tag {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+/* ── DISCLAIMER ── */
+.disclaimer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 32px 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--dim);
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+  padding: 24px 32px 48px;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+footer .note {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.6;
+}
+footer .note a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+footer .note a:hover { color: var(--ink); }
+.back-link {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  transition: border-color 0.12s;
+}
+.back-link:hover { border-color: var(--dim); }
+
+/* ── EMPTY STATE ── */
+.empty {
+  display: none;
+  padding: 60px 32px;
+  text-align: center;
+  color: var(--dim);
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .masthead { padding: 44px 20px 32px; }
+  .filter-inner { padding: 0 20px; }
+  .film-list { padding: 0 20px 60px; }
+  .film-rank { min-width: 40px; font-size: 1.8rem; }
+  .disclaimer { padding: 32px 20px 0; }
+  footer { padding: 20px 20px 40px; }
+}
+@media (max-width: 480px) {
+  .film { gap: 12px; }
+  .film-rank { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <h1>Now<br><em>Streaming</em></h1>
+  <p class="masthead-sub">
+    <strong>21 films</strong> currently available on major streaming platforms — give or take.
+    Streaming rights expire, migrate, and reappear with no warning.
+    This page does none of those things. Watch while you can.
+  </p>
+  <div class="stat-row">
+    <div class="stat"><strong>21</strong>Films</div>
+    <div class="stat"><strong>46h 53m</strong>Combined runtime</div>
+    <div class="stat"><strong>6</strong>Platforms</div>
+    <div class="stat"><strong>91%</strong>Avg Tomatometer</div>
+  </div>
+</header>
+
+<nav class="filter-bar" aria-label="Filter by platform">
+  <div class="filter-inner">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="netflix">Netflix</button>
+    <button class="filter-btn" data-filter="prime">Prime Video</button>
+    <button class="filter-btn" data-filter="max">Max</button>
+    <button class="filter-btn" data-filter="disney">Disney+</button>
+    <button class="filter-btn" data-filter="apple">Apple TV+</button>
+    <button class="filter-btn" data-filter="hulu">Hulu</button>
+  </div>
+</nav>
+
+<p class="empty" id="empty-state">No films match that filter.</p>
+
+<ol class="film-list" id="film-list">
+
+  <!-- 01 -->
+  <li class="film" data-platform="netflix">
+    <div class="film-rank">01</div>
+    <div class="film-card">
+      <div class="film-stripe netflix"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge netflix">Netflix</span>
+          <span class="film-score">96% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">The Irishman</h2>
+        <div class="film-meta">2019 · Martin Scorsese · 3h 29m</div>
+        <p class="film-desc">Three old men remember the things they did. De Niro drives a truck. Pacino waves his arms. Pesci is calm about it in a way that suggests you should be very afraid. De-aged faces; regular-aged regret.</p>
+        <div class="film-tags">
+          <span class="tag">Crime</span>
+          <span class="tag">Drama</span>
+          <span class="tag">Biography</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 02 -->
+  <li class="film" data-platform="prime">
+    <div class="film-rank">02</div>
+    <div class="film-card">
+      <div class="film-stripe prime"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge prime">Prime Video</span>
+          <span class="film-score">97% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Sound of Metal</h2>
+        <div class="film-meta">2019 · Darius Marder · 2h 0m</div>
+        <p class="film-desc">A heavy metal drummer loses his hearing. Riz Ahmed is extraordinary. The film uses sound — and its absence — like nothing else you've seen. He deserved the Oscar. He did not get it.</p>
+        <div class="film-tags">
+          <span class="tag">Drama</span>
+          <span class="tag">Music</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 03 -->
+  <li class="film" data-platform="max">
+    <div class="film-rank">03</div>
+    <div class="film-card">
+      <div class="film-stripe max"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge max">Max</span>
+          <span class="film-score">93% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Dune: Part Two</h2>
+        <div class="film-meta">2024 · Denis Villeneuve · 2h 46m</div>
+        <p class="film-desc">Paul Atreides completes his journey across the sand. Zendaya has lines this time. The sand worms are bigger. The politics are grimmer. Villeneuve goes full prophet and earns every minute of it.</p>
+        <div class="film-tags">
+          <span class="tag">Sci-Fi</span>
+          <span class="tag">Epic</span>
+          <span class="tag">Action</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 04 -->
+  <li class="film" data-platform="netflix">
+    <div class="film-rank">04</div>
+    <div class="film-card">
+      <div class="film-stripe netflix"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge netflix">Netflix</span>
+          <span class="film-score">96% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Roma</h2>
+        <div class="film-meta">2018 · Alfonso Cuarón · 2h 15m</div>
+        <p class="film-desc">Cuarón filmed his 1970s Mexico City childhood in immaculate black and white and won every award in existence. A housekeeper. A year. A country quietly splitting apart. Deserved everything it got.</p>
+        <div class="film-tags">
+          <span class="tag">Drama</span>
+          <span class="tag">Foreign Language</span>
+          <span class="tag">Black &amp; White</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 05 -->
+  <li class="film" data-platform="prime">
+    <div class="film-rank">05</div>
+    <div class="film-card">
+      <div class="film-stripe prime"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge prime">Prime Video</span>
+          <span class="film-score">97% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Knives Out</h2>
+        <div class="film-meta">2019 · Rian Johnson · 2h 10m</div>
+        <p class="film-desc">Who killed Harlan Thrombey? You'll think you know by the halfway point. You'll be wrong about what that means. Daniel Craig eats donuts and drawls his way through the best mystery film in decades.</p>
+        <div class="film-tags">
+          <span class="tag">Mystery</span>
+          <span class="tag">Comedy</span>
+          <span class="tag">Thriller</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 06 -->
+  <li class="film" data-platform="max">
+    <div class="film-rank">06</div>
+    <div class="film-card">
+      <div class="film-stripe max"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge max">Max</span>
+          <span class="film-score">97% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Mad Max: Fury Road</h2>
+        <div class="film-meta">2015 · George Miller · 2h 0m</div>
+        <p class="film-desc">Charlize Theron escapes across a wasteland in a war rig with a gaggle of former wives. Max is also there, mostly strapped to the front of a car. Two hours of pure vehicular opera. Still the best action film of the decade.</p>
+        <div class="film-tags">
+          <span class="tag">Action</span>
+          <span class="tag">Sci-Fi</span>
+          <span class="tag">Post-Apocalyptic</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 07 -->
+  <li class="film" data-platform="hulu">
+    <div class="film-rank">07</div>
+    <div class="film-card">
+      <div class="film-stripe hulu"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge hulu">Hulu</span>
+          <span class="film-score">94% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Nomadland</h2>
+        <div class="film-meta">2020 · Chloé Zhao · 1h 48m</div>
+        <p class="film-desc">Frances McDormand lives in a van and drives around the American West, meeting real nomads playing themselves. Utterly quiet. Completely devastating. Won three Oscars and deserved all of them.</p>
+        <div class="film-tags">
+          <span class="tag">Drama</span>
+          <span class="tag">Road Movie</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 08 -->
+  <li class="film" data-platform="netflix">
+    <div class="film-rank">08</div>
+    <div class="film-card">
+      <div class="film-stripe netflix"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge netflix">Netflix</span>
+          <span class="film-score">95% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Marriage Story</h2>
+        <div class="film-meta">2019 · Noah Baumbach · 2h 17m</div>
+        <p class="film-desc">A divorce told in painstaking, affectionate, brutal detail from both sides. Scarlett Johansson and Adam Driver are each completely right and completely at fault. The argument scene will rearrange you.</p>
+        <div class="film-tags">
+          <span class="tag">Drama</span>
+          <span class="tag">Romance</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 09 -->
+  <li class="film" data-platform="apple">
+    <div class="film-rank">09</div>
+    <div class="film-card">
+      <div class="film-stripe apple"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge apple">Apple TV+</span>
+          <span class="film-score">93% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Killers of the Flower Moon</h2>
+        <div class="film-meta">2023 · Martin Scorsese · 3h 26m</div>
+        <p class="film-desc">The Osage Nation struck oil. Then their husbands started dying. Scorsese again, but angrier and more necessary. Lily Gladstone is extraordinary. Three and a half hours. Pay attention to every minute.</p>
+        <div class="film-tags">
+          <span class="tag">Crime</span>
+          <span class="tag">Drama</span>
+          <span class="tag">History</span>
+          <span class="tag">Western</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 10 -->
+  <li class="film" data-platform="prime">
+    <div class="film-rank">10</div>
+    <div class="film-card">
+      <div class="film-stripe prime"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge prime">Prime Video</span>
+          <span class="film-score">97% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Manchester by the Sea</h2>
+        <div class="film-meta">2016 · Kenneth Lonergan · 2h 17m</div>
+        <p class="film-desc">Casey Affleck returns to the Massachusetts coast town where the worst thing that ever happened to him also happened to him. Lonergan refuses to give you the catharsis you want. You'll thank him for it eventually.</p>
+        <div class="film-tags">
+          <span class="tag">Drama</span>
+          <span class="tag">Family</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 11 -->
+  <li class="film" data-platform="disney">
+    <div class="film-rank">11</div>
+    <div class="film-card">
+      <div class="film-stripe disney"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge disney">Disney+</span>
+          <span class="film-score">95% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Soul</h2>
+        <div class="film-meta">2020 · Pete Docter · 1h 40m</div>
+        <p class="film-desc">A jazz musician dies before his big break and ends up in the Great Before, mentoring a soul that doesn't want to exist. Pixar makes a film about what makes life worth living. Lands considerably harder than it should.</p>
+        <div class="film-tags">
+          <span class="tag">Animation</span>
+          <span class="tag">Drama</span>
+          <span class="tag">Music</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 12 -->
+  <li class="film" data-platform="netflix">
+    <div class="film-rank">12</div>
+    <div class="film-card">
+      <div class="film-stripe netflix"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge netflix">Netflix</span>
+          <span class="film-score">93% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">The Power of the Dog</h2>
+        <div class="film-meta">2021 · Jane Campion · 2h 6m</div>
+        <p class="film-desc">Benedict Cumberbatch is a Montana rancher with a lot of feelings he absolutely refuses to acknowledge. Slow, immaculate, and much more vicious than it appears. Campion's first film in 12 years. Worth the wait.</p>
+        <div class="film-tags">
+          <span class="tag">Drama</span>
+          <span class="tag">Western</span>
+          <span class="tag">Psychological</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 13 -->
+  <li class="film" data-platform="hulu">
+    <div class="film-rank">13</div>
+    <div class="film-card">
+      <div class="film-stripe hulu"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge hulu">Hulu</span>
+          <span class="film-score">90% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Promising Young Woman</h2>
+        <div class="film-meta">2020 · Emerald Fennell · 1h 53m</div>
+        <p class="film-desc">Cassie has a plan. It involves bars, men who think they're nice, and the specific kind of rage that comes from being very correct for a very long time. Carey Mulligan is terrifying in the best way.</p>
+        <div class="film-tags">
+          <span class="tag">Thriller</span>
+          <span class="tag">Drama</span>
+          <span class="tag">Dark Comedy</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 14 -->
+  <li class="film" data-platform="max">
+    <div class="film-rank">14</div>
+    <div class="film-card">
+      <div class="film-stripe max"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge max">Max</span>
+          <span class="film-score">87% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Inception</h2>
+        <div class="film-meta">2010 · Christopher Nolan · 2h 28m</div>
+        <p class="film-desc">Thieves who enter dreams to steal ideas must now plant one instead. Nolan explains how dreams work, which is not how dreams work. Bring graph paper. Watch the top at the end. Argue about it with someone you trust.</p>
+        <div class="film-tags">
+          <span class="tag">Sci-Fi</span>
+          <span class="tag">Thriller</span>
+          <span class="tag">Action</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 15 -->
+  <li class="film" data-platform="disney">
+    <div class="film-rank">15</div>
+    <div class="film-card">
+      <div class="film-stripe disney"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge disney">Disney+</span>
+          <span class="film-score">93% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Prey</h2>
+        <div class="film-meta">2022 · Dan Trachtenberg · 1h 39m</div>
+        <p class="film-desc">A Comanche woman hunts a Predator in 1719. Simple premise, perfect execution. The best film in the Predator franchise by a significant margin. Bypassed theaters and landed quietly on Hulu. More people should have seen it.</p>
+        <div class="film-tags">
+          <span class="tag">Action</span>
+          <span class="tag">Sci-Fi</span>
+          <span class="tag">Thriller</span>
+          <span class="tag">Period</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 16 -->
+  <li class="film" data-platform="netflix">
+    <div class="film-rank">16</div>
+    <div class="film-card">
+      <div class="film-stripe netflix"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge netflix">Netflix</span>
+          <span class="film-score">90% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">All Quiet on the Western Front</h2>
+        <div class="film-meta">2022 · Edward Berger · 2h 28m</div>
+        <p class="film-desc">Erich Maria Remarque's 1929 novel, filmed again in German, still just as upsetting, still completely necessary. A young soldier discovers what the war actually is. Won four Oscars. Should be required viewing.</p>
+        <div class="film-tags">
+          <span class="tag">War</span>
+          <span class="tag">Drama</span>
+          <span class="tag">Foreign Language</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 17 -->
+  <li class="film" data-platform="max">
+    <div class="film-rank">17</div>
+    <div class="film-card">
+      <div class="film-stripe max"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge max">Max</span>
+          <span class="film-score">85% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">The Batman</h2>
+        <div class="film-meta">2022 · Matt Reeves · 2h 56m</div>
+        <p class="film-desc">Robert Pattinson is the Bat. It rains the entire time. The Riddler is sending riddles and the city is full of sewage and crime. Three hours of gothic neo-noir that is somehow the most interesting Batman film ever made.</p>
+        <div class="film-tags">
+          <span class="tag">Action</span>
+          <span class="tag">Crime</span>
+          <span class="tag">Superhero</span>
+          <span class="tag">Neo-Noir</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 18 -->
+  <li class="film" data-platform="disney">
+    <div class="film-rank">18</div>
+    <div class="film-card">
+      <div class="film-stripe disney"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge disney">Disney+</span>
+          <span class="film-score">91% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">Encanto</h2>
+        <div class="film-meta">2021 · Jared Bush &amp; Byron Howard · 1h 39m</div>
+        <p class="film-desc">A Colombian family in a magic house. Every member has a gift. Except Mirabel. Bruno exists. We don't talk about Bruno. Everyone cannot stop talking about Bruno. Lin-Manuel Miranda wrote the songs. They are stuck in your head now.</p>
+        <div class="film-tags">
+          <span class="tag">Animation</span>
+          <span class="tag">Musical</span>
+          <span class="tag">Family</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 19 -->
+  <li class="film" data-platform="apple">
+    <div class="film-rank">19</div>
+    <div class="film-card">
+      <div class="film-stripe apple"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge apple">Apple TV+</span>
+          <span class="film-score">75% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">CODA</h2>
+        <div class="film-meta">2021 · Siân Heder · 1h 51m</div>
+        <p class="film-desc">Ruby Rossi is the only hearing member of a Deaf family and wants to be a singer. The Apple TV+ acquisition that won Best Picture. Warm, earnest, and slightly underseen given the circumstances. Troy Kotsur won the Supporting Oscar and deserved it completely.</p>
+        <div class="film-tags">
+          <span class="tag">Drama</span>
+          <span class="tag">Music</span>
+          <span class="tag">Family</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 20 -->
+  <li class="film" data-platform="netflix">
+    <div class="film-rank">20</div>
+    <div class="film-card">
+      <div class="film-stripe netflix"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge netflix">Netflix</span>
+          <span class="film-score">83% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">The Killer</h2>
+        <div class="film-meta">2023 · David Fincher · 1h 58m</div>
+        <p class="film-desc">Michael Fassbender is a professional assassin who misses a shot and must now deal with consequences. He has opinions about things. Many opinions. Long monologue. Fincher on autopilot still beats everyone else at full throttle.</p>
+        <div class="film-tags">
+          <span class="tag">Thriller</span>
+          <span class="tag">Action</span>
+          <span class="tag">Crime</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- 21 -->
+  <li class="film" data-platform="hulu">
+    <div class="film-rank">21</div>
+    <div class="film-card">
+      <div class="film-stripe hulu"></div>
+      <div class="film-content">
+        <div class="film-top">
+          <span class="platform-badge hulu">Hulu</span>
+          <span class="film-score">88% <span>RT</span></span>
+        </div>
+        <h2 class="film-title">The Menu</h2>
+        <div class="film-meta">2022 · Mark Mylod · 1h 47m</div>
+        <p class="film-desc">An exclusive island restaurant. A legendary and increasingly unhinged chef. Something is very wrong with tonight's tasting menu. Ralph Fiennes is at his most precise. Anya Taylor-Joy orders a cheeseburger. This is the correct move.</p>
+        <div class="film-tags">
+          <span class="tag">Thriller</span>
+          <span class="tag">Dark Comedy</span>
+          <span class="tag">Horror</span>
+        </div>
+      </div>
+    </div>
+  </li>
+
+</ol>
+
+<p class="disclaimer">
+  Streaming availability changes constantly and without notice. Films migrate between platforms, disappear, reappear in different regions, and occasionally vanish entirely for legal reasons that nobody explains.
+  This list was accurate at some point. We cannot guarantee which point. The Rotten Tomatoes scores are correct as of whenever we last checked, which was a while ago.
+  Watch things while you can. Everything leaves eventually.
+</p>
+
+<footer>
+  <div class="footer-inner">
+    <span class="note">One of the <a href="/">pointless websites</a>. Streaming availability data is approximate. Tomatometer scores are from Rotten Tomatoes.</span>
+    <a class="back-link" href="/">← Home</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const films   = Array.from(document.querySelectorAll('.film'));
+  const buttons = Array.from(document.querySelectorAll('.filter-btn'));
+  const empty   = document.getElementById('empty-state');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const f = btn.dataset.filter;
+      let visible = 0;
+      films.forEach(film => {
+        const show = f === 'all' || film.dataset.platform === f;
+        film.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+
+      /* re-number visible films */
+      let n = 0;
+      films.forEach(film => {
+        if (!film.classList.contains('hidden')) {
+          n++;
+          const rank = film.querySelector('.film-rank');
+          if (rank) rank.textContent = String(n).padStart(2, '0');
+        }
+      });
+
+      empty.style.display = visible === 0 ? 'block' : 'none';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
