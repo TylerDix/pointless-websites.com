@@ -25,8 +25,6 @@ html { scroll-behavior: smooth; }
   --amber-bg:#fff8ed;
   --green:   #15803d;
   --dim:     #a09080;
-  --purple:  #4f46e5;
-  --purple-bg:#eef2ff;
 }
 
 body {
@@ -124,8 +122,6 @@ img { display: block; max-width: 100%; }
 }
 
 .section-gap { padding-top: 64px; padding-bottom: 64px; }
-
-hr.divider { border: none; border-top: 1px solid var(--rule); }
 
 /* ── RECOMMENDATION CARDS ── */
 .rec-block {
@@ -245,98 +241,6 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
   align-items: center;
 }
 
-/* ── APPLE INTELLIGENCE ── */
-.ai-section {
-  background: #0f0b2e;
-  color: #e8e6f5;
-  padding: 72px 40px;
-}
-
-.ai-inner { max-width: 800px; margin: 0 auto; }
-
-.ai-label {
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: #9f8fe0;
-  margin-bottom: 10px;
-}
-
-.ai-title {
-  font-size: clamp(1.8rem, 4.5vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -.03em;
-  line-height: 1.06;
-  margin-bottom: 16px;
-}
-
-.ai-intro {
-  font-size: 1.02rem;
-  color: rgba(232,230,245,.55);
-  max-width: 60ch;
-  line-height: 1.75;
-  margin-bottom: 44px;
-}
-
-.ai-intro strong { color: rgba(232,230,245,.88); font-weight: 600; }
-
-.ai-features { list-style: none; border-top: 1px solid rgba(255,255,255,.07); }
-
-.ai-feat {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255,255,255,.07);
-  align-items: start;
-}
-
-.ai-feat-name {
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: rgba(232,230,245,.75);
-  padding-top: 2px;
-}
-
-.ai-feat-desc {
-  font-size: .96rem;
-  color: rgba(232,230,245,.45);
-  line-height: 1.65;
-}
-
-.ai-footer {
-  margin-top: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.ai-note {
-  font-size: .85rem;
-  color: rgba(232,230,245,.3);
-  font-style: italic;
-}
-
-.ai-link {
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: #9f8fe0;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(159,143,224,.3);
-  padding-bottom: 1px;
-  white-space: nowrap;
-  transition: color .14s;
-}
-
-.ai-link:hover { color: #c4b8f5; }
-
 /* ── MINT CALLOUT ── */
 .mint-block {
   background: #f0fdf4;
@@ -449,12 +353,9 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
 @media (max-width: 680px) {
   .letterhead { padding: 52px 24px 48px; }
   .body-wrap { padding: 0 20px; }
-  .ai-section { padding: 52px 24px; }
-  .ai-feat { grid-template-columns: 1fr; gap: 6px; }
   .rec-body { padding: 22px 20px; }
   .rec-head { padding: 18px 20px 16px; }
   .page-footer { padding: 40px 24px 52px; }
-  .ai-footer { flex-direction: column; }
 }
 
 @media (max-width: 480px) {
@@ -477,8 +378,8 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
     </h1>
     <p class="lh-note">
       You need a new phone. I looked into it so you don't have to.
-      Two recommendations below — one for the best all-around option,
-      one for the best deal. Both use the same carrier. Both will work great in Phoenix.
+      Two options below — one for the best all-around pick,
+      one to save the most money. Both use the same carrier. Both work great in Phoenix.
     </p>
     <p class="lh-sig">— Tyler</p>
   </div>
@@ -487,10 +388,10 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
 <!-- ── RECOMMENDATIONS ── -->
 <div class="body-wrap section-gap">
   <p class="section-label">Tyler's Picks</p>
-  <h2 class="section-title">Two Recommendations</h2>
-  <p class="section-body">One is the best overall choice. The other is the best deal if you want to save as much as possible. Either way, Tyler recommends Mint Mobile — same coverage as T-Mobile in Phoenix, a fraction of the price.</p>
+  <h2 class="section-title">Two Options</h2>
+  <p class="section-body">One is the best phone for the money. The other is the best deal if you want to spend less. Either way, Mint Mobile is the carrier — same coverage as T-Mobile in Phoenix, a fraction of the price.</p>
 
-  <!-- Pick 1: iPhone 16e + Mint -->
+  <!-- Pick 1: iPhone 17e + Mint -->
   <div class="rec-block primary">
     <div class="rec-head">
       <span class="rec-tag">Tyler's Top Pick</span>
@@ -499,24 +400,22 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
     <div class="rec-body">
       <div class="rec-phones">iPhone 17e <span class="plus">+</span> Mint Mobile</div>
       <p class="rec-why">
-        The iPhone 17e is Apple's most affordable <em>new</em> iPhone — released March 2026 — and it has
-        <strong>Apple Intelligence</strong>, Apple's built-in AI that makes the phone genuinely
-        smarter. Great camera, bright screen, all-day battery. Everything you need, nothing unnecessary.
+        Apple's newest affordable iPhone — released March 2026. Great camera, bright screen, all-day battery.
+        Everything you need, nothing unnecessary. Buy it new from Apple or used/unlocked on Swappa for less.
         Pair it with Mint Mobile and you're paying a fraction of what T-Mobile or Verizon would charge
-        for the same exact network coverage in Phoenix.
+        for the exact same network in Phoenix.
       </p>
       <div class="rec-specs">
-        <div class="spec-row"><span class="spec-yes">✓</span> Apple Intelligence (AI features)</div>
         <div class="spec-row"><span class="spec-yes">✓</span> 48 MP camera</div>
         <div class="spec-row"><span class="spec-yes">✓</span> 6.1″ bright screen</div>
         <div class="spec-row"><span class="spec-yes">✓</span> All-day battery + MagSafe</div>
         <div class="spec-row"><span class="spec-yes">✓</span> USB-C charging</div>
         <div class="spec-row"><span class="spec-yes">✓</span> 5G — fast everywhere</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> Apple Intelligence built in</div>
       </div>
       <div class="cta-row">
-        <a href="https://www.apple.com/shop/buy-iphone/iphone-17e" class="rec-cta" target="_blank" rel="noopener">iPhone 17e on Apple.com →</a>
-        <a href="https://swappa.com/listings/apple-iphone-17e" class="rec-cta" target="_blank" rel="noopener">Used on Swappa (from ~$464) →</a>
-        <a href="https://www.mintmobile.com/" class="rec-cta" target="_blank" rel="noopener">Mint Mobile Plans →</a>
+        <a href="https://www.apple.com/shop/buy-iphone/iphone-17e" class="rec-cta" target="_blank" rel="noopener">Buy new on Apple.com →</a>
+        <a href="https://swappa.com/listings/apple-iphone-17e" class="rec-cta" target="_blank" rel="noopener">Buy used on Swappa (from ~$464) →</a>
       </div>
     </div>
   </div>
@@ -530,23 +429,21 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
     <div class="rec-body">
       <div class="rec-phones">Ugly Color Refurb <span class="plus">+</span> Dark Case <span class="plus">+</span> Mint Mobile</div>
       <p class="rec-why">
-        Here's the trick: Apple's refurbished store sells previous-generation iPhones at a discount,
-        and the <strong>unpopular colors go for even less</strong> because nobody wants them.
-        You pick the ugly one, put a dark case on it, and you never see the color again.
-        Same phone. Same Apple warranty. Significantly less money. Add Mint Mobile on top
-        and you've got the lowest possible monthly cost for a fully capable iPhone in Phoenix.
+        Apple's refurbished store sells previous-generation iPhones at a discount,
+        and <strong>unpopular colors go for even less</strong> because nobody wants them.
+        Pick the ugly one, put a dark case on it, and you never see the color again.
+        Same phone. Same Apple warranty. Significantly less money.
       </p>
       <div class="rec-specs">
-        <div class="spec-row"><span class="spec-no">—</span> No Apple Intelligence</div>
         <div class="spec-row"><span class="spec-yes">✓</span> Good camera</div>
         <div class="spec-row"><span class="spec-yes">✓</span> 6.1″ screen</div>
         <div class="spec-row"><span class="spec-yes">✓</span> Good battery life</div>
         <div class="spec-row"><span class="spec-yes">✓</span> USB-C charging</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> 5G</div>
         <div class="spec-row"><span class="spec-yes">✓</span> 1-year Apple warranty</div>
       </div>
       <div class="cta-row">
         <a href="https://www.apple.com/shop/refurbished/iphone" class="rec-cta" target="_blank" rel="noopener">Apple Certified Refurbished →</a>
-        <a href="https://www.mintmobile.com/" class="rec-cta" target="_blank" rel="noopener">Mint Mobile Plans →</a>
       </div>
     </div>
   </div>
@@ -557,64 +454,18 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
     <h3>Same coverage. Way less money.</h3>
     <p>
       Mint Mobile runs on T-Mobile's network — same towers, same 5G, same coverage across Phoenix and nationwide.
-      The difference is price. Current plans: <strong>6 GB for $15/mo · 17 GB for $20/mo · 23 GB for $25/mo · Unlimited for $30/mo</strong>
-      — versus $55–$80 on T-Mobile directly. You pay three months upfront, no contract.
-      If you want to save money every single month, this is the move.
+      Current plans: <strong>6 GB/$15 · 17 GB/$20 · 23 GB/$25 · Unlimited/$30 per month</strong>,
+      paid three months at a time. No contract.
     </p>
-    <a href="https://www.mintmobile.com/" class="mint-link" target="_blank" rel="noopener">See Mint Mobile Plans →</a>
+    <a href="https://www.mintmobile.com/plans/" class="mint-link" target="_blank" rel="noopener">See Mint Mobile Plans →</a>
   </div>
 </div>
-
-<hr class="divider">
-
-<!-- ── APPLE INTELLIGENCE ── -->
-<section class="ai-section">
-  <div class="ai-inner">
-    <p class="ai-label">On the iPhone 17e</p>
-    <h2 class="ai-title">Apple Intelligence</h2>
-    <p class="ai-intro">
-      Apple Intelligence is <strong>built into the phone</strong> — no extra app, no subscription.
-      It's why Tyler recommends the 16e over a cheaper refurbished model.
-      Here's what it actually does in daily use:
-    </p>
-    <ul class="ai-features">
-      <li class="ai-feat">
-        <span class="ai-feat-name">Writing Tools</span>
-        <span class="ai-feat-desc">In Mail, Messages, or Notes, the phone can proofread your text, rewrite it more clearly, or shorten a long message — right inside the keyboard, no copy-pasting.</span>
-      </li>
-      <li class="ai-feat">
-        <span class="ai-feat-name">Photo Cleanup</span>
-        <span class="ai-feat-desc">Tap once to remove an unwanted person or object from a photo. The phone fills in the background automatically. Also creates personalized memory slideshows from your library.</span>
-      </li>
-      <li class="ai-feat">
-        <span class="ai-feat-name">Smarter Siri</span>
-        <span class="ai-feat-desc">Siri understands natural questions, knows what's on your screen, and can take actions in your apps — like finding a specific text message or looking someone up in your contacts.</span>
-      </li>
-      <li class="ai-feat">
-        <span class="ai-feat-name">Priority Mail</span>
-        <span class="ai-feat-desc">Mail automatically puts the messages that actually need your attention at the top, so you don't have to dig through your inbox to find what matters.</span>
-      </li>
-      <li class="ai-feat">
-        <span class="ai-feat-name">Notification Summaries</span>
-        <span class="ai-feat-desc">Instead of a pile of alerts from one app, you get a plain-English summary. Less clutter, quicker to know what's going on.</span>
-      </li>
-      <li class="ai-feat">
-        <span class="ai-feat-name">Image Playground</span>
-        <span class="ai-feat-desc">Describe any image in words and the phone draws it. Good for personalized cards, fun pictures to send the grandkids, or just something creative.</span>
-      </li>
-    </ul>
-    <div class="ai-footer">
-      <p class="ai-note">Built in, free, and improves with every iOS update.</p>
-      <a href="https://www.apple.com/apple-intelligence/" class="ai-link" target="_blank" rel="noopener">Learn more at Apple.com →</a>
-    </div>
-  </div>
-</section>
 
 <!-- ── HOW TO BUY ── -->
 <div class="body-wrap section-gap">
   <p class="section-label">The practical part</p>
   <h2 class="section-title">How to Get It</h2>
-  <p class="section-body">You're moving from a Motorola, which means switching from Android to iPhone. Apple has made this easy — there's a free app that does the heavy lifting. The Apple Store can handle the whole thing in person, which is the simplest route.</p>
+  <p class="section-body">You're switching from a Motorola (Android to iPhone). Apple has made this easy — there's a free app that does the heavy lifting. The Apple Store can handle the whole thing in person, which is the simplest route.</p>
 
   <ol class="buy-steps">
     <li class="buy-step">
@@ -622,7 +473,7 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
       <div>
         <p class="step-head">Best option: go to an Apple Store</p>
         <p class="step-body">
-          If the phone you want is available in store, this is the easiest path by far. Tell them you're switching from a Motorola and they'll handle the transfer right there — contacts, photos, text messages, email accounts, all of it. You walk out with a phone that already feels like yours. Bring your Motorola and make sure it's charged. Find your nearest store at <a href="https://locate.apple.com/" target="_blank" rel="noopener">locate.apple.com</a>.
+          Tell them you're switching from a Motorola and they'll handle the transfer right there — contacts, photos, texts, email, all of it. You walk out with a phone that already feels like yours. Bring your Motorola charged. Find your nearest store at <a href="https://locate.apple.com/" target="_blank" rel="noopener">locate.apple.com</a>.
         </p>
       </div>
     </li>
@@ -631,7 +482,7 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
       <div>
         <p class="step-head">Or order online — Tyler will help with the transfer</p>
         <p class="step-body">
-          Order new at <a href="https://www.apple.com/shop/buy-iphone/iphone-17e" target="_blank" rel="noopener">apple.com/shop/buy-iphone/iphone-17e</a>, used/unlocked at <a href="https://swappa.com/listings/apple-iphone-17e" target="_blank" rel="noopener">Swappa</a> (from ~$464), or refurbished at the <a href="https://www.apple.com/shop/refurbished/iphone" target="_blank" rel="noopener">Apple Certified Refurbished store</a>. Buy unlocked. When it arrives, install Apple's free <a href="https://play.google.com/store/apps/details?id=com.apple.movetoios" target="_blank" rel="noopener"><strong>Move to iOS</strong></a> app on your Motorola from the Play Store — it moves your contacts, photos, videos, email, and messages over Wi-Fi. Tyler will walk you through it. Keep both phones nearby and charged.
+          Buy new at <a href="https://www.apple.com/shop/buy-iphone/iphone-17e" target="_blank" rel="noopener">apple.com</a>, used at <a href="https://swappa.com/listings/apple-iphone-17e" target="_blank" rel="noopener">Swappa</a>, or refurbished at <a href="https://www.apple.com/shop/refurbished/iphone" target="_blank" rel="noopener">Apple Certified Refurbished</a>. Always buy unlocked. When it arrives, install <a href="https://play.google.com/store/apps/details?id=com.apple.movetoios" target="_blank" rel="noopener"><strong>Move to iOS</strong></a> on your Motorola — Apple's free app that transfers your contacts, photos, and messages over Wi-Fi. Tyler will walk you through it.
         </p>
       </div>
     </li>
@@ -640,7 +491,7 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
       <div>
         <p class="step-head">Get a dark case (refurb buyers)</p>
         <p class="step-body">
-          If you went the refurbished route, grab a dark case from Amazon or Best Buy. It'll cover whatever color you got. Any basic silicone case works fine — doesn't need to be fancy.
+          If you went the refurbished route, grab a dark case from Amazon or Best Buy. Covers whatever color you got. Any basic silicone case works fine.
         </p>
       </div>
     </li>
@@ -649,16 +500,16 @@ hr.divider { border: none; border-top: 1px solid var(--rule); }
       <div>
         <p class="step-head">Sign up for Mint Mobile</p>
         <p class="step-body">
-          Go to <a href="https://www.mintmobile.com/plans/" target="_blank" rel="noopener">mintmobile.com/plans</a> and pick a plan. Current pricing: 6 GB/$15 · 17 GB/$20 · 23 GB/$25 · Unlimited/$30 — per month, paid three months at a time. The iPhone 17e uses eSIM (no physical SIM card) — Mint Mobile supports this fully, and will email you a QR code to activate service right on the phone. No contract, cancel anytime. Tyler can walk you through this step too.
+          Go to <a href="https://www.mintmobile.com/plans/" target="_blank" rel="noopener">mintmobile.com/plans</a> and pick a plan. The iPhone 17e uses eSIM — no physical SIM card, Mint will email you a QR code to activate. Tyler can help with this too.
         </p>
       </div>
     </li>
     <li class="buy-step">
       <span class="step-n">05</span>
       <div>
-        <p class="step-head">You're done — and it's more straightforward than it sounds</p>
+        <p class="step-head">You're done</p>
         <p class="step-body">
-          Millions of people switch from Android to iPhone every year. Apple built Move to iOS specifically so this isn't painful. Your contacts, photos, and accounts come right over. A few apps may need to be re-downloaded from the App Store, but Tyler will take care of anything that needs sorting out.
+          Millions of people switch from Android to iPhone every year. Your contacts, photos, and accounts come right over. A few apps may need re-downloading, but Tyler will sort anything out.
         </p>
       </div>
     </li>
