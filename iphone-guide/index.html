@@ -25,6 +25,8 @@ html { scroll-behavior: smooth; }
   --amber-bg:#fff8ed;
   --green:   #15803d;
   --dim:     #a09080;
+  --purple:  #4f46e5;
+  --purple-bg:#eef2ff;
 }
 
 body {
@@ -56,7 +58,7 @@ img { display: block; max-width: 100%; }
   font-weight: 600;
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: rgba(240,235,227,.45);
+  color: rgba(240,235,227,.4);
   margin-bottom: 32px;
 }
 
@@ -68,16 +70,16 @@ img { display: block; max-width: 100%; }
   margin-bottom: 28px;
 }
 
-.lh-title .soft { color: rgba(240,235,227,.35); font-weight: 300; }
+.lh-title .soft { color: rgba(240,235,227,.3); font-weight: 300; }
 
 .lh-note {
   font-size: clamp(1rem, 2vw, 1.18rem);
   font-style: italic;
   font-weight: 300;
-  color: rgba(240,235,227,.7);
+  color: rgba(240,235,227,.65);
   max-width: 52ch;
-  line-height: 1.7;
-  border-left: 2px solid rgba(240,235,227,.15);
+  line-height: 1.72;
+  border-left: 2px solid rgba(240,235,227,.12);
   padding-left: 20px;
 }
 
@@ -87,17 +89,16 @@ img { display: block; max-width: 100%; }
   font-weight: 500;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(240,235,227,.35);
+  color: rgba(240,235,227,.3);
 }
 
-/* ── BODY WRAPPER ── */
+/* ── BODY ── */
 .body-wrap {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 28px;
 }
 
-/* ── SECTION HEADS ── */
 .section-label {
   font-size: .68rem;
   font-weight: 700;
@@ -122,142 +123,82 @@ img { display: block; max-width: 100%; }
   line-height: 1.75;
 }
 
-/* ── TYLER'S PICK ── */
-.pick-block {
-  background: var(--amber-bg);
-  border: 1.5px solid #f0c884;
+.section-gap { padding-top: 64px; padding-bottom: 64px; }
+
+hr.divider { border: none; border-top: 1px solid var(--rule); }
+
+/* ── RECOMMENDATION CARDS ── */
+.rec-block {
+  border: 1.5px solid var(--rule);
   border-radius: 4px;
-  padding: 36px 36px 32px;
-  margin: 56px 0 0;
+  overflow: hidden;
+  margin-top: 40px;
 }
 
-.pick-tag {
-  display: inline-block;
+.rec-block + .rec-block { margin-top: 24px; }
+
+.rec-block.primary { border-color: #f0c884; }
+
+.rec-head {
+  padding: 22px 28px 20px;
+  border-bottom: 1.5px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.rec-block.primary .rec-head { border-bottom-color: #f0c884; background: var(--amber-bg); }
+
+.rec-tag {
   font-size: .65rem;
   font-weight: 800;
   letter-spacing: .26em;
   text-transform: uppercase;
   color: var(--amber);
+}
+
+.rec-block:not(.primary) .rec-tag { color: var(--dim); }
+
+.rec-price {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.rec-body { padding: 28px; }
+
+.rec-phones {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.2;
   margin-bottom: 14px;
 }
 
-.pick-block h2 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -.03em;
-  line-height: 1.05;
-  margin-bottom: 16px;
+.rec-phones .plus {
+  color: var(--faint);
+  font-weight: 300;
+  margin: 0 6px;
 }
 
-.pick-block p {
-  font-size: 1rem;
-  color: #4a3618;
-  line-height: 1.72;
-  max-width: 58ch;
-  margin-bottom: 12px;
-}
-
-.pick-block p strong { font-weight: 600; }
-
-.pick-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 20px;
-  font-size: .82rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--amber);
-  text-decoration: none;
-  border-bottom: 1.5px solid currentColor;
-  padding-bottom: 1px;
-  transition: opacity .15s;
-}
-
-.pick-cta:hover { opacity: .72; }
-
-/* ── DIVIDER ── */
-.divider {
-  border: none;
-  border-top: 1px solid var(--rule);
-}
-
-.section-gap { padding-top: 64px; padding-bottom: 64px; }
-
-/* ── PHONE ITEMS ── */
-.phone-list {
-  list-style: none;
-  margin-top: 40px;
-}
-
-.phone-entry {
-  padding: 40px 0;
-  border-bottom: 1px solid var(--rule);
-}
-
-.phone-entry:first-child { border-top: 1px solid var(--rule); }
-
-.phone-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 4px;
-}
-
-.phone-name {
-  font-size: clamp(1.4rem, 3vw, 1.85rem);
-  font-weight: 800;
-  letter-spacing: -.025em;
-  line-height: 1;
-}
-
-.phone-price {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.phone-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 10px 0 16px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 2px;
-}
-
-.badge-pick   { background: var(--amber-bg); color: var(--amber); border: 1px solid #f0c884; }
-.badge-ai     { background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe; }
-.badge-no-ai  { background: #f5f5f4; color: var(--dim); border: 1px solid var(--faint); }
-
-.phone-desc {
+.rec-why {
   font-size: .97rem;
   color: var(--muted);
-  max-width: 64ch;
+  max-width: 62ch;
   line-height: 1.72;
   margin-bottom: 22px;
 }
 
-.phone-specs {
+.rec-why strong { color: var(--ink); font-weight: 600; }
+
+.rec-specs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 0;
   border: 1px solid var(--rule);
-  border-radius: 4px;
+  border-radius: 3px;
   overflow: hidden;
   margin-bottom: 22px;
 }
@@ -272,26 +213,37 @@ img { display: block; max-width: 100%; }
   border-right: 1px solid var(--rule);
 }
 
-.spec-row:nth-last-child(-n+2) { border-bottom: none; }
-.spec-row:nth-child(even):last-child { border-bottom: none; }
+.spec-row:last-child,
+.spec-row:nth-last-child(-n+2):nth-child(odd) { border-bottom: none; }
 
-.spec-yes { color: var(--green); font-size: .8rem; font-weight: 700; flex-shrink: 0; }
-.spec-no  { color: var(--faint); font-size: .8rem; font-weight: 700; flex-shrink: 0; }
-.spec-text { color: var(--ink); }
+.spec-yes  { color: var(--green); font-size: .76rem; font-weight: 700; flex-shrink: 0; }
+.spec-no   { color: var(--faint); font-size: .76rem; font-weight: 700; flex-shrink: 0; }
 
-.phone-link {
+.rec-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: .8rem;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--amber);
   text-decoration: none;
-  border-bottom: 1.5px solid var(--faint);
+  border-bottom: 1.5px solid currentColor;
   padding-bottom: 1px;
-  transition: color .14s, border-color .14s;
+  transition: opacity .15s;
 }
 
-.phone-link:hover { color: var(--ink); border-color: var(--ink); }
+.rec-block:not(.primary) .rec-cta { color: var(--muted); border-bottom-color: var(--faint); }
+
+.rec-cta:hover { opacity: .7; }
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
 
 /* ── APPLE INTELLIGENCE ── */
 .ai-section {
@@ -300,10 +252,7 @@ img { display: block; max-width: 100%; }
   padding: 72px 40px;
 }
 
-.ai-inner {
-  max-width: 800px;
-  margin: 0 auto;
-}
+.ai-inner { max-width: 800px; margin: 0 auto; }
 
 .ai-label {
   font-size: .68rem;
@@ -323,41 +272,38 @@ img { display: block; max-width: 100%; }
 }
 
 .ai-intro {
-  font-size: 1.04rem;
-  color: rgba(232,230,245,.6);
+  font-size: 1.02rem;
+  color: rgba(232,230,245,.55);
   max-width: 60ch;
   line-height: 1.75;
   margin-bottom: 44px;
 }
 
-.ai-intro strong { color: rgba(232,230,245,.9); font-weight: 600; }
+.ai-intro strong { color: rgba(232,230,245,.88); font-weight: 600; }
 
-.ai-features {
-  list-style: none;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
+.ai-features { list-style: none; border-top: 1px solid rgba(255,255,255,.07); }
 
 .ai-feat {
   display: grid;
   grid-template-columns: 180px 1fr;
   gap: 20px;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.07);
   align-items: start;
 }
 
 .ai-feat-name {
-  font-size: .82rem;
+  font-size: .8rem;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: rgba(232,230,245,.85);
-  padding-top: 3px;
+  color: rgba(232,230,245,.75);
+  padding-top: 2px;
 }
 
 .ai-feat-desc {
-  font-size: .97rem;
-  color: rgba(232,230,245,.5);
+  font-size: .96rem;
+  color: rgba(232,230,245,.45);
   line-height: 1.65;
 }
 
@@ -372,7 +318,7 @@ img { display: block; max-width: 100%; }
 
 .ai-note {
   font-size: .85rem;
-  color: rgba(232,230,245,.35);
+  color: rgba(232,230,245,.3);
   font-style: italic;
 }
 
@@ -391,94 +337,56 @@ img { display: block; max-width: 100%; }
 
 .ai-link:hover { color: #c4b8f5; }
 
-/* ── CARRIERS ── */
-.carrier-list {
-  list-style: none;
+/* ── MINT CALLOUT ── */
+.mint-block {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 4px;
+  padding: 28px;
   margin-top: 40px;
-  border-top: 1px solid var(--rule);
 }
 
-.carrier-entry {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 28px;
-  padding: 36px 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: start;
-}
-
-.carrier-left {}
-
-.carrier-name {
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: -.015em;
-  margin-bottom: 4px;
-}
-
-.carrier-rate {
-  font-size: .88rem;
-  font-weight: 600;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.carrier-pick-tag {
+.mint-label {
   font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .2em;
+  font-weight: 800;
+  letter-spacing: .26em;
   text-transform: uppercase;
-  color: var(--amber);
-  display: block;
+  color: #15803d;
+  margin-bottom: 12px;
 }
 
-.carrier-right {}
-
-.carrier-why {
-  font-size: 1rem;
-  color: var(--ink);
-  font-weight: 500;
+.mint-block h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
   margin-bottom: 10px;
-  line-height: 1.45;
+  color: var(--ink);
 }
 
-.carrier-bullets {
-  list-style: none;
+.mint-block p {
+  font-size: .96rem;
+  color: #166534;
+  line-height: 1.7;
+  max-width: 60ch;
   margin-bottom: 16px;
 }
 
-.carrier-bullets li {
-  font-size: .9rem;
-  color: var(--muted);
-  padding: 3px 0;
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-}
-
-.pro { color: var(--green); font-weight: 700; flex-shrink: 0; font-size: .75rem; }
-.con { color: var(--faint); flex-shrink: 0; font-size: .75rem; }
-
-.carrier-link {
+.mint-link {
   font-size: .78rem;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #15803d;
   text-decoration: none;
-  border-bottom: 1.5px solid var(--faint);
+  border-bottom: 1.5px solid #86efac;
   padding-bottom: 1px;
-  transition: color .14s, border-color .14s;
+  transition: opacity .14s;
 }
 
-.carrier-link:hover { color: var(--ink); border-color: var(--ink); }
+.mint-link:hover { opacity: .7; }
 
-/* ── BUY GUIDE ── */
-.buy-steps {
-  list-style: none;
-  margin-top: 40px;
-  border-top: 1px solid var(--rule);
-}
+/* ── BUY STEPS ── */
+.buy-steps { list-style: none; margin-top: 40px; border-top: 1px solid var(--rule); }
 
 .buy-step {
   display: grid;
@@ -502,7 +410,6 @@ img { display: block; max-width: 100%; }
   font-weight: 700;
   letter-spacing: -.01em;
   margin-bottom: 6px;
-  color: var(--ink);
 }
 
 .step-body {
@@ -521,15 +428,9 @@ img { display: block; max-width: 100%; }
 .step-body a:hover { color: var(--ink); border-color: var(--ink); }
 
 /* ── FOOTER ── */
-.page-footer {
-  padding: 48px 40px 64px;
-  text-align: center;
-}
+.page-footer { padding: 48px 40px 64px; text-align: center; }
 
-.footer-inner {
-  max-width: 800px;
-  margin: 0 auto;
-}
+.footer-inner { max-width: 800px; margin: 0 auto; }
 
 .footer-sig {
   font-size: .92rem;
@@ -550,17 +451,17 @@ img { display: block; max-width: 100%; }
   .body-wrap { padding: 0 20px; }
   .ai-section { padding: 52px 24px; }
   .ai-feat { grid-template-columns: 1fr; gap: 6px; }
-  .carrier-entry { grid-template-columns: 1fr; gap: 12px; }
-  .phone-specs { grid-template-columns: 1fr; }
-  .spec-row { border-right: none; }
-  .spec-row:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
-  .spec-row:last-child { border-bottom: none; }
+  .rec-body { padding: 22px 20px; }
+  .rec-head { padding: 18px 20px 16px; }
   .page-footer { padding: 40px 24px 52px; }
   .ai-footer { flex-direction: column; }
 }
 
 @media (max-width: 480px) {
-  .pick-block { padding: 24px 20px; }
+  .rec-phones { font-size: 1.1rem; }
+  .rec-specs { grid-template-columns: 1fr; }
+  .spec-row { border-right: none; border-bottom: 1px solid var(--rule); }
+  .spec-row:last-child { border-bottom: none; }
 }
 </style>
 </head>
@@ -575,126 +476,92 @@ img { display: block; max-width: 100%; }
       <span class="soft">Day, Dad.</span>
     </h1>
     <p class="lh-note">
-      You're overdue for a new phone and I know you won't spend hours researching it —
-      so I did it for you. Everything you need is below. One recommendation,
-      three options, the right carrier for Phoenix, and exactly how to get the best deal.
+      You need a new phone. I looked into it so you don't have to.
+      Two recommendations below — one for the best all-around option,
+      one for the best deal. Both use the same carrier. Both will work great in Phoenix.
     </p>
     <p class="lh-sig">— Tyler</p>
   </div>
 </header>
 
-<!-- ── TYLER'S PICK ── -->
-<div class="body-wrap">
-  <div class="pick-block" style="margin-top: 56px;">
-    <span class="pick-tag">Tyler's Recommendation</span>
-    <h2>Get the iPhone&nbsp;16.</h2>
-    <p>
-      This is the one I'd pick. Great camera, all-day battery, and it has
-      <strong>Apple Intelligence</strong> — Apple's built-in AI that rewrites your emails,
-      cleans objects out of photos, and makes Siri genuinely useful. It's the upgrade
-      that'll feel like an upgrade in every direction.
-    </p>
-    <p>
-      Before you pay full price: check T-Mobile and Verizon first.
-      They often give the iPhone&nbsp;16 away free with a trade-in deal when you switch plans.
-      Worth five minutes to check.
-    </p>
-    <a href="https://www.apple.com/shop/buy-iphone/iphone-16" class="pick-cta" target="_blank" rel="noopener">
-      See iPhone&nbsp;16 on Apple.com →
-    </a>
-  </div>
-</div>
-
-<hr class="divider" style="margin-top: 64px;">
-
-<!-- ── ALL THREE PHONES ── -->
+<!-- ── RECOMMENDATIONS ── -->
 <div class="body-wrap section-gap">
-  <p class="section-label">All your options</p>
-  <h2 class="section-title">Three Phones</h2>
-  <p class="section-body">Tyler recommends the iPhone&nbsp;16. Here's how all three compare so you can decide for yourself.</p>
+  <p class="section-label">Tyler's Picks</p>
+  <h2 class="section-title">Two Recommendations</h2>
+  <p class="section-body">One is the best overall choice. The other is the best deal if you want to save as much as possible. Either way, Tyler recommends Mint Mobile — same coverage as T-Mobile in Phoenix, a fraction of the price.</p>
 
-  <ul class="phone-list">
-
-    <!-- iPhone 16 -->
-    <li class="phone-entry">
-      <div class="phone-header">
-        <span class="phone-name">iPhone&nbsp;16</span>
-        <span class="phone-price">$799 new</span>
-      </div>
-      <div class="phone-badges">
-        <span class="badge badge-pick">⭐ Tyler's Pick</span>
-        <span class="badge badge-ai">✦ Apple Intelligence</span>
-      </div>
-      <p class="phone-desc">
-        Apple's best all-around iPhone. The camera is excellent, battery lasts all day,
-        and Apple Intelligence makes a real difference in daily use — especially for email,
-        photos, and a smarter Siri. Carrier trade-in deals can bring this to $0.
-        Or ~$33/month over 24 months at 0% through Apple.
+  <!-- Pick 1: iPhone 16e + Mint -->
+  <div class="rec-block primary">
+    <div class="rec-head">
+      <span class="rec-tag">Tyler's Top Pick</span>
+      <span class="rec-price">See apple.com for current pricing</span>
+    </div>
+    <div class="rec-body">
+      <div class="rec-phones">iPhone 16e <span class="plus">+</span> Mint Mobile</div>
+      <p class="rec-why">
+        The iPhone 16e is Apple's most affordable <em>new</em> iPhone — and it has
+        <strong>Apple Intelligence</strong>, Apple's built-in AI that makes the phone genuinely
+        smarter. Great camera, bright screen, all-day battery. Everything you need, nothing unnecessary.
+        Pair it with Mint Mobile and you're paying a fraction of what T-Mobile or Verizon would charge
+        for the same exact network coverage in Phoenix.
       </p>
-      <div class="phone-specs">
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">Apple Intelligence (AI features)</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">48 MP camera</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">6.1″ bright screen</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">All-day battery</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">Action Button shortcut key</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">USB-C charging</span></div>
+      <div class="rec-specs">
+        <div class="spec-row"><span class="spec-yes">✓</span> Apple Intelligence (AI features)</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> 48 MP camera</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> 6.1″ bright screen</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> All-day battery</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> USB-C charging</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> 5G — fast everywhere</div>
       </div>
-      <a href="https://www.apple.com/shop/buy-iphone/iphone-16" class="phone-link" target="_blank" rel="noopener">View on Apple.com →</a>
-    </li>
+      <div class="cta-row">
+        <a href="https://www.apple.com/shop/buy-iphone/iphone-16e" class="rec-cta" target="_blank" rel="noopener">iPhone 16e on Apple.com →</a>
+        <a href="https://www.mintmobile.com/" class="rec-cta" target="_blank" rel="noopener">Mint Mobile Plans →</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- iPhone 16e -->
-    <li class="phone-entry">
-      <div class="phone-header">
-        <span class="phone-name">iPhone&nbsp;16e</span>
-        <span class="phone-price">$599 new</span>
-      </div>
-      <div class="phone-badges">
-        <span class="badge badge-ai">✦ Apple Intelligence</span>
-      </div>
-      <p class="phone-desc">
-        Apple's most affordable new iPhone — and still gets you Apple Intelligence.
-        Same great 48 MP camera, same screen size, same all-day battery.
-        The main thing missing is the Action Button. A smart pick if saving $200 matters more
-        than that one feature.
+  <!-- Pick 2: Ugly color refurb + dark case + Mint -->
+  <div class="rec-block">
+    <div class="rec-head">
+      <span class="rec-tag">Budget Pick</span>
+      <span class="rec-price">Discounted · Apple Certified Refurbished</span>
+    </div>
+    <div class="rec-body">
+      <div class="rec-phones">Ugly Color Refurb <span class="plus">+</span> Dark Case <span class="plus">+</span> Mint Mobile</div>
+      <p class="rec-why">
+        Here's the trick: Apple's refurbished store sells previous-generation iPhones at a discount,
+        and the <strong>unpopular colors go for even less</strong> because nobody wants them.
+        You pick the ugly one, put a dark case on it, and you never see the color again.
+        Same phone. Same Apple warranty. Significantly less money. Add Mint Mobile on top
+        and you've got the lowest possible monthly cost for a fully capable iPhone in Phoenix.
       </p>
-      <div class="phone-specs">
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">Apple Intelligence (AI features)</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">48 MP camera</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">6.1″ bright screen</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">All-day battery</span></div>
-        <div class="spec-row"><span class="spec-no">—</span><span class="spec-text" style="color:var(--dim);">No Action Button</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">USB-C charging</span></div>
+      <div class="rec-specs">
+        <div class="spec-row"><span class="spec-no">—</span> No Apple Intelligence</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> Good camera</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> 6.1″ screen</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> Good battery life</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> USB-C charging</div>
+        <div class="spec-row"><span class="spec-yes">✓</span> 1-year Apple warranty</div>
       </div>
-      <a href="https://www.apple.com/shop/buy-iphone/iphone-16e" class="phone-link" target="_blank" rel="noopener">View on Apple.com →</a>
-    </li>
+      <div class="cta-row">
+        <a href="https://www.apple.com/shop/refurbished/iphone" class="rec-cta" target="_blank" rel="noopener">Apple Certified Refurbished →</a>
+        <a href="https://www.mintmobile.com/" class="rec-cta" target="_blank" rel="noopener">Mint Mobile Plans →</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- iPhone 15 -->
-    <li class="phone-entry">
-      <div class="phone-header">
-        <span class="phone-name">iPhone&nbsp;15</span>
-        <span class="phone-price">From $449 refurbished</span>
-      </div>
-      <div class="phone-badges">
-        <span class="badge badge-no-ai">No Apple Intelligence</span>
-      </div>
-      <p class="phone-desc">
-        The previous generation, sold certified refurbished by Apple with a full one-year warranty.
-        Good camera, USB-C, all the basics. The tradeoff is no Apple Intelligence —
-        those AI features are only available on newer models. Tyler recommends going up to the
-        iPhone&nbsp;16 or 16e, but if lowest price is the top priority, this is the option.
-      </p>
-      <div class="phone-specs">
-        <div class="spec-row"><span class="spec-no">—</span><span class="spec-text" style="color:var(--dim);">No Apple Intelligence</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">48 MP camera</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">6.1″ bright screen</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">Good battery life</span></div>
-        <div class="spec-row"><span class="spec-no">—</span><span class="spec-text" style="color:var(--dim);">No Action Button</span></div>
-        <div class="spec-row"><span class="spec-yes">✓</span><span class="spec-text">USB-C charging</span></div>
-      </div>
-      <a href="https://www.apple.com/shop/refurbished/iphone" class="phone-link" target="_blank" rel="noopener">View Refurbished iPhones →</a>
-    </li>
-
-  </ul>
+  <!-- Mint callout -->
+  <div class="mint-block">
+    <p class="mint-label">Why Mint Mobile</p>
+    <h3>Same coverage. Way less money.</h3>
+    <p>
+      Mint Mobile runs on T-Mobile's network — which means the same towers, the same 5G signal,
+      the same coverage across Phoenix and nationwide. The difference is price: Mint costs $15–$30/month
+      versus $55–$80 on T-Mobile directly. You pay a few months upfront, no contract.
+      If you want to save money every single month, this is the move.
+    </p>
+    <a href="https://www.mintmobile.com/" class="mint-link" target="_blank" rel="noopener">See Mint Mobile Plans →</a>
+  </div>
 </div>
 
 <hr class="divider">
@@ -702,12 +569,12 @@ img { display: block; max-width: 100%; }
 <!-- ── APPLE INTELLIGENCE ── -->
 <section class="ai-section">
   <div class="ai-inner">
-    <p class="ai-label">Why Tyler says it matters</p>
+    <p class="ai-label">On the iPhone 16e</p>
     <h2 class="ai-title">Apple Intelligence</h2>
     <p class="ai-intro">
-      Apple Intelligence is <strong>built right into the phone</strong> — no extra app, no subscription.
-      It's available on iPhone&nbsp;16 and iPhone&nbsp;16e and makes everyday things genuinely easier.
-      Here's what it actually does:
+      Apple Intelligence is <strong>built into the phone</strong> — no extra app, no subscription.
+      It's why Tyler recommends the 16e over a cheaper refurbished model.
+      Here's what it actually does in daily use:
     </p>
     <ul class="ai-features">
       <li class="ai-feat">
@@ -720,7 +587,7 @@ img { display: block; max-width: 100%; }
       </li>
       <li class="ai-feat">
         <span class="ai-feat-name">Smarter Siri</span>
-        <span class="ai-feat-desc">Siri now understands natural questions, knows what's on your screen, and can take actions in your apps — like finding a specific message or looking someone up in your contacts.</span>
+        <span class="ai-feat-desc">Siri understands natural questions, knows what's on your screen, and can take actions in your apps — like finding a specific text message or looking someone up in your contacts.</span>
       </li>
       <li class="ai-feat">
         <span class="ai-feat-name">Priority Mail</span>
@@ -732,117 +599,58 @@ img { display: block; max-width: 100%; }
       </li>
       <li class="ai-feat">
         <span class="ai-feat-name">Image Playground</span>
-        <span class="ai-feat-desc">Describe any image in plain words and the phone draws it — useful for personalized cards, fun pictures, or something creative to send the grandkids.</span>
+        <span class="ai-feat-desc">Describe any image in words and the phone draws it. Good for personalized cards, fun pictures to send the grandkids, or just something creative.</span>
       </li>
     </ul>
     <div class="ai-footer">
-      <p class="ai-note">Built in, free, and keeps improving with every iOS update.</p>
+      <p class="ai-note">Built in, free, and improves with every iOS update.</p>
       <a href="https://www.apple.com/apple-intelligence/" class="ai-link" target="_blank" rel="noopener">Learn more at Apple.com →</a>
     </div>
   </div>
 </section>
 
-<!-- ── CARRIERS ── -->
-<div class="body-wrap section-gap">
-  <p class="section-label">Phoenix metro + nationwide</p>
-  <h2 class="section-title">Best Carriers</h2>
-  <p class="section-body">
-    All three major carriers cover Phoenix well. The differences are monthly price, how reliable they are outside the city, and what iPhone deals they're running. Tyler's pick is T-Mobile.
-  </p>
-
-  <ul class="carrier-list">
-
-    <li class="carrier-entry">
-      <div class="carrier-left">
-        <div class="carrier-name">T-Mobile</div>
-        <div class="carrier-rate">$35 – $70 / mo.</div>
-        <span class="carrier-pick-tag">Tyler's Pick</span>
-      </div>
-      <div class="carrier-right">
-        <p class="carrier-why">Best all-around for Phoenix and nationwide coverage.</p>
-        <ul class="carrier-bullets">
-          <li><span class="pro">✓</span> Excellent 5G throughout Phoenix metro</li>
-          <li><span class="pro">✓</span> Strong nationwide coverage</li>
-          <li><span class="pro">✓</span> Best iPhone trade-in deals — often iPhone 16 for free</li>
-          <li><span class="pro">✓</span> 55+ senior plan: ~$27.50/month per line</li>
-          <li><span class="pro">✓</span> No annual contracts</li>
-        </ul>
-        <a href="https://www.t-mobile.com/iphone" class="carrier-link" target="_blank" rel="noopener">T-Mobile iPhone Deals →</a>
-      </div>
-    </li>
-
-    <li class="carrier-entry">
-      <div class="carrier-left">
-        <div class="carrier-name">Verizon</div>
-        <div class="carrier-rate">$45 – $80 / mo.</div>
-      </div>
-      <div class="carrier-right">
-        <p class="carrier-why">Best if you travel outside Phoenix to rural or remote areas.</p>
-        <ul class="carrier-bullets">
-          <li><span class="pro">✓</span> Excellent Phoenix coverage</li>
-          <li><span class="pro">✓</span> Best rural + remote coverage nationwide</li>
-          <li><span class="pro">✓</span> iPhone deals with trade-in; 55+ discount available</li>
-          <li><span class="con">—</span> Slightly higher monthly cost than T-Mobile</li>
-        </ul>
-        <a href="https://www.verizon.com/smartphones/apple/" class="carrier-link" target="_blank" rel="noopener">Verizon iPhone Deals →</a>
-      </div>
-    </li>
-
-    <li class="carrier-entry">
-      <div class="carrier-left">
-        <div class="carrier-name">Mint Mobile</div>
-        <div class="carrier-rate">$15 – $30 / mo.</div>
-      </div>
-      <div class="carrier-right">
-        <p class="carrier-why">Save the most money. Runs on T-Mobile's network — same Phoenix coverage, much lower price.</p>
-        <ul class="carrier-bullets">
-          <li><span class="pro">✓</span> Same network as T-Mobile — great Phoenix coverage</li>
-          <li><span class="pro">✓</span> Far lower monthly cost; no contracts</li>
-          <li><span class="con">—</span> No in-store iPhone financing — buy the phone separately</li>
-          <li><span class="con">—</span> Online support only, no retail stores</li>
-        </ul>
-        <a href="https://www.mintmobile.com/" class="carrier-link" target="_blank" rel="noopener">Mint Mobile Plans →</a>
-      </div>
-    </li>
-
-  </ul>
-</div>
-
-<hr class="divider">
-
 <!-- ── HOW TO BUY ── -->
 <div class="body-wrap section-gap">
   <p class="section-label">The practical part</p>
   <h2 class="section-title">How to Get It</h2>
-  <p class="section-body">Four steps. Tyler recommends checking #1 first — it can save you a lot.</p>
+  <p class="section-body">Straightforward either way. Tyler can help set it up once you have it.</p>
 
   <ol class="buy-steps">
     <li class="buy-step">
       <span class="step-n">01</span>
       <div>
-        <p class="step-head">Check carrier trade-in deals first</p>
-        <p class="step-body">T-Mobile and Verizon regularly offer the iPhone&nbsp;16 for free (or close to it) when you trade in your current phone and sign up for an unlimited plan. These deals rotate — check <a href="https://www.t-mobile.com/iphone" target="_blank" rel="noopener">T-Mobile</a> and <a href="https://www.verizon.com/smartphones/apple/" target="_blank" rel="noopener">Verizon</a> before doing anything else.</p>
+        <p class="step-head">Buy the phone from Apple</p>
+        <p class="step-body">
+          For the iPhone 16e, go to <a href="https://www.apple.com/shop/buy-iphone/iphone-16e" target="_blank" rel="noopener">apple.com/shop/buy-iphone/iphone-16e</a>.
+          For the refurbished option, pick a less popular color at <a href="https://www.apple.com/shop/refurbished/iphone" target="_blank" rel="noopener">apple.com/shop/refurbished/iphone</a> — you'll save more. Either way, select "unlocked" so it works on any carrier.
+        </p>
       </div>
     </li>
     <li class="buy-step">
       <span class="step-n">02</span>
       <div>
-        <p class="step-head">Or buy direct from Apple</p>
-        <p class="step-body">Pick your phone, carrier, color, and storage all in one place. Pay over 24 months at 0% interest with Apple Card Monthly Installments. Visit <a href="https://www.apple.com/shop/buy-iphone" target="_blank" rel="noopener">apple.com/shop/buy-iphone</a>.</p>
+        <p class="step-head">Get a dark case</p>
+        <p class="step-body">
+          If you went the refurbished route, grab a dark case from Amazon or Best Buy. It'll cover whatever color you got. Any basic silicone case works fine — doesn't need to be fancy.
+        </p>
       </div>
     </li>
     <li class="buy-step">
       <span class="step-n">03</span>
       <div>
-        <p class="step-head">Want to save the most? Try Apple Certified Refurbished</p>
-        <p class="step-body">Like-new iPhones from Apple's own store at a discount — same one-year warranty as new. The iPhone&nbsp;15 is a good pick here. <a href="https://www.apple.com/shop/refurbished/iphone" target="_blank" rel="noopener">apple.com/shop/refurbished/iphone</a>.</p>
+        <p class="step-head">Sign up for Mint Mobile</p>
+        <p class="step-body">
+          Go to <a href="https://www.mintmobile.com/" target="_blank" rel="noopener">mintmobile.com</a>, pick a plan, and get a SIM card sent to you. The 10 GB or unlimited plans run about $15–$30/month when you pay three months at a time. No contract — cancel anytime.
+        </p>
       </div>
     </li>
     <li class="buy-step">
       <span class="step-n">04</span>
       <div>
-        <p class="step-head">Apple Intelligence only works on iPhone 16 or 16e</p>
-        <p class="step-body">The AI features require iPhone&nbsp;16 (any model), iPhone&nbsp;16e, or iPhone&nbsp;15 Pro. The regular iPhone&nbsp;15 doesn't have them. Tyler recommends it — it's useful now and keeps getting better. <a href="https://www.apple.com/apple-intelligence/" target="_blank" rel="noopener">More at Apple.com</a>.</p>
+        <p class="step-head">Call Tyler</p>
+        <p class="step-body">
+          He'll help you get everything set up — move your contacts, get your apps installed, and make sure Apple Intelligence is turned on if you went with the 16e. That's what Father's Day is for.
+        </p>
       </div>
     </li>
   </ol>
@@ -852,7 +660,7 @@ img { display: block; max-width: 100%; }
 <footer class="page-footer">
   <div class="footer-inner">
     <p class="footer-sig">Made with love by Tyler — Happy Father's Day, Dad. 🎁</p>
-    <p class="footer-small">Prices and carrier deals change frequently. Verify on apple.com and carrier websites before purchasing.</p>
+    <p class="footer-small">Prices change. Verify current pricing on apple.com and mintmobile.com before purchasing.</p>
   </div>
 </footer>
 
