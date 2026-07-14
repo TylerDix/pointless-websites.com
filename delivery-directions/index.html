@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Finding My Door</title>
-    <meta name="description" content="Directions and a map to my apartment gate for delivery drivers.">
+    <meta name="description" content="Directions to my apartment gate for delivery drivers.">
     <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; }
@@ -17,66 +14,46 @@
             display: flex;
             justify-content: center;
             min-height: 100%;
-            padding: 40px 20px 64px;
-            font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+            padding: 28px 18px 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
             color: #1a1a1a;
             background: #ffffff;
             -webkit-font-smoothing: antialiased;
         }
-        main { width: 100%; max-width: 640px; }
+        main { width: 100%; max-width: 520px; }
         h1 {
-            font-weight: 500;
-            font-size: clamp(1.9rem, 7vw, 2.6rem);
-            line-height: 1.15;
-            margin-bottom: 8px;
-        }
-        .tagline {
-            font-style: italic;
-            font-size: 1.05rem;
-            color: #6b6b6b;
-            margin-bottom: 12px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
         }
         .address {
-            font-size: 1.15rem;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #d8d8d8;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 14px;
         }
-        .address strong { font-weight: 500; }
+        .address strong { font-weight: 700; }
         .map-links {
             display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
+            gap: 10px;
+            margin-bottom: 18px;
         }
         .map-links a {
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: #1a1a1a;
+            flex: 1;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            background: #1a1a1a;
             text-decoration: none;
-            border: 1px solid #1a1a1a;
-            border-radius: 20px;
-            padding: 7px 16px;
-            transition: opacity 0.15s;
-        }
-        .map-links a:hover { opacity: 0.6; }
-        h2 {
-            font-weight: 500;
-            font-size: 1.3rem;
-            margin: 8px 0 6px;
-        }
-        .diagram-caption {
-            font-size: 0.95rem;
-            font-style: italic;
-            color: #6b6b6b;
-            margin-bottom: 18px;
+            border-radius: 10px;
+            padding: 10px 8px;
         }
         .photo-card {
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #d8d2c2;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             background: #000;
             line-height: 0;
         }
@@ -86,167 +63,61 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
         }
-        .not-to-scale {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #948d7c;
-            margin-top: 8px;
-            font-style: italic;
-        }
-        .section-block { margin-top: 44px; }
-        .legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin: 22px 0 4px;
-            font-size: 0.95rem;
-        }
-        .legend-item { display: flex; align-items: center; gap: 8px; }
-        .legend-swatch { width: 26px; height: 4px; border-radius: 2px; flex-shrink: 0; }
-        .legend-swatch.route1 { background: #1d4ed8; }
-        p { font-size: 1.08rem; line-height: 1.65; margin-bottom: 12px; }
-        .routes {
-            display: grid;
-            gap: 20px;
-            margin: 28px 0 8px;
-        }
-        .route {
-            border: 1px solid #d8d8d8;
-            border-radius: 6px;
-            padding: 20px 22px;
-        }
-        .route h3 {
-            font-weight: 500;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-        .route p { margin-bottom: 0; color: #333; }
-        .note {
-            margin-top: 28px;
-            font-style: italic;
-            color: #6b6b6b;
-            font-size: 1rem;
+        .key-facts {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
         .footer {
-            margin-top: 48px;
-            font-size: 0.92rem;
+            margin-top: 18px;
+            font-size: 0.95rem;
             color: #6b6b6b;
         }
         @media (prefers-color-scheme: dark) {
             body { color: #e8e8e8; background: #111111; }
-            .tagline, .note, .footer, .diagram-caption { color: #a8a8aa; }
-            .address { border-bottom-color: #333; }
-            .route { border-color: #333; }
-            .route p { color: #ccc; }
-            .map-links a { color: #e8e8e8; border-color: #e8e8e8; }
+            .footer { color: #a8a8aa; }
+            .map-links a { background: #e8e8e8; color: #111; }
         }
     </style>
 </head>
 <body>
     <main>
         <h1>Finding My Door</h1>
-        <p class="tagline">directions to the gate, for delivery drivers</p>
         <p class="address">
-            <strong>Camden Tempe</strong><br>
-            600 E Curry Rd, Tempe, AZ 85281<br>
+            <strong>Camden Tempe</strong> — 600 E Curry Rd, Tempe, AZ 85281<br>
             Unit G1105
         </p>
 
         <div class="map-links">
-            <a href="https://maps.google.com/?q=600+E+Curry+Rd,+Tempe,+AZ+85281" target="_blank" rel="noopener">Open in Google Maps →</a>
-            <a href="https://maps.apple.com/?address=600%20E%20Curry%20Rd,%20Tempe,%20AZ%2085281" target="_blank" rel="noopener">Open in Apple Maps →</a>
-        </div>
-
-        <h2>Wide view — where this sits</h2>
-        <p class="diagram-caption">Camden Tempe sits between E Curry Rd (south) and N Scottsdale Rd (east). This is a real satellite screenshot, not a drawing.</p>
-        <div class="photo-card">
-            <img src="images/wide-satellite.jpg" alt="Satellite view of Camden Tempe between Curry Rd and Scottsdale Rd, with the address pin marked">
-            <svg viewBox="0 0 1206 1950" preserveAspectRatio="none" role="img" aria-labelledby="wideTitle" xmlns="http://www.w3.org/2000/svg">
-                <title id="wideTitle">Camden Tempe highlighted between Curry Rd and Scottsdale Rd</title>
-                <ellipse cx="430" cy="950" rx="420" ry="520" fill="none" stroke="#ffd400" stroke-width="10" opacity="0.9"/>
-                <g font-family="Georgia, serif" font-weight="700">
-                    <text x="60" y="340" fill="#111" stroke="#ffd400" stroke-width="6" paint-order="stroke" font-size="46">Camden Tempe</text>
-                    <text x="60" y="390" fill="#111" stroke="#ffd400" stroke-width="6" paint-order="stroke" font-size="34">Unit G1105</text>
-                </g>
-            </svg>
-        </div>
-        <p class="not-to-scale">Real satellite screenshot — property outlined in yellow.</p>
-
-        <div class="section-block">
-            <h2>The gate — two ways in</h2>
-            <p class="diagram-caption">Route 1 is traced on your satellite screenshot below. Route 2 goes around the back of the complex to the same gate — I couldn't trace that leg accurately from the photo, so it's described in words only under Route 2 below.</p>
+            <a href="https://maps.google.com/?q=600+E+Curry+Rd,+Tempe,+AZ+85281" target="_blank" rel="noopener">Google Maps →</a>
+            <a href="https://maps.apple.com/?address=600%20E%20Curry%20Rd,%20Tempe,%20AZ%2085281" target="_blank" rel="noopener">Apple Maps →</a>
         </div>
 
         <div class="photo-card">
-            <img src="images/close-satellite.jpg" alt="Close satellite view of the Camden Tempe building cluster with Route 1 drawn on top, arriving at the gate">
-            <svg viewBox="0 0 1206 2050" preserveAspectRatio="none" role="img" aria-labelledby="closeTitle closeDesc" xmlns="http://www.w3.org/2000/svg">
-                <title id="closeTitle">Route 1 traced on the satellite photo</title>
-                <desc id="closeDesc">Route 1 comes up from the bottom of the frame (Curry Rd) along the main internal drive to the gate near the Parked Car pin.</desc>
+            <img src="images/close-satellite.jpg" alt="Satellite photo with the drive from Curry Rd to the gate marked in blue">
+            <svg viewBox="0 0 1206 2050" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <marker id="arrowBlueClose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                         <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
                     </marker>
                 </defs>
-
-                <!-- Route 1: up from Curry Rd at bottom, along the main internal drive -->
-                <path d="M 555,2050 C 560,1930 580,1820 605,1740 C 635,1610 665,1460 685,1310 C 703,1160 700,1010 685,900 C 672,800 664,740 661,702"
-                      fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" opacity="0.92" marker-end="url(#arrowBlueClose)"/>
-                <text x="705" y="1500" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">Route 1</text>
-
-                <!-- gate callout at the Parked Car pin -->
-                <g>
-                    <circle cx="662" cy="649" r="46" fill="none" stroke="#ffd400" stroke-width="8"/>
-                    <text x="30" y="960" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">GATE</text>
-                    <text x="30" y="1000" font-family="Georgia, serif" font-size="26" fill="#111" stroke="#fff" stroke-width="5" paint-order="stroke">keypad → faces Scottsdale Rd</text>
-                    <path d="M 130,940 C 220,880 350,800 610,680" fill="none" stroke="#ffd400" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/>
-                </g>
+                <path d="M 490,2050
+                         C 500,1950 508,1850 515,1780
+                         C 525,1680 545,1580 560,1520
+                         C 580,1440 595,1370 600,1310
+                         C 608,1220 625,1160 650,1140
+                         C 700,1110 750,1145 770,1140
+                         C 760,1050 735,970 720,900
+                         C 700,810 675,730 662,655"
+                      fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round" opacity="0.92" marker-end="url(#arrow)"/>
+                <circle cx="662" cy="649" r="40" fill="none" stroke="#ffd400" stroke-width="8"/>
             </svg>
         </div>
-        <p class="not-to-scale">Real satellite screenshot, traced by hand — Route 1 only.</p>
 
-        <div class="legend">
-            <div class="legend-item"><span class="legend-swatch route1"></span> Route 1 — from Curry Rd</div>
-        </div>
+        <p class="key-facts">Enter from Curry Rd. Gate keypad faces Scottsdale Rd.</p>
 
-        <div class="routes">
-            <div class="route">
-                <h3>Route 1 — From Curry Rd</h3>
-                <p>Enter the property directly from Curry Rd and follow the drive to the gate.</p>
-            </div>
-            <div class="route">
-                <h3>Route 2 — From the road north of Curry</h3>
-                <p>Enter from the road just north of Curry and go around the back of the complex — there's a winding path near the dumpsters. It brings you to the same gate as Route 1.</p>
-            </div>
-        </div>
-
-        <p class="note">The gate entrance has a keypad and faces Scottsdale Rd.</p>
-
-        <div class="section-block">
-            <h2>What you'll see</h2>
-            <p class="diagram-caption">The Camden Tempe sign and building, for a visual check you're in the right place.</p>
-        </div>
-        <div class="photo-card">
-            <img src="images/entrance-photo.jpg" alt="Photo of the Camden Tempe sign and main building">
-        </div>
-        <p class="not-to-scale">Real photo — Camden Tempe entrance and sign.</p>
-
-        <div class="section-block">
-            <h2>Official community map</h2>
-            <p class="diagram-caption">The property's own site plan. Building G — where G1105 is — circled, next to its gate entry.</p>
-        </div>
-        <div class="photo-card">
-            <img src="images/community-map.jpg" alt="Official Camden Tempe community site map with Building G circled">
-            <svg viewBox="0 0 1206 2312" preserveAspectRatio="none" role="img" aria-labelledby="commTitle" xmlns="http://www.w3.org/2000/svg">
-                <title id="commTitle">Building G circled on the official community map</title>
-                <ellipse cx="895" cy="810" rx="150" ry="140" fill="none" stroke="#ffd400" stroke-width="10" opacity="0.95"/>
-                <text x="960" y="990" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">G1105 is here</text>
-            </svg>
-        </div>
-        <p class="not-to-scale">Source: camdenliving.com community map.</p>
-
-        <div class="footer">
-            Don't have the gate code? Text me and I'll send it over.
-        </div>
+        <div class="footer">No code? Text me.</div>
     </main>
 </body>
 </html>
