@@ -104,9 +104,6 @@
         .legend-item { display: flex; align-items: center; gap: 8px; }
         .legend-swatch { width: 26px; height: 4px; border-radius: 2px; flex-shrink: 0; }
         .legend-swatch.route1 { background: #1d4ed8; }
-        .legend-swatch.route2 {
-            background: repeating-linear-gradient(90deg, #c2540a 0 6px, transparent 6px 10px);
-        }
         p { font-size: 1.08rem; line-height: 1.65; margin-bottom: 12px; }
         .routes {
             display: grid;
@@ -177,20 +174,17 @@
 
         <div class="section-block">
             <h2>The gate — two ways in</h2>
-            <p class="diagram-caption">Traced directly on your satellite screenshot. Both routes end at the same spot, right by the Parked Car pin — nudge me if I've read a path wrong.</p>
+            <p class="diagram-caption">Route 1 is traced on your satellite screenshot below. Route 2 goes around the back of the complex to the same gate — I couldn't trace that leg accurately from the photo, so it's described in words only under Route 2 below.</p>
         </div>
 
         <div class="photo-card">
-            <img src="images/close-satellite.jpg" alt="Close satellite view of the Camden Tempe building cluster with Route 1 and Route 2 drawn on top, converging at the gate">
+            <img src="images/close-satellite.jpg" alt="Close satellite view of the Camden Tempe building cluster with Route 1 drawn on top, arriving at the gate">
             <svg viewBox="0 0 1206 2050" preserveAspectRatio="none" role="img" aria-labelledby="closeTitle closeDesc" xmlns="http://www.w3.org/2000/svg">
-                <title id="closeTitle">Both routes traced on the satellite photo</title>
-                <desc id="closeDesc">Route 1 comes up from the bottom of the frame (Curry Rd) along the main internal drive. Route 2 comes down from the curving road at the top past an approximate dumpster location. Both converge near the Parked Car pin, where the gate is.</desc>
+                <title id="closeTitle">Route 1 traced on the satellite photo</title>
+                <desc id="closeDesc">Route 1 comes up from the bottom of the frame (Curry Rd) along the main internal drive to the gate near the Parked Car pin.</desc>
                 <defs>
                     <marker id="arrowBlueClose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                         <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
-                    </marker>
-                    <marker id="arrowOrangeClose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                        <path d="M0,0 L10,5 L0,10 z" fill="#ff8a1e"/>
                     </marker>
                 </defs>
 
@@ -198,17 +192,6 @@
                 <path d="M 555,2050 C 560,1930 580,1820 605,1740 C 635,1610 665,1460 685,1310 C 703,1160 700,1010 685,900 C 672,800 664,740 661,702"
                       fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" opacity="0.92" marker-end="url(#arrowBlueClose)"/>
                 <text x="705" y="1500" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">Route 1</text>
-
-                <!-- Route 2: down from the curving road at top, past approx. dumpster spot -->
-                <path d="M 715,215 C 665,285 615,325 608,395 C 602,455 645,515 662,575 C 664,588 663,595 662,601"
-                      fill="none" stroke="#ff8a1e" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 26" opacity="0.95" marker-end="url(#arrowOrangeClose)"/>
-                <text x="345" y="300" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">Route 2</text>
-
-                <!-- approximate dumpster marker -->
-                <g>
-                    <circle cx="500" cy="470" r="10" fill="#6b6455" stroke="#fff" stroke-width="3"/>
-                    <text x="480" y="450" text-anchor="end" font-family="Georgia, serif" font-size="26" font-style="italic" fill="#111" stroke="#fff" stroke-width="5" paint-order="stroke">dumpsters (approx.)</text>
-                </g>
 
                 <!-- gate callout at the Parked Car pin -->
                 <g>
@@ -219,11 +202,10 @@
                 </g>
             </svg>
         </div>
-        <p class="not-to-scale">Real satellite screenshot, traced by hand — not pixel-perfect.</p>
+        <p class="not-to-scale">Real satellite screenshot, traced by hand — Route 1 only.</p>
 
         <div class="legend">
             <div class="legend-item"><span class="legend-swatch route1"></span> Route 1 — from Curry Rd</div>
-            <div class="legend-item"><span class="legend-swatch route2"></span> Route 2 — from the road north, past the dumpsters</div>
         </div>
 
         <div class="routes">
@@ -233,7 +215,7 @@
             </div>
             <div class="route">
                 <h3>Route 2 — From the road north of Curry</h3>
-                <p>Enter from the road just north of Curry. There's a winding path near the dumpsters — follow it through and it brings you to the same gate as Route 1.</p>
+                <p>Enter from the road just north of Curry and go around the back of the complex — there's a winding path near the dumpsters. It brings you to the same gate as Route 1.</p>
             </div>
         </div>
 
