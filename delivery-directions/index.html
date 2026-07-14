@@ -71,14 +71,21 @@
             color: #6b6b6b;
             margin-bottom: 18px;
         }
-        .map-card {
-            background: #fbf9f5;
-            border: 1px solid #d8d2c2;
+        .photo-card {
+            position: relative;
             border-radius: 10px;
-            padding: 14px;
+            overflow: hidden;
+            border: 1px solid #d8d2c2;
             margin-bottom: 8px;
+            background: #000;
+            line-height: 0;
         }
-        .map-card svg { display: block; width: 100%; height: auto; }
+        .photo-card img { display: block; width: 100%; height: auto; }
+        .photo-card svg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
         .not-to-scale {
             text-align: center;
             font-size: 0.8rem;
@@ -86,6 +93,7 @@
             margin-top: 8px;
             font-style: italic;
         }
+        .section-block { margin-top: 44px; }
         .legend {
             display: flex;
             flex-wrap: wrap;
@@ -152,88 +160,66 @@
             <a href="https://maps.apple.com/?address=600%20E%20Curry%20Rd,%20Tempe,%20AZ%2085281" target="_blank" rel="noopener">Open in Apple Maps →</a>
         </div>
 
-        <h2>The gate — two ways in</h2>
-        <p class="diagram-caption">Both routes below end at the same gate. Use whichever road you're already on.</p>
-
-        <div class="map-card">
-            <svg viewBox="0 0 600 520" role="img" aria-labelledby="mapTitle mapDesc" xmlns="http://www.w3.org/2000/svg">
-                <title id="mapTitle">Schematic map to the Camden Tempe gate</title>
-                <desc id="mapDesc">Curry Rd runs along the bottom, an unnamed road runs along the top, Scottsdale Rd runs along the right. Route 1 enters from Curry Rd. Route 2 enters from the road to the north, winding past the dumpsters. Both arrows meet at the gate on the Scottsdale-facing side of the property.</desc>
-
-                <defs>
-                    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                        <path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/>
-                    </marker>
-                    <marker id="arrowOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                        <path d="M0,0 L10,5 L0,10 z" fill="#c2540a"/>
-                    </marker>
-                </defs>
-
-                <!-- page bg -->
-                <rect x="0" y="0" width="600" height="520" fill="#fbf9f5"/>
-
-                <!-- Scottsdale Rd (right, vertical) -->
-                <rect x="516" y="0" width="60" height="520" fill="#ded6c4"/>
-                <line x1="546" y1="0" x2="546" y2="520" stroke="#fbf9f5" stroke-width="2" stroke-dasharray="10 8"/>
-
-                <!-- Curry Rd (bottom, horizontal) -->
-                <rect x="0" y="452" width="576" height="52" fill="#ded6c4"/>
-                <line x1="0" y1="478" x2="576" y2="478" stroke="#fbf9f5" stroke-width="2" stroke-dasharray="10 8"/>
-
-                <!-- road north of Curry (top, horizontal) -->
-                <rect x="0" y="10" width="576" height="46" fill="#ded6c4"/>
-                <line x1="0" y1="33" x2="576" y2="33" stroke="#fbf9f5" stroke-width="2" stroke-dasharray="10 8"/>
-
-                <!-- road labels -->
-                <text x="200" y="486" font-family="Georgia, serif" font-size="17" font-weight="600" fill="#5c5645" letter-spacing="1">CURRY RD</text>
-                <text x="150" y="27" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#8a8371" letter-spacing="0.5">road north of Curry (unnamed)</text>
-                <text x="561" y="260" font-family="Georgia, serif" font-size="15" font-weight="600" fill="#5c5645" letter-spacing="1" transform="rotate(90 561 260)">SCOTTSDALE RD</text>
-
-                <!-- property block -->
-                <rect x="70" y="56" width="446" height="396" rx="18" fill="#efe7d8" stroke="#c9bfa9" stroke-width="2"/>
-                <text x="293" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="600" fill="#2a2620">Camden Tempe</text>
-                <text x="293" y="176" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#6b6455">Unit G1105</text>
-
-                <!-- dumpster icon + label (near north entrance) -->
-                <g>
-                    <rect x="118" y="150" width="34" height="26" rx="3" fill="#8f887a"/>
-                    <rect x="118" y="145" width="34" height="8" rx="2" fill="#6b6455"/>
-                    <text x="108" y="167" text-anchor="end" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#6b6455">dumpsters</text>
-                </g>
-
-                <!-- gate node (faces Scottsdale Rd) -->
-                <g>
-                    <rect x="452" y="230" width="46" height="60" rx="6" fill="#2a2620"/>
-                    <circle cx="475" cy="250" r="3" fill="#fbf9f5"/>
-                    <circle cx="467" cy="258" r="2.2" fill="#fbf9f5"/>
-                    <circle cx="475" cy="258" r="2.2" fill="#fbf9f5"/>
-                    <circle cx="483" cy="258" r="2.2" fill="#fbf9f5"/>
-                    <circle cx="467" cy="265" r="2.2" fill="#fbf9f5"/>
-                    <circle cx="475" cy="265" r="2.2" fill="#fbf9f5"/>
-                    <circle cx="483" cy="265" r="2.2" fill="#fbf9f5"/>
-                    <text x="475" y="313" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="600" fill="#2a2620">GATE</text>
-                    <text x="475" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#6b6455">keypad faces Scottsdale Rd</text>
-                </g>
-
-                <!-- Route 1: from Curry Rd -->
-                <path d="M 190,478 L 190,452 C 190,410 230,380 280,368 C 350,352 400,320 452,262"
-                      fill="none" stroke="#1d4ed8" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
-                <text x="320" y="390" font-family="Georgia, serif" font-size="14" font-weight="600" fill="#1d4ed8">Route 1</text>
-
-                <!-- Route 2: from road north, winding past dumpsters -->
-                <path d="M 190,56 L 190,90 C 168,112 140,120 152,150 C 162,176 120,190 150,220 C 175,244 210,232 240,258 C 280,292 330,300 370,296 C 410,292 430,278 452,268"
-                      fill="none" stroke="#c2540a" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12" marker-end="url(#arrowOrange)"/>
-                <text x="205" y="110" font-family="Georgia, serif" font-size="14" font-weight="600" fill="#c2540a">Route 2</text>
-
-                <!-- compass -->
-                <g transform="translate(40,40)">
-                    <circle cx="0" cy="0" r="18" fill="#fbf9f5" stroke="#c9bfa9" stroke-width="1.5"/>
-                    <path d="M0,-12 L5,4 L0,0 L-5,4 Z" fill="#2a2620"/>
-                    <text x="0" y="-20" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="600" fill="#2a2620">N</text>
+        <h2>Wide view — where this sits</h2>
+        <p class="diagram-caption">Camden Tempe sits between E Curry Rd (south) and N Scottsdale Rd (east). This is a real satellite screenshot, not a drawing.</p>
+        <div class="photo-card">
+            <img src="images/wide-satellite.jpg" alt="Satellite view of Camden Tempe between Curry Rd and Scottsdale Rd, with the address pin marked">
+            <svg viewBox="0 0 1206 1950" preserveAspectRatio="none" role="img" aria-labelledby="wideTitle" xmlns="http://www.w3.org/2000/svg">
+                <title id="wideTitle">Camden Tempe highlighted between Curry Rd and Scottsdale Rd</title>
+                <ellipse cx="430" cy="950" rx="420" ry="520" fill="none" stroke="#ffd400" stroke-width="10" opacity="0.9"/>
+                <g font-family="Georgia, serif" font-weight="700">
+                    <text x="60" y="340" fill="#111" stroke="#ffd400" stroke-width="6" paint-order="stroke" font-size="46">Camden Tempe</text>
+                    <text x="60" y="390" fill="#111" stroke="#ffd400" stroke-width="6" paint-order="stroke" font-size="34">Unit G1105</text>
                 </g>
             </svg>
         </div>
-        <p class="not-to-scale">Schematic for wayfinding only — not to scale.</p>
+        <p class="not-to-scale">Real satellite screenshot — property outlined in yellow.</p>
+
+        <div class="section-block">
+            <h2>The gate — two ways in</h2>
+            <p class="diagram-caption">Traced directly on your satellite screenshot. Both routes end at the same spot, right by the Parked Car pin — nudge me if I've read a path wrong.</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="images/close-satellite.jpg" alt="Close satellite view of the Camden Tempe building cluster with Route 1 and Route 2 drawn on top, converging at the gate">
+            <svg viewBox="0 0 1206 2050" preserveAspectRatio="none" role="img" aria-labelledby="closeTitle closeDesc" xmlns="http://www.w3.org/2000/svg">
+                <title id="closeTitle">Both routes traced on the satellite photo</title>
+                <desc id="closeDesc">Route 1 comes up from the bottom of the frame (Curry Rd) along the main internal drive. Route 2 comes down from the curving road at the top past an approximate dumpster location. Both converge near the Parked Car pin, where the gate is.</desc>
+                <defs>
+                    <marker id="arrowBlueClose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+                    </marker>
+                    <marker id="arrowOrangeClose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="#ff8a1e"/>
+                    </marker>
+                </defs>
+
+                <!-- Route 1: up from Curry Rd at bottom, along the main internal drive -->
+                <path d="M 555,2050 C 560,1930 580,1820 605,1740 C 635,1610 665,1460 685,1310 C 703,1160 700,1010 685,900 C 672,800 664,740 661,702"
+                      fill="none" stroke="#2563eb" stroke-width="10" stroke-linecap="round" opacity="0.92" marker-end="url(#arrowBlueClose)"/>
+                <text x="705" y="1500" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">Route 1</text>
+
+                <!-- Route 2: down from the curving road at top, past approx. dumpster spot -->
+                <path d="M 715,215 C 665,285 615,325 608,395 C 602,455 645,515 662,575 C 664,588 663,595 662,601"
+                      fill="none" stroke="#ff8a1e" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 26" opacity="0.95" marker-end="url(#arrowOrangeClose)"/>
+                <text x="345" y="300" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">Route 2</text>
+
+                <!-- approximate dumpster marker -->
+                <g>
+                    <circle cx="500" cy="470" r="10" fill="#6b6455" stroke="#fff" stroke-width="3"/>
+                    <text x="480" y="450" text-anchor="end" font-family="Georgia, serif" font-size="26" font-style="italic" fill="#111" stroke="#fff" stroke-width="5" paint-order="stroke">dumpsters (approx.)</text>
+                </g>
+
+                <!-- gate callout at the Parked Car pin -->
+                <g>
+                    <circle cx="662" cy="649" r="46" fill="none" stroke="#ffd400" stroke-width="8"/>
+                    <text x="30" y="960" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">GATE</text>
+                    <text x="30" y="1000" font-family="Georgia, serif" font-size="26" fill="#111" stroke="#fff" stroke-width="5" paint-order="stroke">keypad → faces Scottsdale Rd</text>
+                    <path d="M 130,940 C 220,880 350,800 610,680" fill="none" stroke="#ffd400" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/>
+                </g>
+            </svg>
+        </div>
+        <p class="not-to-scale">Real satellite screenshot, traced by hand — not pixel-perfect.</p>
 
         <div class="legend">
             <div class="legend-item"><span class="legend-swatch route1"></span> Route 1 — from Curry Rd</div>
@@ -252,6 +238,29 @@
         </div>
 
         <p class="note">The gate entrance has a keypad and faces Scottsdale Rd.</p>
+
+        <div class="section-block">
+            <h2>What you'll see</h2>
+            <p class="diagram-caption">The Camden Tempe sign and building, for a visual check you're in the right place.</p>
+        </div>
+        <div class="photo-card">
+            <img src="images/entrance-photo.jpg" alt="Photo of the Camden Tempe sign and main building">
+        </div>
+        <p class="not-to-scale">Real photo — Camden Tempe entrance and sign.</p>
+
+        <div class="section-block">
+            <h2>Official community map</h2>
+            <p class="diagram-caption">The property's own site plan. Building G — where G1105 is — circled, next to its gate entry.</p>
+        </div>
+        <div class="photo-card">
+            <img src="images/community-map.jpg" alt="Official Camden Tempe community site map with Building G circled">
+            <svg viewBox="0 0 1206 2312" preserveAspectRatio="none" role="img" aria-labelledby="commTitle" xmlns="http://www.w3.org/2000/svg">
+                <title id="commTitle">Building G circled on the official community map</title>
+                <ellipse cx="895" cy="810" rx="150" ry="140" fill="none" stroke="#ffd400" stroke-width="10" opacity="0.95"/>
+                <text x="960" y="990" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#111" stroke="#fff" stroke-width="6" paint-order="stroke">G1105 is here</text>
+            </svg>
+        </div>
+        <p class="not-to-scale">Source: camdenliving.com community map.</p>
 
         <div class="footer">
             Don't have the gate code? Text me and I'll send it over.
