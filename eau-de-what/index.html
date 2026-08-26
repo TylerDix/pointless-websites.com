@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eau de What</title>
-<meta name="description" content="Every fragrance concentration — eau fraîche to extrait de parfum — spelled out, ranked by strength, and pronounced out loud.">
+<meta name="description" content="Every fragrance concentration — eau fraîche to extrait de parfum — spelled out, ranked by strength, and pronounced out loud. Plus where the word “cologne” actually came from.">
 <meta property="og:title" content="Eau de What">
-<meta property="og:description" content="How strong it is. How to say it. Every fragrance concentration, spelled out and pronounced out loud.">
+<meta property="og:description" content="How strong it is. How to say it. Every fragrance concentration, spelled out and pronounced out loud — and the real story behind the word “cologne”.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pointless-websites.com/eau-de-what/">
 <meta name="theme-color" content="#16110d">
@@ -258,6 +258,72 @@ section{padding:66px 0 8px}
   color:var(--brass);padding-top:16px;
 }
 .fake dd{padding:6px 0 16px;border-bottom:1px solid var(--rule);color:var(--ink-2);font-size:.99rem}
+
+/* ---------- timeline ---------- */
+.tl{margin-left:6px;border-left:1px solid var(--rule-2)}
+.tl-item{position:relative;padding:0 0 30px 28px}
+.tl-item:last-child{padding-bottom:6px}
+.tl-item::before{
+  content:"";position:absolute;left:-4px;top:9px;
+  width:7px;height:7px;background:var(--brass);
+  box-shadow:0 0 0 3px var(--bg);
+}
+.tl-item .yr{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  letter-spacing:.18em;font-size:.72rem;color:var(--brass);
+  text-transform:uppercase;display:block;margin-bottom:6px;
+}
+.tl-item h5{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.11em;font-size:.85rem;
+  color:var(--ink);margin-bottom:8px;
+}
+.tl-item p{color:var(--ink-2);font-size:1rem}
+.tl-item p+p{margin-top:9px}
+.pull{
+  margin:16px 0 4px;padding:18px 20px;
+  border:1px solid var(--rule-2);background:var(--bg-panel);
+  font-size:1.14rem;font-style:italic;color:var(--ink);line-height:1.5;
+}
+.pull cite{
+  display:block;margin-top:12px;font-style:normal;
+  font-family:"Courier Prime",monospace;font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+}
+.caveat{
+  border:1px dashed var(--rule-2);background:rgba(192,105,60,.05);
+  padding:16px 18px;margin-top:26px;color:var(--ink-2);font-size:.99rem;
+}
+.caveat b{
+  display:block;font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;
+  color:var(--terra);margin-bottom:8px;
+}
+
+/* ---------- links ---------- */
+.links{display:grid;gap:18px}
+@media(min-width:700px){.links{grid-template-columns:1fr 1fr}}
+.links section{padding:0}
+.linkgroup{border:1px solid var(--rule-2);background:var(--bg-panel);padding:20px 20px 16px}
+.linkgroup h4{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;
+  color:var(--brass);margin-bottom:14px;
+}
+.linkgroup ul{list-style:none}
+.linkgroup li{padding:8px 0;border-top:1px solid var(--rule);font-size:.98rem;color:var(--muted)}
+.linkgroup li:first-child{border-top:0}
+.linkgroup a{
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--rule-2);padding-bottom:1px;
+}
+.linkgroup a:hover{border-bottom-color:var(--brass);color:#fff}
+.linkgroup span{display:block;color:var(--muted);font-size:.92rem;margin-top:2px}
+.noaffil{
+  margin-top:22px;text-align:center;
+  font-family:"Courier Prime",monospace;font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+}
 
 /* ---------- knowledge ---------- */
 .know{display:grid;gap:18px}
@@ -572,10 +638,93 @@ footer a:hover{border-bottom-color:var(--brass)}
 
 </section>
 
+<!-- ================= ORIGIN ================= -->
+<section id="origin">
+  <div class="sec-head">
+    <span class="label">Part Three</span>
+    <h2>Where the word &ldquo;cologne&rdquo; comes from</h2>
+    <p>It is the only concentration named after a place. An Italian perfumer, a German city, a French name, and a Napoleonic decree that turned a medicine into a perfume.</p>
+  </div>
+
+  <div class="tl">
+
+    <div class="tl-item">
+      <span class="yr">AD 50</span>
+      <h5>The city gets a Latin name</h5>
+      <p>The Romans raise a settlement on the Rhine to the rank of <i>colonia</i> — <b style="color:var(--ink);font-weight:500">Colonia Claudia Ara Agrippinensium</b>, after Agrippina the Younger, who was born there and secured the promotion. Everything after this is a contraction of <i>Colonia</i>: German shortened it to <b style="color:var(--ink);font-weight:500">Köln</b>, French to <b style="color:var(--ink);font-weight:500">Cologne</b>, and English borrowed the French.</p>
+      <p>So the smell is named after a city, and the city is named after a Roman colony, and the spelling on your bottle is French because English took the French word for a German town.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr">1685 &ndash; 1706</span>
+      <h5>An Italian moves north</h5>
+      <p>Giovanni Maria Farina is born in 1685 to a family from Santa Maria Maggiore, in the Val Vigezzo in Piedmont. He settles in Cologne around 1706 as his uncle&rsquo;s business representative, and Germanises his name to <b style="color:var(--ink);font-weight:500">Johann Maria Farina</b>.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr">1708</span>
+      <h5>The letter</h5>
+      <p>Farina writes to his brother Giovanni Battista describing what he has made. It is the most quoted sentence in perfumery, and the reason we know the date:</p>
+      <blockquote class="pull">
+        &ldquo;I have found a fragrance that reminds me of an Italian spring morning, of mountain daffodils and orange blossoms shortly after the rain.&rdquo;
+        <cite>Johann Maria Farina to his brother, 1708</cite>
+      </blockquote>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr">17 July 1709</span>
+      <h5>The company, and the name</h5>
+      <p>The family firm is registered in Cologne. It still trades, under the same name — <i>Johann Maria Farina gegenüber dem Jülichs-Platz</i>, &ldquo;Farina opposite Jülich&rsquo;s Square&rdquo; — which makes it the oldest fragrance factory in the world.</p>
+      <p>Farina names the water after his adopted city. Not after an ingredient, not after a style: after the town he had moved to. He wrote the name in French, because French was the language of the courts he was selling to.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr">18th century</span>
+      <h5>Why it was a shock</h5>
+      <p>Court perfume of the era was heavy, animalic and musk-based. Farina&rsquo;s <i>aqua mirabilis</i> — &ldquo;miracle water&rdquo; — was built on bergamot, lemon, orange and neroli, and it smelled like almost nothing else available. It was also sold as a medicine, to be drunk as well as worn.</p>
+      <p>It was ferociously expensive: a single flacon has been reckoned at around six months of a servant&rsquo;s wages. Its customers were royal houses, which is exactly why every court in Europe knew the word <i>cologne</i> within a lifetime.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr">1792 &ndash; 1794</span>
+      <h5>A house number becomes a brand</h5>
+      <p>Wilhelm Mülhens sets up a competing water on Cologne&rsquo;s Glockengasse. Company legend has it the recipe was a wedding gift from a Carthusian monk in 1792 — treat that as a nice story rather than a documented fact.</p>
+      <p>In 1794 the occupying French have every house in the city numbered in one continuous sequence, to make sense of a street plan they found chaotic. Mülhens&rsquo; building is number <b style="color:var(--ink);font-weight:500">4711</b>. The house is gone. The number is still the brand.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr">18 August 1810</span>
+      <h5>Napoleon accidentally invents the category</h5>
+      <p>A decree requires makers of medicinal remedies to disclose their formulas. Rather than publish their recipes, the cologne houses reclassify: what had been a curative water is relabelled a scented one, and sold as perfumery instead of medicine.</p>
+      <p>That is the moment cologne stops being a drug and becomes a fragrance — a bureaucratic dodge, not a creative decision.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr">Also Napoleon</span>
+      <h5>The heaviest user in history</h5>
+      <p>He went through it at a rate that is hard to overstate. A surviving invoice in the French National Archives records 72 bottles ordered in the single month of October 1808, and contemporaries describe him drenching his neck and shoulders after washing — and occasionally drinking the stuff.</p>
+      <p>The much-repeated detail that he had a special bottle made to slip into his boot is likely embellished. Everyone tells it; nobody produces the boot.</p>
+    </div>
+
+    <div class="tl-item">
+      <span class="yr">Today</span>
+      <h5>Two meanings, pulling apart</h5>
+      <p>In Germany, <i>Echt Kölnisch Wasser</i> — &ldquo;genuine Cologne water&rdquo; — is a protected geographic term: to use it, the essential production has to happen in Cologne.</p>
+      <p>In American English, meanwhile, &ldquo;cologne&rdquo; drifted into meaning <i>any fragrance marketed to men</i>, at any concentration. Both are correct now. Only one of them tells you anything about strength.</p>
+    </div>
+
+  </div>
+
+  <div class="caveat">
+    <b>Where the history gets murky</b>
+    Sources disagree on the details, and the brands have every incentive to smooth them out. The firm was registered in 1709 by Farina&rsquo;s brother Johann Baptist; Johann Maria is generally recorded as joining it a few years later, though his own letter is dated 1708. Separately, a Paris line trading as <i>Jean-Marie Farina</i> — bought by Roger &amp; Gallet in the 1860s and still sold — descends from the same family, and the two houses spent much of the nineteenth century in court over who could use the name. Mülhens, of 4711, is generally held to have simply bought the right to use &ldquo;Farina&rdquo; from a man who happened to have it. Anyone who tells you this story with total confidence is selling something.
+  </div>
+</section>
+
 <!-- ================= NOT STRENGTHS ================= -->
 <section id="notstrengths">
   <div class="sec-head">
-    <span class="label">Part Three</span>
+    <span class="label">Part Four</span>
     <h2>Words on the bottle that are not strengths</h2>
     <p>These sound like concentrations. None of them are. They are marketing names for a different formula, which may or may not be more potent than the original.</p>
   </div>
@@ -602,7 +751,7 @@ footer a:hover{border-bottom-color:var(--brass)}
 <!-- ================= GLOSSARY ================= -->
 <section id="glossary">
   <div class="sec-head">
-    <span class="label">Part Four</span>
+    <span class="label">Part Five</span>
     <h2>The rest of the vocabulary, said out loud</h2>
     <p>The words that come up the moment you start reading about any of this.</p>
   </div>
@@ -705,7 +854,7 @@ footer a:hover{border-bottom-color:var(--brass)}
 <!-- ================= USEFUL ================= -->
 <section id="useful">
   <div class="sec-head">
-    <span class="label">Part Five</span>
+    <span class="label">Part Six</span>
     <h2>Things worth knowing</h2>
   </div>
   <div class="know">
@@ -736,6 +885,62 @@ footer a:hover{border-bottom-color:var(--brass)}
       <p>You stop smelling your own fragrance long before anyone else does. If you can still smell yourself clearly after an hour, you applied for the room, not for you.</p>
     </article>
   </div>
+</section>
+
+<!-- ================= LINKS ================= -->
+<section id="links">
+  <div class="sec-head">
+    <span class="label">Part Seven</span>
+    <h2>Where to go next</h2>
+    <p>Everything on this page came from somewhere. Here is where, plus the places worth reading once you get curious.</p>
+  </div>
+
+  <div class="links">
+
+    <div class="linkgroup">
+      <h4>Sources for the origin story</h4>
+      <ul>
+        <li><a href="https://farina1709.com/en/pages/history-1" target="_blank" rel="noopener">Farina 1709 — company history</a><span>The house itself, on the 1708 letter and the founding.</span></li>
+        <li><a href="https://farina.org/" target="_blank" rel="noopener">Farina Fragrance Museum, Cologne</a><span>The original site, opposite Jülich&rsquo;s Square. You can visit.</span></li>
+        <li><a href="https://www.dpma.de/english/our_office/publications/milestones/brandswithhistory/farina/index.html" target="_blank" rel="noopener">German Patent Office — Farina</a><span>A trademark registry&rsquo;s account, which is refreshingly unromantic.</span></li>
+        <li><a href="https://4711.com/" target="_blank" rel="noopener">4711 — Echt Kölnisch Wasser</a><span>The Glockengasse house-number story from the source.</span></li>
+        <li><a href="https://www.cologne-tourism.com/arts-culture/sights/detail/fragrance-museum-farina-house" target="_blank" rel="noopener">Cologne Tourist Board — Farina House</a><span>Dates, the price in servants&rsquo; wages, the royal clientele.</span></li>
+        <li><a href="https://www.napoleon.org/en/magazine/napoleonic-pleasures/m-durochereaus-eau-de-cologne/" target="_blank" rel="noopener">napoleon.org — Napoleon&rsquo;s cologne</a><span>The Fondation Napoléon on the invoices and the habit.</span></li>
+        <li><a href="https://www.cosmeticsandskin.com/companies/roger-gallet.php" target="_blank" rel="noopener">Cosmetics and Skin — Roger &amp; Gallet</a><span>The clearest account of the Farina name fights.</span></li>
+      </ul>
+    </div>
+
+    <div class="linkgroup">
+      <h4>Look up a specific bottle</h4>
+      <ul>
+        <li><a href="https://www.fragrantica.com/" target="_blank" rel="noopener">Fragrantica</a><span>The biggest database. Notes, perfumer, year, and thousands of opinions per scent.</span></li>
+        <li><a href="https://www.parfumo.com/" target="_blank" rel="noopener">Parfumo</a><span>Cleaner data, better on concentrations and reformulations.</span></li>
+        <li><a href="https://basenotes.com/" target="_blank" rel="noopener">Basenotes</a><span>The old forum. Twenty-odd years of arguments, still searchable.</span></li>
+        <li><a href="https://perfumesociety.org/" target="_blank" rel="noopener">The Perfume Society</a><span>A tidy beginner&rsquo;s primer on families and structure.</span></li>
+      </ul>
+    </div>
+
+    <div class="linkgroup">
+      <h4>People who write well about it</h4>
+      <ul>
+        <li><a href="https://boisdejasmin.com/" target="_blank" rel="noopener">Bois de Jasmin</a><span>Victoria Frolova. Trained in the industry, writes like an essayist.</span></li>
+        <li><a href="https://nstperfume.com/" target="_blank" rel="noopener">Now Smell This</a><span>Long-running, unimpressed by marketing, good on new releases.</span></li>
+        <li><a href="https://www.cosmeticsandskin.com/" target="_blank" rel="noopener">Cosmetics and Skin</a><span>Obsessive, footnoted history of the whole industry. A rabbit hole.</span></li>
+      </ul>
+    </div>
+
+    <div class="linkgroup">
+      <h4>The rules and the chemistry</h4>
+      <ul>
+        <li><a href="https://ifrafragrance.org/" target="_blank" rel="noopener">IFRA — the industry regulator</a><span>Why oakmoss got restricted and your vintage bottle smells different now.</span></li>
+        <li><a href="https://www.thegoodscentscompany.com/" target="_blank" rel="noopener">The Good Scents Company</a><span>A raw-materials database. Look up any single molecule or oil.</span></li>
+        <li><a href="https://en.wikipedia.org/wiki/Fragrance_wheel" target="_blank" rel="noopener">The fragrance wheel</a><span>Michael Edwards&rsquo; classification — chypre, fougère and the rest, mapped.</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p class="noaffil">No affiliate links on this page · nothing here is sponsored</p>
 </section>
 
 </div>
