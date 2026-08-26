@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eau de What</title>
-<meta name="description" content="Every fragrance concentration — eau fraîche to extrait de parfum — spelled out, ranked by strength, and pronounced out loud. Plus where the word “cologne” actually came from.">
+<meta name="description" content="Every fragrance concentration — eau fraîche to extrait de parfum — spelled out, ranked by strength, and pronounced out loud. Plus where the word “cologne” came from, and an interactive fragrance wheel.">
 <meta property="og:title" content="Eau de What">
-<meta property="og:description" content="How strong it is. How to say it. Every fragrance concentration, spelled out and pronounced out loud — and the real story behind the word “cologne”.">
+<meta property="og:description" content="How strong it is. How to say it. Every fragrance concentration spelled out and pronounced out loud — plus the real story behind the word “cologne”, and an interactive fragrance wheel.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pointless-websites.com/eau-de-what/">
 <meta name="theme-color" content="#16110d">
@@ -323,6 +323,72 @@ section{padding:66px 0 8px}
   margin-top:22px;text-align:center;
   font-family:"Courier Prime",monospace;font-size:.62rem;
   letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+}
+
+/* ---------- fragrance wheel ---------- */
+.wheelbox{border:1px solid var(--rule-2);background:var(--bg-panel);padding:22px 20px 26px}
+.wheel-stage{display:grid;gap:26px;align-items:start}
+@media(min-width:860px){.wheel-stage{grid-template-columns:minmax(0,420px) 1fr;gap:34px}}
+#wheel{width:100%;max-width:420px;margin:0 auto;display:block}
+#wheel svg{width:100%;height:auto;display:block;overflow:visible}
+#wheel path.seg{cursor:pointer;transition:opacity .16s,transform .16s;transform-origin:200px 200px}
+#wheel path.seg:hover{opacity:1}
+#wheel path.seg:focus{outline:none}
+#wheel path.seg:focus-visible{stroke:var(--ink);stroke-width:2}
+#wheel.has-sel path.seg{opacity:.62}
+#wheel.has-sel path.seg:hover{opacity:.85}
+#wheel.has-sel path.seg.on{opacity:1;stroke:var(--ink);stroke-width:1.5}
+#wheel text{font-family:"Courier Prime",monospace;fill:var(--muted);letter-spacing:.18em;text-transform:uppercase}
+#wheel .ctr-fam{font-size:9px;fill:var(--brass);letter-spacing:.26em}
+#wheel .ctr-name{font-family:"Courier Prime",monospace;font-weight:700;letter-spacing:.06em;fill:var(--ink)}
+#wheel .ring-lbl{font-size:9.5px;font-weight:700;letter-spacing:.24em}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+.chip{
+  font-family:"Courier Prime",monospace;font-weight:700;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  background:transparent;color:var(--muted);
+  border:1px solid var(--rule-2);padding:7px 10px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;transition:color .14s,border-color .14s;
+}
+.chip i{width:7px;height:7px;display:block;flex:0 0 auto}
+.chip:hover{color:var(--ink);border-color:var(--dim)}
+.chip.on{color:var(--ink);border-color:var(--brass)}
+
+.fam{border-top:1px solid var(--rule);padding-top:18px}
+.fam-hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:4px}
+.fam-swatch{width:12px;height:12px;display:block;flex:0 0 auto;align-self:center}
+.fam h3{
+  font-family:"Courier Prime",monospace;font-weight:700;text-transform:uppercase;
+  letter-spacing:.13em;font-size:1rem;color:var(--ink);
+}
+.fam .parent{
+  font-family:"Courier Prime",monospace;font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--brass);
+}
+.fam .smells{font-size:1.08rem;color:var(--ink);font-style:italic;margin:10px 0 14px}
+.fam dl{display:grid;gap:10px}
+.fam dt{
+  font-family:"Courier Prime",monospace;font-weight:700;font-size:.58rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;
+}
+.fam dd{color:var(--ink-2);font-size:.99rem}
+.fam .fam-note{
+  margin-top:14px;padding:11px 13px;border-left:2px solid var(--brass-dim);
+  background:rgba(193,154,78,.05);color:var(--ink-2);font-size:.96rem;
+}
+.fam .neighbours{
+  margin-top:12px;font-family:"Courier Prime",monospace;font-size:.62rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--dim);line-height:1.9;
+}
+.wheel-how{
+  margin-top:26px;padding-top:20px;border-top:1px solid var(--rule);
+  color:var(--ink-2);font-size:1rem;
+}
+.wheel-how b{
+  display:block;font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;
+  color:var(--brass);margin-bottom:8px;
 }
 
 /* ---------- knowledge ---------- */
@@ -748,10 +814,250 @@ footer a:hover{border-bottom-color:var(--brass)}
   </div>
 </section>
 
+<!-- ================= WHEEL ================= -->
+<section id="wheel-section">
+  <div class="sec-head">
+    <span class="label">Part Five</span>
+    <h2>The fragrance wheel</h2>
+    <p>Strength tells you how loud a scent is. The wheel tells you what it <i>is</i>. Fourteen families in a ring, arranged so that anything next to anything else smells related.</p>
+  </div>
+
+  <div class="wheelbox">
+    <div class="wheel-stage">
+      <div id="wheel"></div>
+      <div id="wheel-panels">
+    <article class="fam" id="fam-0" data-name="Floral" data-parent="Floral" data-color="#cf8fa0">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#cf8fa0"></span>
+        <h3>Floral</h3>
+        <span class="parent">Floral family</span>
+      </div>
+      <p class="smells">A flower, or a bouquet of them, rendered more or less straight.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Rose, jasmine, tuberose, orange blossom, lily of the valley, violet, ylang-ylang.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Dior J&rsquo;adore &middot; Chanel Chance &middot; Marc Jacobs Daisy</dd></div>
+      </dl>
+      <div class="fam-note">The oldest and by far the largest category on the wheel. A <i>soliflore</i> — a scent built to smell of one flower only — sits at the dead centre of it.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Fruity &nbsp;←&nbsp; Floral &nbsp;→&nbsp; Soft Floral</p>
+    </article>
+    <article class="fam" id="fam-1" data-name="Soft Floral" data-parent="Floral" data-color="#dcb5b8">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#dcb5b8"></span>
+        <h3>Soft Floral</h3>
+        <span class="parent">Floral family</span>
+      </div>
+      <p class="smells">Flowers blurred with powder and wax. Soapy, abstract, slightly unreal.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Aldehydes, orris (iris root), musk, heliotrope, powdery vanilla.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Chanel No 5 &middot; Est&eacute;e Lauder White Linen</dd></div>
+      </dl>
+      <div class="fam-note">Aldehydes are the reason No 5 doesn&rsquo;t smell like any flower that exists. They were the abstraction that made twentieth-century perfumery possible.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Floral &nbsp;←&nbsp; Soft Floral &nbsp;→&nbsp; Floral Amber</p>
+    </article>
+    <article class="fam" id="fam-2" data-name="Floral Amber" data-parent="Floral" data-color="#c98a5f">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#c98a5f"></span>
+        <h3>Floral Amber</h3>
+        <span class="parent">Floral family</span>
+      </div>
+      <p class="smells">A flower with the heat turned up — spice and resin pushing through the petals.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Rose or tuberose over cinnamon, clove, benzoin, vanilla, labdanum.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Chanel Coco &middot; Guerlain Samsara</dd></div>
+      </dl>
+      <div class="fam-note">Called <i>Floral Oriental</i> until 2021. Same scents, better name.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Soft Floral &nbsp;←&nbsp; Floral Amber &nbsp;→&nbsp; Soft Amber</p>
+    </article>
+    <article class="fam" id="fam-3" data-name="Soft Amber" data-parent="Amber" data-color="#d6a54c">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#d6a54c"></span>
+        <h3>Soft Amber</h3>
+        <span class="parent">Amber family</span>
+      </div>
+      <p class="smells">Warm and resinous, but held back. Incense rather than dessert.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Frankincense, myrrh, opoponax, soft spice, light balsams.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Prada Amber Pour Femme &middot; much of the modern incense niche</dd></div>
+      </dl>
+      <div class="fam-note">The vaguest slot on the wheel, and the one people argue about most. If a scent feels amber-adjacent but isn&rsquo;t sweet, it probably lands here.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Floral Amber &nbsp;←&nbsp; Soft Amber &nbsp;→&nbsp; Amber</p>
+    </article>
+    <article class="fam" id="fam-4" data-name="Amber" data-parent="Amber" data-color="#c9822b">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#c9822b"></span>
+        <h3>Amber</h3>
+        <span class="parent">Amber family</span>
+      </div>
+      <p class="smells">The full sweet-resinous accord, at full strength. Dense and unmistakable.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Vanilla, labdanum, tonka bean, benzoin, opoponax, patchouli.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>YSL Opium &middot; Guerlain Shalimar</dd></div>
+      </dl>
+      <div class="fam-note">Shalimar (1925) is generally credited as the first of the family. Opium (1977) is the spicy archetype everything since has been measured against.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Soft Amber &nbsp;←&nbsp; Amber &nbsp;→&nbsp; Woody Amber</p>
+    </article>
+    <article class="fam" id="fam-5" data-name="Woody Amber" data-parent="Amber" data-color="#a86a35">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#a86a35"></span>
+        <h3>Woody Amber</h3>
+        <span class="parent">Amber family</span>
+      </div>
+      <p class="smells">The amber accord dried out and laid over wood and smoke.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Oud, sandalwood, cedar, tobacco and leather over an amber base.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Tom Ford Tobacco Vanille &middot; YSL M7</dd></div>
+      </dl>
+      <div class="fam-note">The bridge from the warm half of the wheel into the dark half. M7 (2002) put oud in front of a Western audience for the first time.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Amber &nbsp;←&nbsp; Woody Amber &nbsp;→&nbsp; Woods</p>
+    </article>
+    <article class="fam" id="fam-6" data-name="Woods" data-parent="Woody" data-color="#8a6a45">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#8a6a45"></span>
+        <h3>Woods</h3>
+        <span class="parent">Woody family</span>
+      </div>
+      <p class="smells">Wood, centred and clean. Dry, warm, grounded, not much sweetness.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Sandalwood, cedar, vetiver, patchouli, guaiac, cypress.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Herm&egrave;s Terre d&rsquo;Herm&egrave;s &middot; Le Labo Santal 33 &middot; Lalique Encre Noire</dd></div>
+      </dl>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Woody Amber &nbsp;←&nbsp; Woods &nbsp;→&nbsp; Mossy Woods</p>
+    </article>
+    <article class="fam" id="fam-7" data-name="Mossy Woods" data-parent="Woody" data-color="#6f7a4a">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#6f7a4a"></span>
+        <h3>Mossy Woods</h3>
+        <span class="parent">Woody family</span>
+      </div>
+      <p class="smells">Damp forest floor. Bitter, green, earthy, faintly melancholy.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Oakmoss, patchouli, labdanum, with bergamot on top.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Guerlain Mitsouko &middot; Chanel Pour Monsieur Concentr&eacute;e</dd></div>
+      </dl>
+      <div class="fam-note">This is the <b style="color:var(--ink);font-weight:500">chypre</b> — named for Cyprus, and for Coty&rsquo;s 1917 <i>Chypre</i>, which gave the family its name. IFRA restrictions on oakmoss are the reason a vintage bottle and a current one no longer smell the same.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Woods &nbsp;←&nbsp; Mossy Woods &nbsp;→&nbsp; Dry Woods</p>
+    </article>
+    <article class="fam" id="fam-8" data-name="Dry Woods" data-parent="Woody" data-color="#6b5340">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#6b5340"></span>
+        <h3>Dry Woods</h3>
+        <span class="parent">Woody family</span>
+      </div>
+      <p class="smells">Smoke, leather, tar, burnt wood. The darkest point on the wheel.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Birch tar, styrax, cade, isobutyl quinoline, tobacco.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Knize Ten &middot; Tom Ford Tuscan Leather &middot; Chanel Cuir de Russie</dd></div>
+      </dl>
+      <div class="fam-note">The old French <i>cuir</i> family. Several of these started life as ways to make a new leather glove smell like something other than tannery.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Mossy Woods &nbsp;←&nbsp; Dry Woods &nbsp;→&nbsp; Aromatic</p>
+    </article>
+    <article class="fam" id="fam-9" data-name="Aromatic" data-parent="Fresh" data-color="#9aa87a">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#9aa87a"></span>
+        <h3>Aromatic</h3>
+        <span class="parent">Fresh family</span>
+      </div>
+      <p class="smells">Herbs and lavender over a mossy, woody base. Barbershop, essentially.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Lavender, rosemary, sage, geranium, coumarin, oakmoss.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Azzaro Pour Homme &middot; Paco Rabanne Pour Homme</dd></div>
+      </dl>
+      <div class="fam-note">This is the <b style="color:var(--ink);font-weight:500">foug&egrave;re</b>. Houbigant&rsquo;s Foug&egrave;re Royale (1882) invented both the family and modern perfumery with it — the first fragrance built around a synthetic material, coumarin. It sits where Fresh meets Woody, and belongs to both.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Dry Woods &nbsp;←&nbsp; Aromatic &nbsp;→&nbsp; Citrus</p>
+    </article>
+    <article class="fam" id="fam-10" data-name="Citrus" data-parent="Fresh" data-color="#c9b83f">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#c9b83f"></span>
+        <h3>Citrus</h3>
+        <span class="parent">Fresh family</span>
+      </div>
+      <p class="smells">Peel, zest and bright bitterness. Brilliant for twenty minutes.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Bergamot, lemon, orange, mandarin, grapefruit, neroli, petitgrain.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>4711 &middot; Acqua di Parma Colonia &middot; Guerlain Eau de Cologne Imp&eacute;riale</dd></div>
+      </dl>
+      <div class="fam-note">Where Part Three ends up. Farina&rsquo;s 1709 water lives in this wedge, and so does every traditional cologne after it. The French call the family <i>hesp&eacute;rid&eacute;e</i>, after the golden apples of the Hesperides.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Aromatic &nbsp;←&nbsp; Citrus &nbsp;→&nbsp; Water</p>
+    </article>
+    <article class="fam" id="fam-11" data-name="Water" data-parent="Fresh" data-color="#5f8a91">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#5f8a91"></span>
+        <h3>Water</h3>
+        <span class="parent">Fresh family</span>
+      </div>
+      <p class="smells">Salt, air, wet stone, melon rind. Transparent and cool.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Calone and related marine molecules, dihydromyrcenol, ozonic accords.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Davidoff Cool Water &middot; Armani Acqua di Gi&ograve; &middot; Issey Miyake L&rsquo;Eau d&rsquo;Issey</dd></div>
+      </dl>
+      <div class="fam-note">The youngest wedge on the wheel. It barely existed before the late 1980s, because the molecules that make it possible are synthetic and were not in wide use until then.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Citrus &nbsp;←&nbsp; Water &nbsp;→&nbsp; Green</p>
+    </article>
+    <article class="fam" id="fam-12" data-name="Green" data-parent="Fresh" data-color="#5f9153">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#5f9153"></span>
+        <h3>Green</h3>
+        <span class="parent">Fresh family</span>
+      </div>
+      <p class="smells">Crushed stems and cut grass. Sharp, bitter, cold.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Galbanum, violet leaf, green notes, vetiver.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Chanel No 19 &middot; Balmain Vent Vert</dd></div>
+      </dl>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Water &nbsp;←&nbsp; Green &nbsp;→&nbsp; Fruity</p>
+    </article>
+    <article class="fam" id="fam-13" data-name="Fruity" data-parent="Fresh" data-color="#cf7f5a">
+      <div class="fam-hd">
+        <span class="fam-swatch" style="background:#cf7f5a"></span>
+        <h3>Fruity</h3>
+        <span class="parent">Fresh family</span>
+      </div>
+      <p class="smells">Fruit that isn&rsquo;t citrus — peach, berry, apple, blackcurrant.</p>
+      <dl>
+        <div><dt>Built from</dt><dd>Peach and apricot lactones, blackcurrant bud, apple, pear, red berries.</dd></div>
+        <div><dt>Commonly cited examples</dt><dd>Guerlain Aqua Allegoria Pamplelune &middot; DKNY Be Delicious</dd></div>
+      </dl>
+      <div class="fam-note">The wedge that closes the circle, carrying you back round into Floral.</div>
+      <p class="neighbours">Neighbours &nbsp;·&nbsp; Green &nbsp;←&nbsp; Fruity &nbsp;→&nbsp; Floral</p>
+    </article>
+      </div>
+    </div>
+
+    <div class="chips" id="wheel-chips">
+      <button class="chip" data-i="0"><i style="background:#cf8fa0"></i>Floral</button>
+      <button class="chip" data-i="1"><i style="background:#dcb5b8"></i>Soft Floral</button>
+      <button class="chip" data-i="2"><i style="background:#c98a5f"></i>Floral Amber</button>
+      <button class="chip" data-i="3"><i style="background:#d6a54c"></i>Soft Amber</button>
+      <button class="chip" data-i="4"><i style="background:#c9822b"></i>Amber</button>
+      <button class="chip" data-i="5"><i style="background:#a86a35"></i>Woody Amber</button>
+      <button class="chip" data-i="6"><i style="background:#8a6a45"></i>Woods</button>
+      <button class="chip" data-i="7"><i style="background:#6f7a4a"></i>Mossy Woods</button>
+      <button class="chip" data-i="8"><i style="background:#6b5340"></i>Dry Woods</button>
+      <button class="chip" data-i="9"><i style="background:#9aa87a"></i>Aromatic</button>
+      <button class="chip" data-i="10"><i style="background:#c9b83f"></i>Citrus</button>
+      <button class="chip" data-i="11"><i style="background:#5f8a91"></i>Water</button>
+      <button class="chip" data-i="12"><i style="background:#5f9153"></i>Green</button>
+      <button class="chip" data-i="13"><i style="background:#cf7f5a"></i>Fruity</button>
+    </div>
+
+    <div class="wheel-how">
+      <b>What it&rsquo;s actually for</b>
+      Michael Edwards built the first version in 1983 to solve a shop-floor problem: when a customer&rsquo;s favourite was out of stock, staff needed a defensible way to hand them something else. That is still the best way to use it. Find the wedge your favourite sits in, then try its neighbours — adjacency on this ring means &ldquo;smells like a cousin of,&rdquo; and the further round you travel, the less you will recognise.
+    </div>
+  </div>
+
+  <div class="caveat">
+    <b>How much to trust this</b>
+    The four-family, fourteen-subfamily structure is Michael Edwards&rsquo; Fragrance Wheel, first published in 1983 and revised many times since. The drawing above is our own — it is a rendering of a published classification, not a copy of his chart, and his authoritative per-bottle classifications live in his <i>Fragrances of the World</i> database, which is a paid professional reference. The examples listed here are the ones commonly cited for each family, not his official placements. In 2021 Edwards replaced &ldquo;Oriental&rdquo; with &ldquo;Amber&rdquo; across the wheel, after the British Society of Perfumers described the old term as Eurocentric, outdated and derogatory; the sub-families were renamed to match.
+    <br><br>
+    It is also not the only system. French perfumery works from the Soci&eacute;t&eacute; Fran&ccedil;aise des Parfumeurs&rsquo; families — <i>hesp&eacute;rid&eacute;e, florale, foug&egrave;re, chypr&eacute;e, bois&eacute;e, ambr&eacute;e, cuir</i> — formalised in 1984 on top of classifications going back to the early twentieth century. Where the two disagree, neither is wrong; they were built for different jobs. Edwards&rsquo; was built for a shop. The SFP&rsquo;s was built for perfumers.
+  </div>
+</section>
+
 <!-- ================= GLOSSARY ================= -->
 <section id="glossary">
   <div class="sec-head">
-    <span class="label">Part Five</span>
+    <span class="label">Part Six</span>
     <h2>The rest of the vocabulary, said out loud</h2>
     <p>The words that come up the moment you start reading about any of this.</p>
   </div>
@@ -854,7 +1160,7 @@ footer a:hover{border-bottom-color:var(--brass)}
 <!-- ================= USEFUL ================= -->
 <section id="useful">
   <div class="sec-head">
-    <span class="label">Part Six</span>
+    <span class="label">Part Seven</span>
     <h2>Things worth knowing</h2>
   </div>
   <div class="know">
@@ -890,7 +1196,7 @@ footer a:hover{border-bottom-color:var(--brass)}
 <!-- ================= LINKS ================= -->
 <section id="links">
   <div class="sec-head">
-    <span class="label">Part Seven</span>
+    <span class="label">Part Eight</span>
     <h2>Where to go next</h2>
     <p>Everything on this page came from somewhere. Here is where, plus the places worth reading once you get curious.</p>
   </div>
@@ -934,7 +1240,8 @@ footer a:hover{border-bottom-color:var(--brass)}
       <ul>
         <li><a href="https://ifrafragrance.org/" target="_blank" rel="noopener">IFRA — the industry regulator</a><span>Why oakmoss got restricted and your vintage bottle smells different now.</span></li>
         <li><a href="https://www.thegoodscentscompany.com/" target="_blank" rel="noopener">The Good Scents Company</a><span>A raw-materials database. Look up any single molecule or oil.</span></li>
-        <li><a href="https://en.wikipedia.org/wiki/Fragrance_wheel" target="_blank" rel="noopener">The fragrance wheel</a><span>Michael Edwards&rsquo; classification — chypre, fougère and the rest, mapped.</span></li>
+        <li><a href="https://www.fragrancesoftheworld.com/FragranceWheel" target="_blank" rel="noopener">Michael Edwards&rsquo; Fragrance Wheel</a><span>The source for Part Five, from the man who built it in 1983.</span></li>
+        <li><a href="https://www.fragrancesoftheworld.com/" target="_blank" rel="noopener">Fragrances of the World</a><span>His classification database — tens of thousands of bottles, by family. Subscription.</span></li>
       </ul>
     </div>
 
@@ -1028,6 +1335,130 @@ footer a:hover{border-bottom-color:var(--brass)}
     if (!voices.length) document.getElementById('novoice').classList.add('show');
   }, 900);
 })();
+
+/* ================= FRAGRANCE WHEEL ================= */
+(function () {
+  var host = document.getElementById('wheel');
+  var panels = Array.prototype.slice.call(document.querySelectorAll('#wheel-panels .fam'));
+  var chips  = Array.prototype.slice.call(document.querySelectorAll('#wheel-chips .chip'));
+  if (!host || !panels.length) return;
+
+  var CX = 200, CY = 200;
+  var R_IN = 92, R_OUT = 162;       /* subfamily donut */
+  var R_RING_IN = 170, R_RING_OUT = 182; /* parent-family ring */
+  var N = panels.length;
+  var STEP = 360 / N;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  function pt(r, deg) {
+    var a = (deg - 90) * Math.PI / 180;
+    return [CX + r * Math.cos(a), CY + r * Math.sin(a)];
+  }
+  function ring(r1, r2, a0, a1) {
+    var large = (a1 - a0) > 180 ? 1 : 0;
+    var o0 = pt(r2, a0), o1 = pt(r2, a1), i1 = pt(r1, a1), i0 = pt(r1, a0);
+    return 'M' + o0[0].toFixed(2) + ' ' + o0[1].toFixed(2) +
+           'A' + r2 + ' ' + r2 + ' 0 ' + large + ' 1 ' + o1[0].toFixed(2) + ' ' + o1[1].toFixed(2) +
+           'L' + i1[0].toFixed(2) + ' ' + i1[1].toFixed(2) +
+           'A' + r1 + ' ' + r1 + ' 0 ' + large + ' 0 ' + i0[0].toFixed(2) + ' ' + i0[1].toFixed(2) + 'Z';
+  }
+  function el(n, attrs) {
+    var e = document.createElementNS(NS, n);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  var svg = el('svg', {viewBox: '0 0 400 400', role: 'group',
+                       'aria-label': 'Fragrance wheel: fourteen families arranged in a ring'});
+
+  /* --- parent-family arcs (outer ring) --- */
+  var groups = [], last = null;
+  panels.forEach(function (p, i) {
+    var par = p.dataset.parent;
+    if (!last || last.name !== par) { last = {name: par, from: i, to: i}; groups.push(last); }
+    else last.to = i;
+  });
+  groups.forEach(function (g) {
+    var a0 = g.from * STEP, a1 = (g.to + 1) * STEP;
+    svg.appendChild(el('path', {
+      d: ring(R_RING_IN, R_RING_OUT, a0 + 0.6, a1 - 0.6),
+      fill: 'none', stroke: '#c19a4e', 'stroke-width': 1, opacity: 0.55
+    }));
+    var mid = (a0 + a1) / 2, lp = pt(R_RING_OUT + 13, mid);
+    var t = el('text', {
+      x: lp[0].toFixed(1), y: lp[1].toFixed(1), class: 'ring-lbl',
+      'text-anchor': 'middle', 'dominant-baseline': 'middle', fill: '#94806a'
+    });
+    t.textContent = g.name;
+    svg.appendChild(t);
+  });
+
+  /* --- the fourteen wedges --- */
+  var segs = [];
+  panels.forEach(function (p, i) {
+    var a0 = i * STEP, a1 = (i + 1) * STEP;
+    var seg = el('path', {
+      d: ring(R_IN, R_OUT, a0 + 0.5, a1 - 0.5),
+      fill: p.dataset.color, class: 'seg',
+      role: 'button', tabindex: '0',
+      'aria-label': p.dataset.name + ', ' + p.dataset.parent + ' family'
+    });
+    seg.addEventListener('click', function () { select(i); });
+    seg.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); select((i + 1) % N, true); }
+      if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); select((i - 1 + N) % N, true); }
+    });
+    segs.push(seg);
+    svg.appendChild(seg);
+  });
+
+  /* --- centre readout --- */
+  var cFam  = el('text', {x: CX, y: CY - 16, class: 'ctr-fam', 'text-anchor': 'middle'});
+  var cName = el('text', {x: CX, y: CY + 6,  class: 'ctr-name', 'text-anchor': 'middle', 'font-size': '15'});
+  var cHint = el('text', {x: CX, y: CY + 26, 'text-anchor': 'middle', 'font-size': '7.5',
+                          fill: '#6b5a49', 'letter-spacing': '.2em'});
+  svg.appendChild(cFam); svg.appendChild(cName); svg.appendChild(cHint);
+  host.appendChild(svg);
+
+  /* Shrink the centre name until it fits inside the hole. */
+  function fitName(str) {
+    cName.textContent = str;
+    var size = 15;
+    cName.setAttribute('font-size', size);
+    /* getComputedTextLength is unavailable until laid out in some engines */
+    try {
+      while (size > 8 && cName.getComputedTextLength() > (R_IN * 2 - 26)) {
+        size -= 0.5;
+        cName.setAttribute('font-size', size);
+      }
+    } catch (e) { /* leave default */ }
+  }
+
+  var cur = -1;
+  function select(i, keepFocus) {
+    cur = i;
+    var p = panels[i];
+    host.classList.add('has-sel');
+    segs.forEach(function (sg, j) { sg.classList.toggle('on', j === i); });
+    chips.forEach(function (c, j) { c.classList.toggle('on', j === i); });
+    panels.forEach(function (pn, j) { pn.hidden = (j !== i); });
+    cFam.textContent = p.dataset.parent;
+    fitName(p.dataset.name);
+    cHint.textContent = '';
+    if (keepFocus) segs[i].focus();
+  }
+
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () { select(parseInt(c.dataset.i, 10)); });
+  });
+
+  cHint.textContent = 'TAP A WEDGE';
+  cFam.textContent = '';
+  cName.textContent = '';
+  select(0);
+})();
+
 </script>
 
 </body>
