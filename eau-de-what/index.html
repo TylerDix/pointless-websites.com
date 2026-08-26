@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eau de What</title>
+<meta name="description" content="Every fragrance concentration — eau fraîche to extrait de parfum — spelled out, ranked by strength, and pronounced out loud.">
+<meta property="og:title" content="Eau de What">
+<meta property="og:description" content="How strong it is. How to say it. Every fragrance concentration, spelled out and pronounced out loud.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pointless-websites.com/eau-de-what/">
+<meta name="theme-color" content="#16110d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#16110d;
+  --bg-panel:#1c1610;
+  --bg-raise:#221a13;
+  --ink:#f0e5d4;
+  --ink-2:#cbb99f;
+  --muted:#94806a;
+  --dim:#6b5a49;
+  --rule:#332619;
+  --rule-2:#412f1e;
+  --brass:#c19a4e;
+  --brass-dim:#8a6d36;
+  --terra:#c0693c;
+  --sage:#7f8a6b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"EB Garamond",Georgia,serif;
+  font-size:18px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(120% 80% at 50% -10%, rgba(193,154,78,.10), transparent 60%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.014) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 2px, transparent 2px 7px);
+}
+a{color:inherit}
+
+/* ---------- typographic utilities ---------- */
+.label{
+  font-family:"Courier Prime",ui-monospace,monospace;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.28em;
+  font-size:.66rem;
+  color:var(--muted);
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+.rule{height:1px;background:var(--rule);border:0}
+
+/* ---------- masthead ---------- */
+header.mast{
+  padding:64px 0 40px;
+  text-align:center;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+}
+header.mast::after{
+  content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--brass-dim),transparent);
+  opacity:.5;
+}
+.crest{
+  display:inline-block;
+  border:1px solid var(--rule-2);
+  padding:26px 30px 24px;
+  background:var(--bg-panel);
+  box-shadow:inset 0 0 0 1px rgba(193,154,78,.10), 0 18px 40px -30px #000;
+}
+.crest .tiny{display:block;margin-bottom:14px}
+.crest h1{
+  font-family:"Courier Prime",monospace;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:clamp(1.7rem,7.4vw,3rem);
+  line-height:1.05;
+  color:var(--ink);
+}
+.crest .sub{
+  margin-top:14px;
+  font-style:italic;
+  color:var(--ink-2);
+  font-size:1.02rem;
+}
+.crest .bar{
+  width:46px;height:1px;background:var(--brass);
+  margin:18px auto 0;opacity:.8;
+}
+.deck{
+  max-width:620px;margin:34px auto 0;
+  color:var(--ink-2);font-size:1.06rem;
+}
+
+/* ---------- section chrome ---------- */
+section{padding:66px 0 8px}
+.sec-head{margin-bottom:34px}
+.sec-head .label{display:block;margin-bottom:12px;color:var(--brass-dim)}
+.sec-head h2{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.13em;
+  font-size:clamp(1.05rem,3.6vw,1.4rem);
+  color:var(--ink);
+}
+.sec-head p{margin-top:12px;color:var(--ink-2);max-width:660px}
+
+/* ---------- the scale ---------- */
+.scale{
+  border:1px solid var(--rule-2);
+  background:var(--bg-panel);
+  padding:26px 22px 20px;
+}
+.scale-bar{
+  height:10px;border-radius:0;
+  background:linear-gradient(90deg,#2b2118,#6b5326,var(--brass),var(--terra));
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.4);
+}
+.scale-ticks{
+  display:flex;justify-content:space-between;margin-top:10px;
+  font-family:"Courier Prime",monospace;font-size:.62rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+}
+.scale-list{list-style:none;margin-top:22px;border-top:1px solid var(--rule)}
+.scale-list li{
+  display:flex;align-items:baseline;gap:14px;
+  padding:11px 2px;border-bottom:1px solid var(--rule);
+  font-family:"Courier Prime",monospace;font-size:.76rem;letter-spacing:.06em;
+}
+.scale-list .nm{flex:1;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-2)}
+.scale-list .pc{color:var(--brass);white-space:nowrap}
+.scale-list .hr{color:var(--dim);white-space:nowrap;min-width:74px;text-align:right}
+
+/* ---------- entry cards ---------- */
+.card{
+  border:1px solid var(--rule-2);
+  background:var(--bg-panel);
+  margin-bottom:22px;
+  box-shadow:0 20px 44px -38px #000;
+}
+.card-top{
+  display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;
+  padding:24px 22px 20px;
+  border-bottom:1px solid var(--rule);
+  background:
+    linear-gradient(180deg, rgba(193,154,78,.045), transparent 70%),
+    var(--bg-raise);
+}
+.abbr{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  font-size:1.5rem;letter-spacing:.1em;color:var(--brass);
+  border:1px solid var(--rule-2);
+  padding:8px 12px;min-width:86px;text-align:center;
+  background:rgba(0,0,0,.22);
+}
+.abbr small{display:block;font-size:.52rem;letter-spacing:.2em;color:var(--dim);margin-top:5px}
+.name-block{flex:1;min-width:230px}
+.name-block h3{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.13em;
+  font-size:1.02rem;line-height:1.35;color:var(--ink);
+}
+.alsoknown{font-style:italic;color:var(--muted);font-size:.9rem;margin-top:5px}
+
+/* ---------- pronunciation block ---------- */
+.pron{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+  padding:15px 22px;
+  border-bottom:1px solid var(--rule);
+  background:rgba(0,0,0,.18);
+}
+.say{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.2em;font-size:.66rem;
+  color:var(--bg);background:var(--brass);
+  border:1px solid var(--brass);
+  padding:10px 15px;cursor:pointer;
+  transition:background .14s,color .14s,transform .06s;
+  white-space:nowrap;
+}
+.say:hover{background:#d9b060;border-color:#d9b060}
+.say:active{transform:translateY(1px)}
+.say.playing{background:var(--terra);border-color:var(--terra);color:#fff2e6}
+.say .ico{font-size:.8em;line-height:1}
+.respell{
+  font-size:1.06rem;color:var(--ink);letter-spacing:.02em;
+}
+.respell b{color:var(--brass);font-weight:500}
+.ipa{
+  font-family:"Courier Prime",monospace;font-size:.74rem;
+  color:var(--dim);letter-spacing:.02em;
+}
+
+/* ---------- meters ---------- */
+.stats{padding:20px 22px 6px;display:grid;gap:16px}
+@media(min-width:640px){.stats{grid-template-columns:1fr 1fr 1fr;gap:22px}}
+.stat .label{display:block;margin-bottom:7px;font-size:.6rem}
+.stat .val{
+  font-family:"Courier Prime",monospace;font-size:.86rem;
+  color:var(--ink);letter-spacing:.05em;margin-bottom:8px;
+}
+.meter{height:6px;background:#0e0a07;border:1px solid var(--rule);position:relative;overflow:hidden}
+.meter i{
+  position:absolute;inset:0 auto 0 0;display:block;
+  background:linear-gradient(90deg,var(--brass-dim),var(--brass));
+}
+.meter.terra i{background:linear-gradient(90deg,#8a4b2a,var(--terra))}
+.notes{padding:16px 22px 24px;color:var(--ink-2);font-size:1rem}
+.notes p+p{margin-top:10px}
+.tip{
+  margin:14px 22px 22px;padding:12px 14px;
+  border-left:2px solid var(--brass-dim);
+  background:rgba(193,154,78,.05);
+  font-size:.96rem;color:var(--ink-2);
+}
+.tip b{color:var(--ink);font-weight:500}
+
+/* ---------- glossary ---------- */
+.gloss{display:grid;gap:0;border-top:1px solid var(--rule)}
+.gterm{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+  padding:16px 4px;border-bottom:1px solid var(--rule);
+}
+.gterm .gname{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;
+  color:var(--ink);min-width:150px;
+}
+.gterm .gsay{
+  flex:0 0 auto;
+  background:transparent;color:var(--brass);
+  border-color:var(--rule-2);
+  padding:8px 12px;
+}
+.gterm .gsay:hover{background:transparent;border-color:var(--brass);color:#d9b060}
+.gterm .gsay.playing{background:transparent;border-color:var(--terra);color:var(--terra)}
+.gterm .gpron{font-size:1rem;color:var(--brass);min-width:150px}
+.gterm .gdef{flex:1;min-width:260px;color:var(--ink-2);font-size:.98rem}
+
+/* ---------- fake tiers ---------- */
+.fake{
+  border:1px solid var(--rule-2);background:var(--bg-panel);
+  padding:4px 22px 8px;
+}
+.fake dl{border-top:1px solid var(--rule)}
+.fake dt{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;
+  color:var(--brass);padding-top:16px;
+}
+.fake dd{padding:6px 0 16px;border-bottom:1px solid var(--rule);color:var(--ink-2);font-size:.99rem}
+
+/* ---------- knowledge ---------- */
+.know{display:grid;gap:18px}
+@media(min-width:700px){.know{grid-template-columns:1fr 1fr}}
+.know article{
+  border:1px solid var(--rule-2);background:var(--bg-panel);padding:20px 20px 22px;
+}
+.know h4{
+  font-family:"Courier Prime",monospace;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;
+  color:var(--brass);margin-bottom:10px;
+}
+.know p{color:var(--ink-2);font-size:1rem}
+.know p+p{margin-top:9px}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:74px;padding:34px 0 54px;
+  border-top:1px solid var(--rule);text-align:center;
+}
+footer .label{display:block;color:var(--dim)}
+footer p{margin-top:12px;color:var(--muted);font-size:.95rem;font-style:italic}
+footer a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule-2)}
+footer a:hover{border-bottom-color:var(--brass)}
+.novoice{
+  display:none;margin:18px 0 0;padding:11px 14px;
+  border:1px dashed var(--rule-2);color:var(--muted);
+  font-size:.9rem;text-align:center;
+}
+.novoice.show{display:block}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="crest">
+      <span class="label tiny">Pointless&nbsp;Websites&nbsp;·&nbsp;No.&nbsp;03</span>
+      <h1>Eau de What</h1>
+      <p class="sub">how strong it is &nbsp;·&nbsp; how to say it</p>
+      <div class="bar"></div>
+    </div>
+    <p class="deck">Every concentration on a fragrance bottle, spelled out in full, ranked by how much perfume oil is actually in it — and said out loud, because nobody wants to point at the shelf and mumble.</p>
+    <div class="novoice" id="novoice">Your browser has no speech voices installed, so the buttons are quiet. The spelled-out pronunciations below still work fine.</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ================= THE SCALE ================= -->
+<section id="scale">
+  <div class="sec-head">
+    <span class="label">Part One</span>
+    <h2>The scale, weakest to strongest</h2>
+    <p>The percentage is aromatic oil dissolved in alcohol and water. It is an industry convention, not a law — no regulator checks it, and houses round generously.</p>
+  </div>
+
+  <div class="scale">
+    <div class="scale-bar"></div>
+    <div class="scale-ticks">
+      <span>1%</span><span>5%</span><span>15%</span><span>20%</span><span>40%</span>
+    </div>
+    <ul class="scale-list">
+      <li><span class="nm">Body / Hair Mist</span><span class="pc">1–3%</span><span class="hr">1–2 hrs</span></li>
+      <li><span class="nm">Eau Fraîche</span><span class="pc">1–3%</span><span class="hr">1–2 hrs</span></li>
+      <li><span class="nm">Eau de Cologne</span><span class="pc">2–5%</span><span class="hr">2–3 hrs</span></li>
+      <li><span class="nm">Eau de Toilette</span><span class="pc">5–15%</span><span class="hr">3–5 hrs</span></li>
+      <li><span class="nm">Eau de Parfum</span><span class="pc">15–20%</span><span class="hr">5–8 hrs</span></li>
+      <li><span class="nm">Extrait de Parfum</span><span class="pc">20–40%</span><span class="hr">8–12 hrs</span></li>
+      <li><span class="nm">Huile / Perfume Oil</span><span class="pc">15–30%</span><span class="hr">6–10 hrs</span></li>
+      <li><span class="nm">Attar / Mukhallat</span><span class="pc">~100%</span><span class="hr">10+ hrs</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= THE CONCENTRATIONS ================= -->
+<section id="concentrations">
+  <div class="sec-head">
+    <span class="label">Part Two</span>
+    <h2>The concentrations, one at a time</h2>
+    <p>Tap <b style="color:var(--brass);font-weight:500">hear it</b> on any entry. French names are spoken with a French voice when your device has one.</p>
+  </div>
+
+  <!-- BODY MIST -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">MIST<small>1–3%</small></div>
+      <div class="name-block">
+        <h3>Body Mist / Hair Mist</h3>
+        <p class="alsoknown">also: body spray, fragrance mist, brume</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="body mist" data-lang="en-US"><span class="ico">▶</span>Hear it</button>
+      <span class="respell">BAH-dee <b>MIST</b></span>
+      <span class="ipa">/ˈbɒdi mɪst/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">1–3%</div><div class="meter"><i style="width:6%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">1–2 hours</div><div class="meter"><i style="width:12%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Skin-close</div><div class="meter terra"><i style="width:12%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>The weakest thing sold as fragrance. Usually water-based rather than alcohol-based, which is why it feels cool and evaporates fast. Made to be reapplied, layered under something stronger, or sprayed on hair where alcohol would be drying.</p>
+    </div>
+  </article>
+
+  <!-- EAU FRAICHE -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">EF<small>1–3%</small></div>
+      <div class="name-block">
+        <h3>Eau Fraîche</h3>
+        <p class="alsoknown">literally “fresh water” · sometimes “eau de sport”</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="eau fraîche" data-lang="fr-FR" data-fallback="oh fresh"><span class="ico">▶</span>Hear it</button>
+      <span class="respell">oh <b>FRESH</b></span>
+      <span class="ipa">/o fʁɛʃ/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">1–3%</div><div class="meter"><i style="width:7%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">1–2 hours</div><div class="meter"><i style="width:14%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Faint</div><div class="meter terra"><i style="width:15%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>Mostly water with a little alcohol. Cold, sheer, and gone by lunch. Houses release it in summer, or as a lighter reading of a heavier flagship. Not a flaw — it is doing exactly what it was built to do.</p>
+    </div>
+    <div class="tip"><b>Say it right:</b> the <i>-che</i> is a soft “sh,” never “fray-chee.” One syllable: <b>fresh</b>.</div>
+  </article>
+
+  <!-- EAU DE COLOGNE -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">EDC<small>2–5%</small></div>
+      <div class="name-block">
+        <h3>Eau de Cologne</h3>
+        <p class="alsoknown">named for Cologne, Germany, 1709 · in Germany: Kölnisch Wasser</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="eau de cologne" data-lang="fr-FR" data-fallback="oh duh ko lone"><span class="ico">▶</span>Hear it</button>
+      <span class="respell">oh duh <b>kuh-LOAN</b></span>
+      <span class="ipa">/o də kɔ.lɔɲ/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">2–5%</div><div class="meter"><i style="width:13%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">2–3 hours</div><div class="meter"><i style="width:22%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Modest</div><div class="meter terra"><i style="width:25%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>The original: citrus, neroli, herbs, splashed on liberally from a big bottle. Traditional cologne is a <i>style</i> as much as a strength — bright, clean, and deliberately short-lived.</p>
+      <p>Confusingly, American marketing also uses “cologne” to mean “any fragrance sold to men,” regardless of concentration. A bottle labelled cologne on a US shelf is very often an eau de toilette.</p>
+    </div>
+    <div class="tip"><b>Say it right:</b> the French <i>-gne</i> is the “ny” in <i>canyon</i>, softened — <b>kuh-LOHN-yuh</b> in Paris, <b>kuh-LOAN</b> everywhere else. Nobody will correct you.</div>
+  </article>
+
+  <!-- EAU DE TOILETTE -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">EDT<small>5–15%</small></div>
+      <div class="name-block">
+        <h3>Eau de Toilette</h3>
+        <p class="alsoknown">from <i>faire sa toilette</i> — to get ready, to groom</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="eau de toilette" data-lang="fr-FR" data-fallback="oh duh twah lett"><span class="ico">▶</span>Hear it</button>
+      <span class="respell">oh duh <b>twah-LET</b></span>
+      <span class="ipa">/o də twa.lɛt/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">5–15%</div><div class="meter"><i style="width:32%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">3–5 hours</div><div class="meter"><i style="width:40%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Arm's length</div><div class="meter terra"><i style="width:45%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>The everyday workhorse, and the most common thing on a department-store shelf. Lighter and usually brighter than the parfum version of the same scent — top notes sparkle, the base is thinner.</p>
+      <p>An EDT is not simply a watered-down EDP. Houses rebuild the formula, often boosting the citrus and aromatics so the opening still lands. Which is why some people prefer the EDT of a scent they own in both.</p>
+    </div>
+    <div class="tip"><b>Say it right:</b> nothing to do with a bathroom. <i>Toi-</i> is “twah,” not “toy.” <b>twah-LET</b>.</div>
+  </article>
+
+  <!-- EAU DE PARFUM -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">EDP<small>15–20%</small></div>
+      <div class="name-block">
+        <h3>Eau de Parfum</h3>
+        <p class="alsoknown">occasionally: Millésime, Eau de Perfume, EdP</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="eau de parfum" data-lang="fr-FR" data-fallback="oh duh par fuhn"><span class="ico">▶</span>Hear it</button>
+      <span class="respell">oh duh <b>par-FUHN</b></span>
+      <span class="ipa">/o də paʁ.fœ̃/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">15–20%</div><div class="meter"><i style="width:50%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">5–8 hours</div><div class="meter"><i style="width:62%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Room-filling</div><div class="meter terra"><i style="width:70%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>The modern default for anything expensive. Rich enough to last a working day, restrained enough to wear to one. Most niche houses release in EDP and stop there.</p>
+      <p>Two sprays of an EDP is a decision. Six is a statement other people did not ask for.</p>
+    </div>
+    <div class="tip"><b>Say it right:</b> the <i>-um</i> is a nasal vowel, closer to “uhn” than “fume.” <b>par-FUHN</b> — and never “par-FYOOM” unless you're speaking English on purpose, which is completely allowed.</div>
+  </article>
+
+  <!-- EXTRAIT -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">EXT<small>20–40%</small></div>
+      <div class="name-block">
+        <h3>Extrait de Parfum</h3>
+        <p class="alsoknown">also: Parfum, Pure Parfum, Perfume Extract, Esprit de Parfum</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="extrait de parfum" data-lang="fr-FR" data-fallback="ex tray duh par fuhn"><span class="ico">▶</span>Hear it</button>
+      <span class="respell">ex-<b>TRAY</b> duh par-FUHN</span>
+      <span class="ipa">/ɛks.tʁɛ də paʁ.fœ̃/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">20–40%</div><div class="meter"><i style="width:88%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">8–12+ hours</div><div class="meter"><i style="width:92%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Close but relentless</div><div class="meter terra"><i style="width:52%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>The strongest alcohol-based form, and often the quietest in the room. More oil means heavier molecules, less alcohol to fling them into the air — so an extrait sits on the skin and stays there for a day and a night.</p>
+      <p>Sold in smaller bottles, frequently with a dab stopper instead of an atomiser, because you genuinely need less. This is the format that outlives the shirt.</p>
+    </div>
+    <div class="tip"><b>Say it right:</b> the final <i>-t</i> in <i>extrait</i> is silent. <b>ex-TRAY</b>, not “ex-trate.”</div>
+  </article>
+
+  <!-- PARFUM DE TOILETTE / SOIE -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">PDT<small>12–18%</small></div>
+      <div class="name-block">
+        <h3>Parfum de Toilette &amp; Soie de Parfum</h3>
+        <p class="alsoknown">house-specific tiers wedged between EDT and EDP</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="soie de parfum" data-lang="fr-FR" data-fallback="swah duh par fuhn"><span class="ico">▶</span>Hear it</button>
+      <span class="respell">swah duh <b>par-FUHN</b></span>
+      <span class="ipa">/swa də paʁ.fœ̃/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">12–18%</div><div class="meter"><i style="width:42%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">4–7 hours</div><div class="meter"><i style="width:55%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Soft, close</div><div class="meter terra"><i style="width:40%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>Occasional in-between names invented by individual houses. <i>Parfum de toilette</i> was common in the 1980s and has mostly disappeared. <i>Soie de parfum</i> — “silk of perfume” — is a recent Chanel coinage for something deliberately softer and more diffuse than their EDP.</p>
+      <p>Treat any of these as “roughly EDT-plus” and you will not be far off.</p>
+    </div>
+  </article>
+
+  <!-- HUILE -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">OIL<small>15–30%</small></div>
+      <div class="name-block">
+        <h3>Huile de Parfum / Perfume Oil</h3>
+        <p class="alsoknown">also: parfum huileux, roll-on, oil concentrate</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="huile de parfum" data-lang="fr-FR" data-fallback="weel duh par fuhn"><span class="ico">▶</span>Hear it</button>
+      <span class="respell">weel duh <b>par-FUHN</b></span>
+      <span class="ipa">/ɥil də paʁ.fœ̃/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">15–30% in a carrier oil</div><div class="meter"><i style="width:66%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">6–10 hours</div><div class="meter"><i style="width:74%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Very close</div><div class="meter terra"><i style="width:20%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>No alcohol at all — the fragrance is suspended in jojoba, fractionated coconut, or similar. Nothing flashes off, so there is no bright opening and almost no projection. What you get instead is a scent that lives about two inches from your skin for most of a day.</p>
+      <p>Kinder to dry or sensitive skin, and the format of choice if you work somewhere that would rather not smell you coming.</p>
+    </div>
+    <div class="tip"><b>Say it right:</b> <i>huile</i> is one tight syllable — <b>weel</b>, with the lips rounded. Not “hoo-eel,” and the <i>h</i> is silent.</div>
+  </article>
+
+  <!-- ATTAR -->
+  <article class="card">
+    <div class="card-top">
+      <div class="abbr">ATR<small>~100%</small></div>
+      <div class="name-block">
+        <h3>Attar / Mukhallat / Ittar</h3>
+        <p class="alsoknown">Arabic &amp; South Asian tradition · عطر · مخلط</p>
+      </div>
+    </div>
+    <div class="pron">
+      <button class="say" data-say="attar mukhallat" data-lang="en-US" data-fallback="AT ar. moo KHAL lat"><span class="ico">▶</span>Hear it</button>
+      <span class="respell"><b>AH-tar</b> · moo-<b>KHAL</b>-lat</span>
+      <span class="ipa">/ˈʌt̪ːɑr/ · /muˈxallat̪/</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="label">Oil load</span><div class="val">Undiluted oil</div><div class="meter"><i style="width:100%"></i></div></div>
+      <div class="stat"><span class="label">Longevity</span><div class="val">10+ hours</div><div class="meter"><i style="width:100%"></i></div></div>
+      <div class="stat"><span class="label">Sillage</span><div class="val">Close, then blooms</div><div class="meter terra"><i style="width:60%"></i></div></div>
+    </div>
+    <div class="notes">
+      <p>Traditionally distilled botanicals captured directly into sandalwood oil, applied a single dab at a time. <i>Attar</i> generally means a single-material oil; <i>mukhallat</i> means a blend of several.</p>
+      <p>There is no alcohol and no dilution, so the usual percentage scale stops being useful. One dot behind the ear is a full application. Two is too many.</p>
+    </div>
+  </article>
+
+</section>
+
+<!-- ================= NOT STRENGTHS ================= -->
+<section id="notstrengths">
+  <div class="sec-head">
+    <span class="label">Part Three</span>
+    <h2>Words on the bottle that are not strengths</h2>
+    <p>These sound like concentrations. None of them are. They are marketing names for a different formula, which may or may not be more potent than the original.</p>
+  </div>
+  <div class="fake">
+    <dl>
+      <dt>Intense</dt>
+      <dd>A reworked version with the base notes pushed up. Sometimes a genuinely higher oil load, sometimes just more amber and vanilla. Usually still an EDP.</dd>
+      <dt>Elixir</dt>
+      <dd>Currently the most fashionable of these words. Implies extrait-like density; in practice it is a darker, sweeter, resinier take on the original. Concentration varies wildly by house.</dd>
+      <dt>Absolu / Absolue</dt>
+      <dd>Borrowed from <i>absolute</i>, a genuine extraction method for raw materials. On a flanker it means “richer,” nothing more precise.</dd>
+      <dt>Extrême / Extreme</dt>
+      <dd>Same idea as Intense, with a louder name. Occasionally lighter than the original, which is a joke that never stops being funny.</dd>
+      <dt>Cologne (on a niche bottle)</dt>
+      <dd>When Chanel, Tom Ford or Mugler put “Cologne” on a modern bottle, they usually mean the citrus-fresh <i>style</i>, at EDT strength or higher — not the 3% splash of 1709.</dd>
+      <dt>Aftershave / Eau de Barbier</dt>
+      <dd>Around 1–3% oil, plus soothing agents and often witch hazel or glycerin. Meant for a freshly shaved face, not for lasting all day.</dd>
+      <dt>Flanker</dt>
+      <dd>Not a strength at all — the industry word for any spin-off of an existing release. Every Intense, Elixir and Noir above is a flanker.</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= GLOSSARY ================= -->
+<section id="glossary">
+  <div class="sec-head">
+    <span class="label">Part Four</span>
+    <h2>The rest of the vocabulary, said out loud</h2>
+    <p>The words that come up the moment you start reading about any of this.</p>
+  </div>
+  <div class="gloss">
+
+    <div class="gterm">
+      <span class="gname">Sillage</span>
+      <button class="say gsay" data-say="sillage" data-lang="fr-FR" data-fallback="see yazh"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">see-YAHZH</span>
+      <span class="gdef">The trail you leave behind you. From the French for a boat's wake. Not the same as projection.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Projection</span>
+      <button class="say gsay" data-say="projection" data-lang="en-US"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">pruh-JEK-shun</span>
+      <span class="gdef">How far the scent reaches from your skin right now, standing still. Sillage is what's left after you walk out.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Longevity</span>
+      <button class="say gsay" data-say="longevity" data-lang="en-US"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">lon-JEV-ih-tee</span>
+      <span class="gdef">How long it remains detectable on skin. Usually measured from the moment it stops projecting, not from the spray.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Chypre</span>
+      <button class="say gsay" data-say="chypre" data-lang="fr-FR" data-fallback="sheepr"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">SHEEP-ruh</span>
+      <span class="gdef">A family built on bergamot over oakmoss and labdanum. Named for Cyprus. The most mispronounced word in the hobby.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Fougère</span>
+      <button class="say gsay" data-say="fougère" data-lang="fr-FR" data-fallback="foo zhair"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">foo-ZHAIR</span>
+      <span class="gdef">“Fern.” Lavender, coumarin and oakmoss — the backbone of most barbershop and classic men's scents.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Gourmand</span>
+      <button class="say gsay" data-say="gourmand" data-lang="fr-FR" data-fallback="goor mahn"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">goor-MAHN</span>
+      <span class="gdef">Edible: vanilla, caramel, praline, coffee. The nasal ending swallows the <i>-d</i> entirely.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Oud / Agarwood</span>
+      <button class="say gsay" data-say="oud" data-lang="en-US" data-fallback="ood"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">OOD</span>
+      <span class="gdef">Resinous heartwood from infected <i>Aquilaria</i> trees. One syllable, rhymes with “food.” Never “owed.”</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Parfumeur</span>
+      <button class="say gsay" data-say="parfumeur" data-lang="fr-FR" data-fallback="par fyoo mur"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">par-fyoo-MUR</span>
+      <span class="gdef">The person who composes the formula. Also called a nose, or <i>un nez</i>.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Mouillette</span>
+      <button class="say gsay" data-say="mouillette" data-lang="fr-FR" data-fallback="moo yet"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">moo-YET</span>
+      <span class="gdef">The paper blotter at the counter. Useful for a first impression, useless for judging how it wears.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Drydown</span>
+      <button class="say gsay" data-say="drydown" data-lang="en-US"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">DRY-down</span>
+      <span class="gdef">What's left after the top notes burn off — usually thirty minutes to two hours in. This is the part you actually wear.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Accord</span>
+      <button class="say gsay" data-say="accord" data-lang="en-US"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">uh-KORD</span>
+      <span class="gdef">Several materials blended until they read as one new smell. A chord, not a note.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Macerate</span>
+      <button class="say gsay" data-say="macerate" data-lang="en-US"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">MASS-uh-rate</span>
+      <span class="gdef">Letting a fresh bottle rest for a few weeks so the oils marry. A brand-new bottle often smells thinner than the same juice a month later.</span>
+    </div>
+
+    <div class="gterm">
+      <span class="gname">Anosmia</span>
+      <button class="say gsay" data-say="anosmia" data-lang="en-US"><span class="ico">▶</span>Hear it</button>
+      <span class="gpron">uh-NOZ-mee-uh</span>
+      <span class="gdef">Being unable to smell something. Go nose-blind to your own fragrance within an hour — everyone else still smells it.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= USEFUL ================= -->
+<section id="useful">
+  <div class="sec-head">
+    <span class="label">Part Five</span>
+    <h2>Things worth knowing</h2>
+  </div>
+  <div class="know">
+    <article>
+      <h4>Stronger doesn't mean louder</h4>
+      <p>An extrait has the most oil and often the smallest sillage. Heavy base materials cling to skin; light citrus and aromatics are what fling a scent across a room.</p>
+      <p>So the bottle that fills an elevator is usually an EDP, not the extrait sitting next to it.</p>
+    </article>
+    <article>
+      <h4>An EDT is not a diluted EDP</h4>
+      <p>The two versions of the same name are separate formulas, rebalanced for their concentration. Plenty of people prefer the EDT — and it is not nostalgia, the juice really is different.</p>
+    </article>
+    <article>
+      <h4>Where to put it</h4>
+      <p>Warm spots — the sides of the neck, the chest, the inner elbows. Skin heat lifts the scent through the day.</p>
+      <p>Don't rub your wrists together. It shears the top notes and shortens everything that follows.</p>
+    </article>
+    <article>
+      <h4>Dry skin eats fragrance</h4>
+      <p>Unscented moisturiser or a swipe of balm first gives the oils something to hold onto. This is the single cheapest way to add two hours of longevity.</p>
+    </article>
+    <article>
+      <h4>The bathroom is the worst place for it</h4>
+      <p>Heat, steam and light break down aromatic molecules. A closed drawer or a box in a cool room will keep a bottle good for years; a sunny windowsill will turn it in one summer.</p>
+    </article>
+    <article>
+      <h4>Two sprays is almost always enough</h4>
+      <p>You stop smelling your own fragrance long before anyone else does. If you can still smell yourself clearly after an hour, you applied for the room, not for you.</p>
+    </article>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="label">Eau de What · pointless-websites.com</span>
+    <p>Percentages are industry convention, not regulation. Your skin gets the final vote.</p>
+    <p style="margin-top:18px;font-style:normal"><a href="/">← the rest of the pointless websites</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var synth = window.speechSynthesis;
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.say'));
+
+  if (!synth) {
+    document.getElementById('novoice').classList.add('show');
+    buttons.forEach(function (b) { b.style.display = 'none'; });
+    return;
+  }
+
+  var voices = [];
+  function loadVoices() { voices = synth.getVoices() || []; }
+  loadVoices();
+  if (typeof synth.onvoiceschanged !== 'undefined') {
+    synth.onvoiceschanged = loadVoices;
+  }
+
+  function pickVoice(lang) {
+    if (!voices.length) return null;
+    var base = lang.split('-')[0];
+    var exact = voices.filter(function (v) { return v.lang && v.lang.replace('_', '-') === lang; });
+    if (exact.length) return exact[0];
+    var loose = voices.filter(function (v) { return v.lang && v.lang.toLowerCase().indexOf(base) === 0; });
+    return loose.length ? loose[0] : null;
+  }
+
+  var current = null;
+
+  function reset(btn) {
+    btn.classList.remove('playing');
+    btn.innerHTML = '<span class="ico">&#9654;</span>Hear it';
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      loadVoices();
+      synth.cancel();
+      if (current && current !== btn) reset(current);
+
+      var lang = btn.dataset.lang || 'en-US';
+      var voice = pickVoice(lang);
+      var text = btn.dataset.say;
+
+      /* No voice for that language — speak the English respelling instead. */
+      if (!voice && btn.dataset.fallback) {
+        text = btn.dataset.fallback;
+        lang = 'en-US';
+        voice = pickVoice('en-US');
+      }
+
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = lang;
+      if (voice) u.voice = voice;
+      u.rate = 0.78;
+      u.pitch = 1;
+
+      current = btn;
+      btn.classList.add('playing');
+      btn.innerHTML = '<span class="ico">&#9612;&#9612;</span>Saying it';
+
+      u.onend = u.onerror = function () { reset(btn); };
+      synth.speak(u);
+
+      /* Safety net: some engines never fire onend. */
+      setTimeout(function () { if (btn.classList.contains('playing')) reset(btn); }, 6000);
+    });
+  });
+
+  /* Some browsers only populate voices after a tick. */
+  setTimeout(function () {
+    loadVoices();
+    if (!voices.length) document.getElementById('novoice').classList.add('show');
+  }, 900);
+})();
+</script>
+
+</body>
+</html>
